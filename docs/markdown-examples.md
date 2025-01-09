@@ -83,3 +83,5 @@ This is a details block.
 ## More
 
 Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+
+![最近评论背景.png](https://i.p-i.vip/47/20241108-672d9051e725c.png)

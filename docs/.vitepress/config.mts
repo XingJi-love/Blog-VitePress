@@ -23,6 +23,19 @@ export default defineConfig({
     hostname: 'https://你的网址.com',
   },
 
+   //多语言
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'Zh_CN',
+    },
+    en: {
+      label: 'English',
+      lang: 'en',
+      link: '/en/',
+    },
+  },
+
   markdown: {
     // 组件插入h1标题下
     config: (md) => {

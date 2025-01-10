@@ -98,7 +98,7 @@ export default defineConfig({
 			},
     ],
     footer: {
-      copyright: 'Copyright © 2024 XINGJI <a href="https://icp.gov.moe/?keyword=20251225" target="_blank">萌ICP备20251225号</a>'
+      copyright: 'Copyright © 2024 XINGJI <a href="https://icp.gov.moe/?keyword=20250322" target="_blank">萌ICP备20250322号</a>'
     },
     // 设置搜索框的样式
     search: {

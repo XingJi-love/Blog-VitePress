@@ -118,3 +118,18 @@ textarea,
 time {
     cursor: url(https://cdn.npmmirror.com/packages/pixpro/1.7.6/files/static/images/text.png) 16 16, text !important
 }
+
+/*字体-start*/
+@font-face {
+    font-family: "future";
+    /* 自定义字体引用名称 */
+    src: url('https://cdn.jsdmirror.com/gh/acanyo/mmm.sd@master/assets/font/lxwk.woff2');
+    /* 字体文件链接或路径 */
+}
+
+* {
+    font-family: "future" !important;
+    /* 你即将使用的字体，输入对应字体的 font-family 值即可生效 */
+    /* "!important" 为强制替换全局字体 */
+}
+/*字体-end*/

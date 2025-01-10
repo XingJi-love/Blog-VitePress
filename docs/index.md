@@ -25,6 +25,9 @@ hero:
     - theme: alt
       text: API Examples
       link: /api-examples
+    - theme: alt
+      text: 我的导航
+      link: /nav
 
 features:
   - icon: 📝

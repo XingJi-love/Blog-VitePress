@@ -23,18 +23,34 @@ import 'nprogress-v2/dist/index.css' // 进度条样式
 
 import FriendsLinks from './components/FriendsLinks.vue' // 友链组件
 
+import { useData } from 'vitepress' // VitePress搭建个人导航
+import MNavLinks from './components/MNavLinks.vue' // 自定义导航组件
+
 
 
 export default {
     extends: DefaultTheme,
 
+
     Layout() {
+        const props: Record<string, any> = {}
+        // 获取 frontmatter
+        const { frontmatter } = useData()
+
+        /* 添加自定义 class */
+        if (frontmatter.value?.layoutClass) {
+            props.class = frontmatter.value.layoutClass
+        }
+
         return h(MyLayout, null, {
-            default: () => h(DefaultTheme.Layout, null, {
-                'doc-footer-before': () => h(backtotop), // 使用doc-footer-before插槽
+        default: () => h(DefaultTheme.Layout, props, {
+            'doc-footer-before': () => h(backtotop), // 使用doc-footer-before插槽
             })
         })
     },
+
+
+
 
     setup() { // 图片放大功能初始化
     const route = useRoute();
@@ -64,6 +80,7 @@ export default {
         app.component('update', update)
         app.component('ArticleMetadata', ArticleMetadata)
         app.component('FriendsLinks', FriendsLinks) // 注册友链组件
+        app.component('MNavLinks' , MNavLinks) // 注册自定义导航组件
         if (inBrowser) {
             NProgress.configure({ showSpinner: false })
             router.onBeforeRouteChange = () => {

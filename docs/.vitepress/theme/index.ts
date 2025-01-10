@@ -28,6 +28,73 @@ import MNavLinks from './components/MNavLinks.vue' // 自定义导航组件
 
 import giscusTalk from 'vitepress-plugin-comment-with-giscus' // giscus评论插件
 
+import vitepressMusic from 'vitepress-plugin-music' // 音乐播放器插件
+import 'vitepress-plugin-music/lib/css/index.css'
+
+
+const playlist = [
+    {
+    name: '白鸽乌鸦相爱的戏码-潘成（皮卡潘）',
+    author: '潘成(皮卡潘)',
+    file: '/mp3/白鸽乌鸦相爱的戏码-潘成（皮卡潘）.mp3',
+    },
+    {
+    name: '春娇与志明-街道办GDC&欧阳耀莹',
+    author: '街道办GDC&欧阳耀莹',
+    file: '/mp3/春娇与志明-街道办GDC&欧阳耀莹.mp3',
+    },
+    {
+    name: '最后一页',
+    author: '最后一页',
+    file: '/mp3/最后一页.mp3',
+    },
+    {
+    name: '起风了-买辣椒也用券',
+    author: '买辣椒也用券',
+    file: '/mp3/起风了-买辣椒也用券.mp3',
+    },
+    {
+    name: '平凡之路',
+    author: '平凡之路',
+    file: '/mp3/平凡之路.mp3',
+    },
+    {
+    name: '光辉岁月-Beyond',
+    author: 'Beyond',
+    file: '/mp3/光辉岁月-Beyond.mp3',
+    },
+    {
+    name: '白鸽乌鸦相爱的戏码-潘成（皮卡潘）',
+    author: '潘成(皮卡潘)',
+    file: 'https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VaMVFFdmE1OEZCRXBad2F4YUltWGJFQnlwM3htQjlZZ2tQVTNMZU5Tenoya1E.mp3',
+    },
+    {
+    name: '春娇与志明-街道办GDC&欧阳耀莹',
+    author: '街道办GDC&欧阳耀莹',
+    file: 'https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VXcjhTbE8xbVdOR3NYUVZ0MWhxRzBvQkdmMllsZFpIclJhMDJ4cnJ0NndNclE.mp3',
+    },
+    {
+    name: '最后一页',
+    author: '最后一页',
+    file: 'https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VXWTlMRmJha1hkTXFYUzlnN0pmcEJzQlJpN05NME5TWVFLbkVSaGYxellZSHc.mp3',
+    },
+    {
+    name: '起风了-买辣椒也用券',
+    author: '买辣椒也用券',
+    file: 'https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VkZjZxenFyOWtSUHVpS3RPU0NzZVlNQmNvSzljSXF4ZGstSk96aUZGbVZPX1E.mp3',
+    },
+    {
+    name: '平凡之路',
+    author: '平凡之路',
+    file: 'https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VkTzVsT2VLYXpkQmctY3BLYjFhWHhnQnlCZ3Jxc1VmYUQ4WHRVWHlZQlBvdWc.mp3',
+    },
+    {
+    name: '光辉岁月-Beyond',
+    author: 'Beyond',
+    file: 'https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VkZVdzWnNsU2FoTmp2b3BIbW5TbGtBQnFFZ2ZuQ1NsMHY3Y2k3NUZibUwwR0E.mp3',
+    },
+]
+
 
 
 export default {
@@ -89,10 +156,7 @@ setup() { // 图片放大功能初始化
 },
 
 
-
-
-
-    enhanceApp({app, router}) { 
+    enhanceApp({app, router, ctx}) {
     // 注册全局组件
         app.component('Linkcard', Linkcard)
         app.component('HomeUnderline', HomeUnderline)
@@ -102,7 +166,8 @@ setup() { // 图片放大功能初始化
         app.component('update', update)
         app.component('ArticleMetadata', ArticleMetadata)
         app.component('FriendsLinks', FriendsLinks) // 注册友链组件
-        app.component('MNavLinks' , MNavLinks) // 注册自定义导航组件
+        app.component('MNavLinks', MNavLinks) // 注册自定义导航组件
+        vitepressMusic(playlist) // 注册音乐播放器组件
         if (inBrowser) {
             NProgress.configure({ showSpinner: false })
             router.onBeforeRouteChange = () => {

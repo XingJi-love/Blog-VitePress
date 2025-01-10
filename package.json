@@ -8,6 +8,7 @@
     "nprogress-v2": "^1.0.4",
     "vitepress": "^1.5.0",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
+    "vitepress-plugin-music": "^0.0.9",
     "vue": "^3.5.13",
     "xgplayer": "^3.0.20"
   },

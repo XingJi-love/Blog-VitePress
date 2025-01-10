@@ -26,6 +26,8 @@ import FriendsLinks from './components/FriendsLinks.vue' // 友链组件
 import { useData } from 'vitepress' // VitePress搭建个人导航
 import MNavLinks from './components/MNavLinks.vue' // 自定义导航组件
 
+import giscusTalk from 'vitepress-plugin-comment-with-giscus' // giscus评论插件
+
 
 
 export default {
@@ -42,30 +44,50 @@ export default {
             props.class = frontmatter.value.layoutClass
         }
 
-        return h(MyLayout, null, {
-        default: () => h(DefaultTheme.Layout, props, {
-            'doc-footer-before': () => h(backtotop), // 使用doc-footer-before插槽
-            })
-        })
+        return h(MyLayout, props)
     },
 
 
 
 
-    setup() { // 图片放大功能初始化
+setup() { // 图片放大功能初始化
     const route = useRoute();
+    const { frontmatter } = useData();
+
     const initZoom = () => {
       // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
       mediumZoom(".main img", { background: "var(--vp-c-bg)" }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
     };
+
     onMounted(() => {
         initZoom();
     });
+
     watch(
         () => route.path,
         () => nextTick(() => initZoom())
-        );
+    );
+
+    // giscus配置
+    giscusTalk({
+        repo: 'XingJi-love/Blog-VitePress', //仓库
+        repoId: 'R_kgDONn5frQ', //仓库ID
+        category: 'Announcements', // 讨论分类
+        categoryId: 'DIC_kwDONn5frc4Cl5sS', //讨论分类ID
+        mapping: 'pathname',
+        inputPosition: 'bottom',
+        lang: 'zh-CN',
+    }, 
+    {
+    frontmatter, route
     },
+    //默认值为true，表示已启用，此参数可以忽略；
+    //如果为false，则表示未启用
+    //您可以使用“comment:true”序言在页面上单独启用它
+    true
+    );
+},
+
 
 
 

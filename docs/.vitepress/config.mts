@@ -1,5 +1,13 @@
 import { defineConfig } from 'vitepress'
 
+import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss' // 实现自动为 VitePress 网站添加 RSS 订阅的插件
+const baseUrl = 'https://vite.xingji.fun'
+const RSS: RSSOptions = {
+  title: 'XINGJI',
+  baseUrl,
+  copyright: 'Copyright (c) 2024-present, XINGJI ',
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN', //语言，可选 en-US
@@ -14,6 +22,24 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://你的网址.com',
   },
+
+  markdown: {
+    // 组件插入h1标题下
+    config: (md) => {
+      md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
+          let htmlResult = slf.renderToken(tokens, idx, options);
+          if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`; 
+          return htmlResult;
+      }
+    }
+  },
+  // 实现自动为 VitePress 网站添加 RSS 订阅的插件
+  vite: {
+    // ↓↓↓↓↓
+    plugins: [RssPlugin(RSS)]
+    // ↑↑↑↑↑
+  },
+
   themeConfig: {
     //左上角logo
     logo: '/my-logo.png',

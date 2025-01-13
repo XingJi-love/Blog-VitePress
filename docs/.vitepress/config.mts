@@ -91,6 +91,12 @@ export default defineConfig({
     nav: nav, // 导航栏配置
     sidebar: sidebar, // 侧边栏配置
 
+    //编辑本页
+    editLink: { 
+      pattern: 'https://github.com/XingJi-love/Blog-VitePress', // 改成自己的仓库
+      text: '在GitHub编辑本页'
+    },
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/XingJi-love' },
       {

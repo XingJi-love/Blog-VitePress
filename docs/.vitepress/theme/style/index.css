@@ -27,3 +27,6 @@
 
 /* .vitepress/theme/style/index.css */
 @import './vp-code-title.css'; /* 代码块标题 */
+
+/* .vitepress/theme/style/index.css */
+@import './custom-block.css'; /* 表格 */

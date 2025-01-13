@@ -7,7 +7,7 @@ import xgplayer from "./components/xgplayer.vue"
 import confetti from "./components/confetti.vue"
 import update from "./components/update.vue"
 import ArticleMetadata from "./components/ArticleMetadata.vue"
-import backtotop from "./components/backtotop.vue"
+
 import MyLayout from './components/MyLayout.vue'
 
 import { inBrowser } from "vitepress";

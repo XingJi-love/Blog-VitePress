@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress'
 
+import nav from './nav.mts'; // 导航栏配置
+import sidebar from './sidebar.mts'; // 侧边栏配置
+
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss' // 实现自动为 VitePress 网站添加 RSS 订阅的插件
 const baseUrl = 'https://vite.xingji.fun'
 const RSS: RSSOptions = {
@@ -20,10 +23,10 @@ export default defineConfig({
   ],
   // 站点地图
   sitemap: {
-    hostname: 'https://你的网址.com',
+    hostname: 'https://vite.xingji.fun',
   },
 
-   //多语言
+  //多语言
   locales: {
     root: {
       label: '简体中文',
@@ -66,7 +69,7 @@ export default defineConfig({
     },
     //上次更新时间
     lastUpdated: {
-      text: '最后更新于',
+      text: '上次更新时间',
       formatOptions: {
         dateStyle: 'short', // 可选值full、long、medium、short
         timeStyle: 'medium' // 可选值full、long、medium、short
@@ -79,21 +82,8 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     //导航栏
-    nav: [
-      { text: '首页', link: '/' }, 
-      { text: '快速上手', link: '/getting-started' },
-      { text: 'VitePress', link: 'https://vitepress.dev/' },
-    ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+    nav: nav, // 导航栏配置
+    sidebar: sidebar, // 侧边栏配置
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/XingJi-love' },

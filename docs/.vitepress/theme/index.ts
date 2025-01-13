@@ -31,6 +31,8 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus' // giscus评论插
 import vitepressMusic from 'vitepress-plugin-music' // 音乐播放器插件
 import 'vitepress-plugin-music/lib/css/index.css'
 
+import 'virtual:group-icons.css' //代码组样式
+
 
 const playlist = [
     {

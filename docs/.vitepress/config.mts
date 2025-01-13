@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons' // 实现自定义图标的插件
 
 import nav from './nav.mts'; // 导航栏配置
 import sidebar from './sidebar.mts'; // 侧边栏配置
@@ -40,19 +41,24 @@ export default defineConfig({
   },
 
   markdown: {
+    image: {
+      lazyLoading: true, // 开启图片懒加载
+    },
+    lineNumbers: true, //行号显示
     // 组件插入h1标题下
     config: (md) => {
       md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
           let htmlResult = slf.renderToken(tokens, idx, options);
           if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`; 
-          return htmlResult;
+        return htmlResult;
       }
+      md.use(groupIconMdPlugin) //代码组图标
     }
   },
   // 实现自动为 VitePress 网站添加 RSS 订阅的插件
   vite: {
     // ↓↓↓↓↓
-    plugins: [RssPlugin(RSS)]
+    plugins: [RssPlugin(RSS), groupIconVitePlugin()]
     // ↑↑↑↑↑
   },
 

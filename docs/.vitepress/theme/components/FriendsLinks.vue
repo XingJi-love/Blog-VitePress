@@ -79,6 +79,12 @@ const friends = [
         "icon": "https://love.xingji.fun/img/XingJi.jpg"
     },
     {
+        title: "XINGJI",
+        desc: "迄今所有人生都大写着失败，但不妨碍我继续向前✨",
+        link: "https://vitepress.xingji.fun",
+        icon: "https://i.p-i.vip/47/20240920-66ed7b168c38c.jpg"
+    },
+    {
         "title": "LI SIR",
         "desc": "你的时间花在哪里，你的收获就在哪里",
         "link": "https://lisir.me",

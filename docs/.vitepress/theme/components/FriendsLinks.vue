@@ -91,6 +91,12 @@ const friends = [
         "icon": "https://lisir.me/logo.png"
     },
     {
+        "title": "Wcowin's Web",
+        "desc": "循此苦旅，以达星辰",
+        "link": "https://wcowin.work",
+        "icon": "https://s2.loli.net/2024/02/01/gaE47y5fKM6kosV.png"
+    },
+    {
         "title": "Heo",
         "desc": "爱折腾的设计师",
         "link": "https://blog.zhheo.com",
@@ -179,6 +185,18 @@ const friends = [
         desc: "Aroes's Blog | \\萌脇舞以/",
         link: "https://homulilly.com",
         icon: "https://homulilly.com/images/avatar.jpg"
+    },
+    {
+        title: "Jiawei’s Blog",
+        desc: "念头通达",
+        link: "https://www.chujiaweicode.top",
+        icon: "https://www.chujiaweicode.top/static/favicons/site-logo.png"
+    },
+    {
+        title: "小陈博客",
+        desc: "理想成为大牛的小陈同学",
+        link: "https://reinness.com",
+        icon: "https://qiniu.reinness.com/blog/imgs/avatar.png"
     }
 ]
 

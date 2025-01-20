@@ -180,5 +180,129 @@ setup() { // 图片放大功能初始化
                 NProgress.done() // 停止进度条
             }
         }
+        if (typeof window !== 'undefined') {
+        // 在客户端添加样式
+        const style = document.createElement('style')
+        style.textContent = `
+        .lantern-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .lantern {
+            position: absolute;
+            top: -15px;
+            width: 60px;
+            height: 80px;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, 
+            rgba(255, 166, 0, 0.4) 0%,
+            rgba(255, 123, 0, 0.2) 40%,
+            rgba(255, 87, 0, 0) 70%
+            );
+            border-radius: 50%;
+            filter: blur(5px);
+            animation: glow 2s infinite ease-in-out;
+        }
+
+        .lantern::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 80'%3E%3Cpath d='M5 20 H55 V60 A25 25 0 0 1 30 85 A25 25 0 0 1 5 60 V20 Z' fill='%23ff0000' stroke='%23FFD700' stroke-width='2'/%3E%3Crect x='20' y='5' width='20' height='15' fill='%23FFD700'/%3E%3C/svg%3E") no-repeat center/contain;
+            filter: drop-shadow(0 0 10px rgba(255, 166, 0, 0.3));
+        }
+
+        .lantern-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFD700;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            font-family: "STKaiti", "KaiTi", serif;
+            z-index: 2;
+        }
+
+        .lantern:nth-child(1) { left: 2%; animation-delay: 0s; }
+        .lantern:nth-child(2) { left: 8%; animation-delay: 0.5s; }
+        .lantern:nth-child(3) { right: 8%; animation-delay: 0.3s; }
+        .lantern:nth-child(4) { right: 2%; animation-delay: 0.8s; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg) translateY(-5px); }
+            50% { transform: rotate(5deg) translateY(0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .dark .lantern::after {
+            filter: drop-shadow(0 0 15px rgba(255, 166, 0, 0.4));
+        }
+
+        .dark .lantern::before {
+            opacity: 0.8;
+            }
+
+            @media (max-width: 768px) {
+            .lantern {
+            width: 50px;
+            height: 70px;
+            }
+            
+            .lantern::before {
+            width: 80px;
+            height: 80px;
+            }
+
+            .lantern-text {
+            font-size: 1.5em;
+            }
+        }
+        `
+        document.head.appendChild(style)
+
+      // 添加灯笼元素
+        const lanternContainer = document.createElement('div')
+        lanternContainer.className = 'lantern-container'
+        lanternContainer.innerHTML = `
+        <div class="lantern">
+            <span class="lantern-text">春</span>
+        </div>
+        <div class="lantern">
+            <span class="lantern-text">节</span>
+        </div>
+        <div class="lantern">
+            <span class="lantern-text">快</span>
+        </div>
+        <div class="lantern">
+            <span class="lantern-text">乐</span>
+        </div>
+        `
+        document.body.appendChild(lanternContainer)
+    }
     },
 }

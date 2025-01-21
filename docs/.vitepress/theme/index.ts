@@ -197,8 +197,8 @@ setup() { // 图片放大功能初始化
         .lantern {
             position: absolute;
             top: -15px;
-            width: 60px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             animation: sway 4s infinite ease-in-out;
         }
 
@@ -208,15 +208,15 @@ setup() { // 图片放大功能初始化
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background: radial-gradient(circle, 
-            rgba(255, 166, 0, 0.4) 0%,
-            rgba(255, 123, 0, 0.2) 40%,
+            rgba(255, 140, 0, 0.4) 0%,
+            rgba(255, 100, 0, 0.2) 40%,
             rgba(255, 87, 0, 0) 70%
             );
             border-radius: 50%;
-            filter: blur(5px);
+            filter: blur(8px);
             animation: glow 2s infinite ease-in-out;
         }
 
@@ -227,8 +227,18 @@ setup() { // 图片放大功能初始化
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 80'%3E%3Cpath d='M5 20 H55 V60 A25 25 0 0 1 30 85 A25 25 0 0 1 5 60 V20 Z' fill='%23ff0000' stroke='%23FFD700' stroke-width='2'/%3E%3Crect x='20' y='5' width='20' height='15' fill='%23FFD700'/%3E%3C/svg%3E") no-repeat center/contain;
-            filter: drop-shadow(0 0 10px rgba(255, 166, 0, 0.3));
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 70'%3E%3Ccircle cx='35' cy='35' r='30' fill='%23ff0000' stroke='%23FFD700' stroke-width='2'/%3E%3Crect x='25' y='0' width='20' height='8' fill='%23FFD700' rx='2'/%3E%3Crect x='25' y='62' width='20' height='8' fill='%23FFD700' rx='2'/%3E%3Cline x1='35' y1='10' x2='35' y2='60' stroke='%23FFD700' stroke-width='1' stroke-dasharray='2,3'/%3E%3Cline x1='15' y1='35' x2='55' y2='35' stroke='%23FFD700' stroke-width='1' stroke-dasharray='2,3'/%3E%3C/svg%3E") no-repeat center/contain;
+            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.5));
+        }
+
+        .lantern-tassel {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
         }
 
         .lantern-text {
@@ -237,11 +247,13 @@ setup() { // 图片放大功能初始化
             left: 50%;
             transform: translate(-50%, -50%);
             color: #FFD700;
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
             font-family: "STKaiti", "KaiTi", serif;
             z-index: 2;
+            writing-mode: vertical-lr;
+            text-orientation: upright;
         }
 
         .lantern:nth-child(1) { left: 2%; animation-delay: 0s; }
@@ -250,56 +262,96 @@ setup() { // 图片放大功能初始化
         .lantern:nth-child(4) { right: 2%; animation-delay: 0.8s; }
 
         @keyframes sway {
-            0%, 100% { transform: rotate(-5deg) translateY(-5px); }
-            50% { transform: rotate(5deg) translateY(0); }
+            0%, 100% { 
+            transform: rotate(-5deg) translateY(-5px);
+            }
+            50% { 
+            transform: rotate(5deg) translateY(0);
+            }
         }
 
         @keyframes glow {
-            0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+            0%, 100% { 
+            opacity: 0.8; 
+            transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+            }
         }
 
         .dark .lantern::after {
-            filter: drop-shadow(0 0 15px rgba(255, 166, 0, 0.4));
+            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.6));
         }
 
         .dark .lantern::before {
-            opacity: 0.8;
-            }
+            opacity: 0.9;
+        }
 
-            @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .lantern {
-            width: 50px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             }
             
             .lantern::before {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             }
 
             .lantern-text {
-            font-size: 1.5em;
+            font-size: 1.7em;
             }
+            
+            .lantern-tassel {
+            height: 15px;
+            }
+        }
+        
+        /* Previous CSS styles remain the same until the lantern positioning... */
+
+        .lantern:nth-child(1) { left: 1%; animation-delay: 0s; }
+        .lantern:nth-child(2) { left: 5%; animation-delay: 0.5s; }
+        .lantern:nth-child(3) { right: 5%; animation-delay: 0.3s; }
+        .lantern:nth-child(4) { right: 1%; animation-delay: 0.8s; }
+
+        /* Add responsive positioning for different screen sizes */
+        @media (min-width: 1200px) {
+        .lantern:nth-child(1) { left: 2%; }
+        .lantern:nth-child(2) { left: 7%; }
+        .lantern:nth-child(3) { right: 7%; }
+        .lantern:nth-child(4) { right: 2%; }
+        }
+
+        @media (max-width: 768px) {
+        .lantern:nth-child(1) { left: 0.5%; }
+        .lantern:nth-child(2) { left: 4%; }
+        .lantern:nth-child(3) { right: 4%; }
+        .lantern:nth-child(4) { right: 0.5%; }
         }
         `
         document.head.appendChild(style)
 
-      // 添加灯笼元素
+        // 添加灯笼元素
         const lanternContainer = document.createElement('div')
         lanternContainer.className = 'lantern-container'
         lanternContainer.innerHTML = `
         <div class="lantern">
             <span class="lantern-text">春</span>
+            <div class="lantern-tassel"></div>
         </div>
         <div class="lantern">
             <span class="lantern-text">节</span>
+            <div class="lantern-tassel"></div>
         </div>
         <div class="lantern">
             <span class="lantern-text">快</span>
+            <div class="lantern-tassel"></div>
         </div>
         <div class="lantern">
             <span class="lantern-text">乐</span>
+            <div class="lantern-tassel"></div>
         </div>
         `
         document.body.appendChild(lanternContainer)

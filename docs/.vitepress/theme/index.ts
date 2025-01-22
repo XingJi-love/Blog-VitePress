@@ -187,7 +187,7 @@ setup() { // 图片放大功能初始化
         spotlight: {
         defaultToggle: true, // 设置聚光灯默认开启
             },
-        } as Options) // 注册增强阅读组件选项
+        } as Options) // 注册增强阅读配置
         vitepressMusic(playlist) // 注册音乐播放器组件
         if (inBrowser) {
             NProgress.configure({ showSpinner: false })

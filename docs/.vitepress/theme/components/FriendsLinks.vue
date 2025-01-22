@@ -91,6 +91,12 @@ const friends = [
         "icon": "https://lisir.me/logo.png"
     },
     {
+    "title": "VitePress",
+    "desc": "VitePress 快速上手中文教程，如果你也想搭建它，那跟我一起做吧",
+    "link": "https://vitepress.yiov.top",
+    "icon": "https://vitepress.yiov.top/logo.png"
+    },
+    {
         "title": "Wcowin's Web",
         "desc": "循此苦旅，以达星辰",
         "link": "https://wcowin.work",

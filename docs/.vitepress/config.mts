@@ -12,6 +12,8 @@ const RSS: RSSOptions = {
   copyright: 'Copyright (c) 2024-present, XINGJI ',
 }
 
+import { GitChangelog, GitChangelogMarkdownSection, } from '@nolebase/vitepress-plugin-git-changelog/vite'   // 实现自动生成 CHANGELOG 的插件
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN', //语言，可选 en-US
@@ -58,7 +60,15 @@ export default defineConfig({
   // 实现自动为 VitePress 网站添加 RSS 订阅的插件
   vite: {
     // ↓↓↓↓↓
-    plugins: [RssPlugin(RSS), groupIconVitePlugin()]
+    plugins: [
+      RssPlugin(RSS),
+      groupIconVitePlugin(), //代码组图标
+      GitChangelog({
+        // 填写在此处填写您的仓库链接
+        repoURL: () => 'https://github.com/XingJi-love/Blog-VitePress',
+      }),
+      GitChangelogMarkdownSection(),
+    ]
     // ↑↑↑↑↑
   },
 

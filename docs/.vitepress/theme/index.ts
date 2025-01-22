@@ -33,6 +33,9 @@ import 'vitepress-plugin-music/lib/css/index.css'
 
 import 'virtual:group-icons.css' //代码组样式
 
+import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-changelog/client'
+import '@nolebase/vitepress-plugin-git-changelog/client/style.css' // 更新日志插件
+
 
 const playlist = [
     {
@@ -169,6 +172,7 @@ setup() { // 图片放大功能初始化
         app.component('ArticleMetadata', ArticleMetadata)
         app.component('FriendsLinks', FriendsLinks) // 注册友链组件
         app.component('MNavLinks', MNavLinks) // 注册自定义导航组件
+        app.use(NolebaseGitChangelogPlugin) // 注册更新日志插件
         vitepressMusic(playlist) // 注册音乐播放器组件
         if (inBrowser) {
             NProgress.configure({ showSpinner: false })

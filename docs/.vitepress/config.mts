@@ -68,8 +68,21 @@ export default defineConfig({
         repoURL: () => 'https://github.com/XingJi-love/Blog-VitePress',
       }),
       GitChangelogMarkdownSection(),
-    ]
-    // ↑↑↑↑↑
+    ],
+    optimizeDeps: {
+      exclude: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+        'vitepress',
+        '@nolebase/ui',
+      ],
+    },
+    ssr: {
+      noExternal: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities',
+        '@nolebase/vitepress-plugin-highlight-targeted-heading',
+        '@nolebase/ui'
+      ],
+    },
   },
 
   themeConfig: {

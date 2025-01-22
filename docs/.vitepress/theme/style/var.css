@@ -133,3 +133,8 @@ time {
     /* "!important" 为强制替换全局字体 */
 }
 /*字体-end*/
+
+
+.VPSocialLinks.VPNavBarSocialLinks.social-links {
+    margin-right: 0;
+}

@@ -54,9 +54,16 @@ features:
 <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=25&pause=1000&center=true&vCenter=true&random=false&width=600&lines=Welcome+to+my+VitePress+Blog+page!;I+am+XINGJI+obsessed+with+programming!" />
 </p>
 
-<!-- index.md -->
-<FriendsLinks />
+<script setup>
+import MFriends from './home/MFriends.vue'
+</script>
 
+<ClientOnly>
+  <MFriends/>
+</ClientOnly>
+
+<!-- index.md -->
+<!-- <FriendsLinks /> -->
 
 ::: details 申请友链
 

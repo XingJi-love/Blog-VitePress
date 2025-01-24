@@ -16,6 +16,7 @@ import { GitChangelog, GitChangelogMarkdownSection, } from '@nolebase/vitepress-
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/Blog-VitePress/",
   lang: 'zh-CN', //语言，可选 en-US
   title: "XINGJI", //站点名
   description: "我的vitpress文档教程", //站点描述

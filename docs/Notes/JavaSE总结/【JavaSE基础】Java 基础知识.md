@@ -7,7 +7,7 @@ abbrlink: 64063
 date: 2024-08-19 00:07:00
 ---
 
-# Java 转义字符
+# Java | 基础知识
 
 ## Java 常用的转义字符
 
@@ -80,7 +80,7 @@ public class 转义字符课堂练习 {
 ![【JavaSE基础】Java 基础知识](./【JavaSE基础】Java%20基础知识/image-2.png)
 
 
-# 初学Java易犯错误
+## 初学Java易犯错误
 
 + 找不到文件
 
@@ -117,12 +117,12 @@ public class 转义字符课堂练习 {
 + 不好修改的错误其实是 业务错误,环境错误
 
 
-# 注释
+## 注释
 
-## 介绍：
+### 介绍：
 用于注解说明解释程序的文字就是注释，注释提高了代码的阅读性(可读性);注释是`一个程序员必须要具有的良好编程习惯`。将自己的思想通过注释先整理出来，再用代码去体现。
 
-## Java中的注释类型
+### Java中的注释类型
 
 1) 单行注释 //
 
@@ -130,19 +130,19 @@ public class 转义字符课堂练习 {
 
 3) 文档注释 /** */
 
-### 单行注释：
+#### 单行注释：
 
 基本格式
 
 格式: //注释文字
 
-### 多行注释:
+#### 多行注释:
 
 基本格式
 
 格式: /* 注释文字 */
 
-### 使用细节
+##### 使用细节
 
 1) 被注释的文字，不会被JVM(java 虚拟机)解释执行
 
@@ -180,7 +180,6 @@ public class Comment01 {
 }
 ```
 
-
 ### 文档注释
 
 ![【JavaSE基础】Java 基础知识](./【JavaSE基础】Java%20基础知识/image-6.png)
@@ -196,7 +195,7 @@ public class Comment01 {
 ![【JavaSE基础】Java 基础知识](./【JavaSE基础】Java%20基础知识/image-8.png)
 
 
-# Java代码规范
+## Java代码规范
 
 + 类、方法的注释，要以javadoc的方式来写。
 
@@ -215,9 +214,9 @@ public class Comment01 {
 ![【JavaSE基础】Java 基础知识](./【JavaSE基础】Java%20基础知识/image-9.png)
 
 
-# DOS命令`(了解)`
+## DOS命令`(了解)`
 
-## DOS介绍
+### DOS介绍
 
 >Dos: Disk Operating System 磁盘操作系统,简单说一下 windows 的目录结构。`[原理图如下]`
 + md: make directory 创建目录

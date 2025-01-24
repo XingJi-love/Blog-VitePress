@@ -6,7 +6,8 @@ abbrlink: 18951
 cover: /img/JAVA SE图片.webp
 date: 2024-08-19 22:01:13
 ---
-# Java概述-章节作业题目
+
+# Java概述 | 章节作业
 
 ![alt text](./【JavaSE基础】Java概述-章节作业/image.png)
 

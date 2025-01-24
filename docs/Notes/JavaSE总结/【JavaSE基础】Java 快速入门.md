@@ -7,7 +7,7 @@ abbrlink: 9023
 date: 2024-08-01 14:06:46
 ---
 
-#  快速入门
+# Java | 快速入门
 
 ## 需求说明
 
@@ -32,14 +32,14 @@ date: 2024-08-01 14:06:46
 ![【JavaSE基础】Java 快速入门](./【JavaSE基础】Java%20快速入门/image-3.png)
 
 
-# Java 开发快速入门
+## Java 开发快速入门
 
-## Java执行流程分析
+### Java执行流程分析
 
 ![【JavaSE基础】Java 快速入门](./【JavaSE基础】Java%20快速入门/image-4.png)
 
 
-## 什么是编译
+### 什么是编译
 
 >`javac Hello.java`
 
@@ -50,7 +50,7 @@ date: 2024-08-01 14:06:46
 3) `如果程序没有错误，没有任何提示`，但在当前目录下生成了`Hello.class`文件，该文件称为`字节码文件`，也是可以执行java的程序。
 
 
-## 什么是运行
+### 什么是运行
 
 >`java Hello`
 
@@ -104,6 +104,6 @@ public static void main(String[] args) {
 }
 ```
 
-# 如何快速掌握技术或知识点
+## 如何快速掌握技术或知识点
 
 ![【JavaSE基础】Java 快速入门](./【JavaSE基础】Java%20快速入门/image-6.png)

@@ -7,9 +7,11 @@ abbrlink: 18950
 date: 2024-07-31 11:54:06
 ---
 
-# Java历史
+# Java | 语言概述
 
-## 什么是程序
+## Java历史
+
+### 什么是程序
 
 程序：计算机执行某些操作或解决某个问题而**`编写的一系列有序指令的集合`**
 
@@ -60,7 +62,7 @@ public class test {
 ![【JavaSE基础】Java 语言概述](./【JavaSE基础】Java%20语言概述/image-4.png)
 
 
-# Java重要特点
+## Java重要特点
 
 + Java 语言是面向对象的(oop)
 
@@ -77,7 +79,7 @@ public class test {
 区别是：`解释性语言`，编译后的代码，`不能直接被机器执行`,需要解释器来执行, `编译性语言`, 编译后的代码, `可以直接被机器执行`, **c /c++**
 
 
-# Java 的开发工具
+## Java 的开发工具
 
 ![【JavaSE基础】Java 语言概述](./【JavaSE基础】Java%20语言概述/image-6.png)
 
@@ -98,7 +100,7 @@ IntelliJ IDEA 官方网址：https://www.jetbrains.com/idea/
 + IntelliJ IDEA：`一个商业Java开发环境`，支持Java开发，有丰富的插件，语法高亮，代码自动完成等功能。
 
 
-# Java 工具选择
+## Java 工具选择
 
 >如何选择开发工具
 
@@ -111,9 +113,9 @@ IntelliJ IDEA 官方网址：https://www.jetbrains.com/idea/
 + 有利于公司面试。
 
 
-# Java运行机制及运行过程
+## Java运行机制及运行过程
 
-## Java 语言的特点：跨平台性
+### Java 语言的特点：跨平台性
 
 ![【JavaSE基础】Java 语言概述](./【JavaSE基础】Java%20语言概述/image-7.png)
 
@@ -131,16 +133,16 @@ IntelliJ IDEA 官方网址：https://www.jetbrains.com/idea/
 
 ![【JavaSE基础】Java 语言概述](./【JavaSE基础】Java%20语言概述/image-8.png)
 
-# 什么是 JDK，JRE
+## 什么是 JDK，JRE
 
-## JDK 基本介绍
+### JDK 基本介绍
 1) JDK 的全称(Java Development Kit `Java 开发工具包`)
 
 >JDK = JRE + java 的开发工具 [java, javac,javadoc,javap 等]
 
 2) JDK 是提供给 Java 开发人员使用的，其中包含了 java 的开发工具，也包括了 JRE。所以安装了 JDK，就不用在单独安装 JRE 了。
 
-## JRE 基本介绍
+### JRE 基本介绍
 1) JRE(Java Runtime Environment `Java 运行环境`)
 
 >JRE = JVM + Java 的核心类库[类]

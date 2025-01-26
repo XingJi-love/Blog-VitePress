@@ -3,7 +3,7 @@
 
 ## 简介
 
-一个开源的分布式版本控制系统，常用于 [Github](./github.md) 、[Gitee](https://gitee.com/) 等仓库的上传
+一个开源的分布式版本控制系统，常用于 [Github](https://github.com/) 、[Gitee](https://gitee.com/) 等仓库的上传
 
 网上教程对我这种小白，越看越头疼，于是自己边摸索边写了这篇教程
 

@@ -6,7 +6,7 @@ export default [
         text: '学习笔记',
             items: [
             { text: 'Git', link: '/Notes/Git/Git-学习笔记' },
-            {text: 'JavaSE',link: '/Notes/JavaSE总结/Windows下Java环境配置教程',},
+            { text: 'JavaSE',link: '/Notes/JavaSE总结/Windows下Java环境配置教程',},
             ],
         },
     { text: '测试', link: '/test' },

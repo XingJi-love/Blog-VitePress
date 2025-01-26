@@ -2,7 +2,8 @@ export default [
     {
         text: 'Git',
         items:[
-            { text: 'Git | 学习笔记（待更新）', link: '/Notes/Git/Git-学习笔记' },
+            { text: 'Git | 学习笔记（待更新）', link: '/Notes/Git/Git-学习笔记'},
+            { text: 'Git | 使用及上传代码到仓库', link: '/Notes/Git/Git使用及上传代码到仓库'}
         ]
     },
     {

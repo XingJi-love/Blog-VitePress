@@ -188,6 +188,20 @@ setup() { // 图片放大功能初始化
         defaultToggle: true, // 设置聚光灯默认开启
             },
         } as Options) // 注册增强阅读配置
+        app.provide(InjectionKey, {
+        locales: {
+        'zh-CN': {
+            changelog: {
+                title: '页面历史',
+                noData: '暂无最近变更历史',
+                lastEdited: '本页面最后编辑于 {{daysAgo}}',
+                lastEditedDateFnsLocaleName: 'zhCN',
+                viewFullHistory: '查看完整历史',
+                committedOn: '于 {{date}} 提交',
+                }
+            },
+        }
+        })
         vitepressMusic(playlist) // 注册音乐播放器组件
         if (inBrowser) {
             NProgress.configure({ showSpinner: false })

@@ -79,7 +79,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue' // 添加 computed
 import { Bot, ChevronRight, Loader2, AlertCircle, RefreshCw } from 'lucide-vue-next'
 
 const summary = ref('')

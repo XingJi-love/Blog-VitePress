@@ -1,92 +1,60 @@
 <template>
   <ClientOnly>
     <div class="max-w-3xl mx-auto p-4">
-      <div class="bg-gradient-to-b from-[#1C1C1E] to-[#2C2C2E] rounded-lg shadow-xl overflow-hidden border border-gray-800/50">
+      <div class="bg-[#1C1C1E]/90 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden border border-gray-800/30">
         <!-- Header -->
-        <div class="p-4 flex items-center justify-between border-b border-gray-800/50">
-          <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 bg-gradient-to-br from-[#E6A53F] to-[#D49530] rounded-lg flex items-center justify-center shadow-lg">
+        <div class="p-4 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 bg-[#E6A53F] rounded-lg flex items-center justify-center shadow-lg">
               <Bot class="w-5 h-5 text-black" />
             </div>
-            <h2 class="text-white text-lg font-medium flex items-center">
-              文章摘要
-              <ChevronRight class="w-5 h-5 ml-1 text-gray-400" />
-            </h2>
+            <div class="flex items-center space-x-2">
+              <h2 class="text-white text-lg font-medium">文章摘要</h2>
+              <ChevronRight class="w-5 h-5 text-gray-400" />
+            </div>
           </div>
-          <div class="px-3 py-1 bg-gradient-to-r from-[#E6A53F] to-[#D49530] rounded-full shadow-lg">
-            <span class="text-black text-sm font-medium">FakeGPT</span>
+          <div class="px-4 py-1.5 bg-[#E6A53F] rounded-full shadow-lg">
+            <span class="text-black text-sm font-medium">XINGGPT</span>
           </div>
         </div>
 
         <!-- Content -->
-        <div class="p-6">
-          <div v-if="loading" class="flex flex-col items-center justify-center space-y-3 py-8">
-            <div class="relative">
-              <Loader2 class="w-8 h-8 animate-spin text-[#E6A53F]" />
-              <div class="absolute inset-0 animate-ping opacity-50 bg-[#E6A53F] rounded-full blur-xl"></div>
+        <div v-if="summary || error || loading" class="px-6 py-4">
+          <div class="bg-[#27272A] rounded-lg p-6 shadow-inner border border-gray-800/50">
+            <div v-if="loading" class="flex items-center justify-center space-x-3">
+              <Loader2 class="w-5 h-5 animate-spin text-[#E6A53F]" />
+              <span class="text-gray-400">生成摘要时出错，请稍后重试</span>
             </div>
-            <span class="text-gray-400 text-sm">正在生成摘要...</span>
-          </div>
-          
-          <div v-else-if="error" class="space-y-4">
-            <div class="flex flex-col items-center justify-center space-y-3 p-6 bg-red-500/10 rounded-lg border border-red-500/20">
-              <div class="relative">
-                <AlertCircle class="w-8 h-8 text-red-500" />
-                <div class="absolute inset-0 animate-pulse opacity-30 bg-red-500 rounded-full blur-xl"></div>
-              </div>
-              <span class="text-red-400 text-center">{{ error }}</span>
+            
+            <div v-else-if="error" class="text-red-400 flex items-center justify-center space-x-2">
+              <AlertCircle class="w-5 h-5" />
+              <span>{{ error }}</span>
             </div>
-            <button
-              @click="generateSummary"
-              class="w-full flex items-center justify-center space-x-2 bg-gray-800/50 text-white px-4 py-3 rounded-lg hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50 shadow-lg group"
-            >
-              <RefreshCw class="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
-              <span>重试</span>
-            </button>
-          </div>
-          
-          <div v-else-if="summary" class="space-y-4">
-            <div class="bg-gray-800/30 rounded-lg p-6 border border-gray-700/50">
-              <div class="text-white text-base leading-relaxed">
-                {{ summary }}
-              </div>
+            
+            <div v-else class="text-gray-100 text-base leading-relaxed">
+              {{ summary }}
             </div>
-            <button
-              @click="generateSummary"
-              :disabled="isRateLimited"
-              class="w-full flex items-center justify-center space-x-2 bg-gray-800/50 text-white px-4 py-3 rounded-lg hover:bg-gray-700/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 border border-gray-700/50 shadow-lg group"
-            >
-              <RefreshCw class="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
-              <span>重新生成</span>
-              <span v-if="isRateLimited" class="text-xs text-gray-500">
-                ({{ Math.ceil((RATE_LIMIT_DELAY - (Date.now() - lastRequestTime)) / 1000) }}s)
-              </span>
-            </button>
-          </div>
-
-          <div v-else class="space-y-4">
-            <div class="flex flex-col items-center justify-center space-y-3 py-6 text-center">
-              <FileText class="w-8 h-8 text-gray-600" />
-              <div class="text-gray-400 text-sm max-w-md">
-                点击下方按钮，AI 将自动分析当前文章内容并生成摘要
-              </div>
-            </div>
-            <button
-              @click="generateSummary"
-              :disabled="isRateLimited"
-              class="w-full bg-gradient-to-r from-[#E6A53F] to-[#D49530] text-black px-4 py-3 rounded-lg hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg font-medium"
-            >
-              生成摘要
-            </button>
           </div>
         </div>
 
         <!-- Footer -->
-        <div class="px-6 py-3 border-t border-gray-800/50 bg-black/20">
-          <p class="text-gray-500 text-sm flex items-center justify-center">
-            <InfoIcon class="w-4 h-4 mr-2" />
-            此内容根据文章生成，并经过人工审核，仅用于文章内容的解释与总结
-          </p>
+        <div class="px-6 py-3 text-right">
+          <div class="flex items-center justify-between">
+            <p class="text-gray-500 text-sm">
+              此内容根据文章生成，并经过人工审核，仅用于文章内容的解释与总结
+            </p>
+            <button
+              v-if="!loading"
+              @click="generateSummary"
+              :disabled="isRateLimited"
+              class="px-4 py-1.5 bg-[#27272A] text-gray-300 rounded-full hover:bg-[#323232] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm border border-gray-800/50"
+            >
+              {{ summary ? '重新生成' : '生成摘要' }}
+              <span v-if="isRateLimited" class="text-xs text-gray-500 ml-1">
+                ({{ Math.ceil((RATE_LIMIT_DELAY - (Date.now() - lastRequestTime)) / 1000) }}s)
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -95,7 +63,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { Bot, ChevronRight, Loader2, AlertCircle, RefreshCw, FileText, InfoIcon } from 'lucide-vue-next'
+import { Bot, ChevronRight, Loader2, AlertCircle } from 'lucide-vue-next'
 
 const summary = ref('')
 const loading = ref(false)
@@ -109,20 +77,17 @@ const isRateLimited = computed(() => {
 })
 
 const extractArticleContent = () => {
-  // 获取文章主要内容，优先使用 article 标签
   const article = document.querySelector('article') || document.querySelector('.vp-doc')
   if (!article) return ''
 
-  // 移除不需要的元素内容
   const clonedArticle = article.cloneNode(true)
   const elementsToRemove = clonedArticle.querySelectorAll('pre, code, script, style, .article-summarizer')
   elementsToRemove.forEach(el => el.remove())
 
-  // 获取纯文本内容并清理
   return clonedArticle.textContent
     .trim()
-    .replace(/\s+/g, ' ') // 将多个空白字符替换为单个空格
-    .replace(/\n+/g, '\n') // 将多个换行符替换为单个换行符
+    .replace(/\s+/g, ' ')
+    .replace(/\n+/g, '\n')
 }
 
 onMounted(() => {

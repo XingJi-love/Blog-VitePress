@@ -102,7 +102,7 @@ const generateSummary = async () => {
   lastRequestTime.value = Date.now()
   
   try {
-    const response = await fetch('https://api.deepseek.com', {
+    const response = await fetch('https://api.deepseek.com/v1/summarize', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

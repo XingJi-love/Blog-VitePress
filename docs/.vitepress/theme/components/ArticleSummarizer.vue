@@ -6,22 +6,22 @@
         <div class="p-4 flex items-center justify-between">
           <div class="flex items-center space-x-2">
             <div class="w-8 h-8 bg-[#E6A53F] rounded-lg flex items-center justify-center">
-              <RobotIcon class="w-5 h-5 text-black" />
+              <Bot class="w-5 h-5 text-black" />
             </div>
             <h2 class="text-white text-lg font-medium flex items-center">
               文章摘要
-              <ChevronRightIcon class="w-5 h-5 ml-1 text-gray-400" />
+              <ChevronRight class="w-5 h-5 ml-1 text-gray-400" />
             </h2>
           </div>
           <div class="px-3 py-1 bg-[#E6A53F] rounded-full">
-            <span class="text-black text-sm font-medium">XINGJIGPT</span>
+            <span class="text-black text-sm font-medium">FakeGPT</span>
           </div>
         </div>
 
         <!-- Content -->
         <div class="p-6">
           <div v-if="loading" class="text-gray-400 flex items-center">
-            <Loader2Icon class="w-5 h-5 animate-spin" />
+            <Loader2 class="w-5 h-5 animate-spin" />
             <span class="ml-2">正在生成摘要...</span>
           </div>
           
@@ -55,7 +55,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { RobotIcon, ChevronRightIcon, Loader2Icon } from 'lucide-vue-next'
+import { Bot, ChevronRight, Loader2 } from 'lucide-vue-next'
 
 const summary = ref('')
 const loading = ref(false)

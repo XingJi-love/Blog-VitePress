@@ -66,13 +66,6 @@ export default defineConfig({
   // 实现自动为 VitePress 网站添加 RSS 订阅的插件
   vite: {
     // ↓↓↓↓↓
-    resolve: {
-      alias: {
-        "./VPContent.vue": "./theme/components/VPContent.vue",
-      },
-    },
-    // 确保环境变量能够正常工作
-    envPrefix: "VITE_",
     plugins: [
       RssPlugin(RSS),
       groupIconVitePlugin(), //代码组图标

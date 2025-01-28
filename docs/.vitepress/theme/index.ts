@@ -44,9 +44,6 @@ import "@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css";
 import type { Options } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
 import { InjectionKey } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
 
-import ArticleSummarizer from "./components/ArticleSummarizer.vue";
-import "./tailwind.postcss";
-
 const playlist = [
   {
     name: "白鸽乌鸦相爱的戏码-潘成（皮卡潘）",
@@ -179,7 +176,6 @@ export default {
     app.component("FriendsLinks", FriendsLinks); // 注册友链组件
     app.component("MNavLinks", MNavLinks); // 注册自定义导航组件
     app.use(NolebaseGitChangelogPlugin); // 注册更新日志插件
-    app.component("ArticleSummarizer", ArticleSummarizer); // 注册文章摘要组件
     app.component(
       "NolebaseEnhancedReadabilitiesMenu",
       NolebaseEnhancedReadabilitiesMenu

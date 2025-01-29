@@ -44,6 +44,8 @@ import "@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css";
 import type { Options } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
 import { InjectionKey } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
 
+import "vitepress-markdown-timeline/dist/theme/index.css"; // 时间线样式
+
 const playlist = [
   {
     name: "白鸽乌鸦相爱的戏码-潘成（皮卡潘）",

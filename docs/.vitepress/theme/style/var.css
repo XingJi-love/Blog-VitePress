@@ -52,7 +52,7 @@ h1 {
 /* .vitepress/theme/style/var.css */
 
 .medium-zoom-overlay {
-    z-index: 30;
+    z-index: 50;
 }
 
 .medium-zoom-image {

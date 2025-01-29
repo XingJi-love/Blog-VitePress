@@ -20,6 +20,8 @@ import {
   GitChangelogMarkdownSection,
 } from "@nolebase/vitepress-plugin-git-changelog/vite"; // 实现自动生成 CHANGELOG 的插件
 
+import { AnnouncementPlugin } from "vitepress-plugin-announcement"; // 实现公告插件
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN", //语言，可选 en-US
@@ -69,6 +71,41 @@ export default defineConfig({
     plugins: [
       RssPlugin(RSS),
       groupIconVitePlugin(), //代码组图标
+      AnnouncementPlugin({
+        title: "公告",
+        body: [
+          { type: "text", content: "👇 QQ 👇 --- 👇 赞赏 👇" },
+          {
+            type: "image",
+            src: "https://i.p-i.vip/47/20250129-6799f6e408e57.jpg",
+            style: "display: inline-block;width:46%;padding-right:6px",
+          },
+          {
+            type: "image",
+            src: "https://i.p-i.vip/47/20240926-66f56532a84be.png",
+            style: "display: inline-block;width:46%;padding-left:6px",
+          },
+        ],
+        footer: [
+          {
+            type: "text",
+            content: "欢迎大家私信交流",
+          },
+          {
+            type: "button",
+            content: "作者主页",
+            link: "https://home.xingji.fun",
+          },
+          {
+            type: "button",
+            content: "作者博客",
+            link: "https://love.xingji.fun",
+            props: {
+              type: "success",
+            },
+          },
+        ],
+      }),
       GitChangelog({
         // 填写在此处填写您的仓库链接
         repoURL: () => "https://github.com/XingJi-love/Blog-VitePress",

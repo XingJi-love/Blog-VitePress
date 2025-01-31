@@ -78,6 +78,26 @@ const playlist = [
     file: "/mp3/光辉岁月-Beyond.mp3",
   },
   {
+    name: "全斗焕の小曲",
+    author: "全斗焕",
+    file: "/mp3/全斗焕の小曲.mp3",
+  },
+  {
+    name: "Shake And Sway(DJ版)-南辰&刘媛媛",
+    author: "南辰&刘媛媛",
+    file: "/mp3/Shake And Sway(DJ版)-南辰&刘媛媛.mp3",
+  },
+  {
+    name: "你若三冬 (DJ Liu 9版)-阿悠悠&Liu 9",
+    author: "阿悠悠&Liu 9",
+    file: "/mp3/你若三冬 (DJ Liu 9版)-阿悠悠&Liu 9.mp3",
+  },
+  {
+    name: "牵丝戏-银临&Aki阿杰",
+    author: "银临&Aki阿杰",
+    file: "/mp3/牵丝戏-银临&Aki阿杰.mp3",
+  },
+  {
     name: "白鸽乌鸦相爱的戏码-潘成（皮卡潘）",
     author: "潘成(皮卡潘)",
     file: "https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VaMVFFdmE1OEZCRXBad2F4YUltWGJFQnlwM3htQjlZZ2tQVTNMZU5Tenoya1E.mp3",

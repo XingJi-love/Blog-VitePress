@@ -7,7 +7,7 @@ export default [
         text: "Git | 使用及上传代码到仓库",
         link: "/Notes/Git/Git使用及上传代码到仓库",
       },
-      { text: "Git | 相关技巧", link: "/Notes/Git/Git相关技巧" },
+      { text: "Git | 相关技巧", link: "/Notes/Git/Git-相关技巧" },
     ],
   },
   {

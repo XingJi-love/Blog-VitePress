@@ -1,0 +1,44 @@
+# MySQL | Navicat安装教程
+
+## 简介
+
+`Navicat` 是一款流行的 `图形化数据库管理工具`，由 PremiumSoft 公司开发，支持多种主流数据库系统（如 `MySQL、MariaDB、SQL Server、Oracle、PostgreSQL、SQLite `等），提供直观的界面和丰富的功能，帮助用户高效管理、开发和维护数据库。
+
+## 下载Navicat
+
+::: tip 说明
+官网下载: [Navicat](https://www.navicat.com.cn/download/navicat-premium)
+:::
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-7.png)
+
+## 安装Navicat
+
+### 双击安装包运行
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装.png)
+
+### 同意协议
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-1.png)
+
+### 选择安装路径
+
+::: tip 说明
+我建议安装在D盘下，可以减少C盘空间占用，还有安装路径不要有中文，否则会出现一些问题。
+:::
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-2.png)
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-3.png)
+
+
+### 创建桌面快捷方式
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-4.png)
+
+### 安装完成
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-5.png)
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-6.png)

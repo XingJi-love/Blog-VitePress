@@ -7,6 +7,10 @@ export default [
         link: "/Notes/Git/Git-学习笔记",
       },
       {
+        text: "Git | 相关命令",
+        link: "/Notes/Git/Git-相关命令",
+      },
+      {
         text: "Git | 使用及上传代码到仓库",
         link: "/Notes/Git/Git使用及上传代码到仓库",
       },

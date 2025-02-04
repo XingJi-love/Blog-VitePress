@@ -1,5 +1,7 @@
 # MySQL | Navicat安装教程
 
+![Navicat安装教程](./Navicat安装教程/MySQL.png)
+
 ## 简介
 
 `Navicat` 是一款流行的 `图形化数据库管理工具`，由 PremiumSoft 公司开发，支持多种主流数据库系统（如 `MySQL、MariaDB、SQL Server、Oracle、PostgreSQL、SQLite `等），提供直观的界面和丰富的功能，帮助用户高效管理、开发和维护数据库。

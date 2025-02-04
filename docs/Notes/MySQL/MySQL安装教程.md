@@ -1,9 +1,8 @@
 # MySQL | MySQL安装教程
 
+![MySQL安装教程](./MySQL安装教程/MySQL.png)
 
 ## MySQL概述
-
-![MySQL安装教程](./MySQL安装教程/MySQL安装教程.png)
 
 - MySQL是一个关系型数据库管理系统，由瑞典MySQL AB公司开发，MySQL AB公司被Sun公司收购，Sun公司又被Oracle公司收购，目前属于Oracle公司。
 - MySQL是目前最流行的关系型数据库管理系统，在WEB应用方面MySQL是最好的RDBMS应用软件之一。 国内淘宝网站就使用的是MySQL集群。

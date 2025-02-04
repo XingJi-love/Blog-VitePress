@@ -12,7 +12,7 @@
 - 下载相关
   - [Windows 版下载镜像](https://npmmirror.com/mirrors/git-for-windows/)
   - [使用 jsdelivr 加速 Github 仓库资源](https://github.com/maomao1996/daily-notes/issues/7)
-- [commit 常用的 type](/workflow/style-guide#commit-常用的-type)
+- [commit 常用的 type](https://blog.csdn.net/calledjoker/article/details/122349859)
 
 :::
 
@@ -156,7 +156,7 @@ git reset --mixed HEAD~1 # git reset --mixed commit_id
 git reset --hard HEAD~1 # git reset --hard commit_id
 ```
 
-[查看完整版 Git 命令](./command)
+[查看完整版 Git 命令](https://blog.csdn.net/qtiao/article/details/97783243)
 
 [三年 Git 使用心得 & 常见问题整理](https://juejin.cn/post/6844904191203213326)
 

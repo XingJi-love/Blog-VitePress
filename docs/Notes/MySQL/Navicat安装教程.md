@@ -6,7 +6,7 @@
 
 ## 下载Navicat
 
-::: tip 说明
+::: tip 提示
 官网下载: [Navicat](https://www.navicat.com.cn/download/navicat-premium)
 :::
 
@@ -24,7 +24,7 @@
 
 ### 选择安装路径
 
-::: tip 说明
+::: tip 提示
 我建议安装在D盘下，可以减少C盘空间占用，还有安装路径不要有中文，否则会出现一些问题。
 :::
 
@@ -43,6 +43,6 @@
 
 ![Navicat安装教程](./Navicat安装教程/Navicat安装-6.png)
 
-::: tip 说明
+::: tip 提示
 这是一个收费软件，需要注册，注册码可以在网上搜索。可以看看这篇CSDN的文章[Navicat破解](https://blog.csdn.net/qq_36324341/article/details/140777029)
 :::

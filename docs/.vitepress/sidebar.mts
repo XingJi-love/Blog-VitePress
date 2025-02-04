@@ -48,6 +48,10 @@ export default [
         text: "MySQL | Navicat安装教程",
         link: "/Notes/MySQL/Navicat安装教程",
       },
+      {
+        text: "MySQL | MySQL安装教程",
+        link: "/Notes/MySQL/MySQL安装教程",
+      },
     ],
   },
   {

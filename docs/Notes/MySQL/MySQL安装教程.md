@@ -50,23 +50,23 @@
 
 ### 网盘下载
 
-链接：[https://pan.baidu.com/s/1lRWC069K8GE-8rxr259ArQ?pwd=2009](https://pan.baidu.com/s/1lRWC069K8GE-8rxr259ArQ?pwd=2009) 提取码：2009
+链接：[https://www.123684.com/s/RuTpTd-cBx7d?](https://www.123684.com/s/RuTpTd-cBx7d?) 提取码：`1225`
 
 ## MySQL安装与配置
 
 ---
 
-> 将下载的zip压缩包解压，我这里直接解压到C盘的根目录下
+> 将下载的zip压缩包解压，我这里直接解压到D盘的根目录下
 
 ![MySQL安装教程](./MySQL安装教程/MySQL安装教程-8.png)
 
 ![MySQL安装教程](./MySQL安装教程/MySQL安装教程-9.png)
 
 ::: tip 提示
-mysql的根目录为：C:\mysql-8.0.24-winx64
+mysql的根目录为：D:\0-ProgrammingSoftware\MySQL\mysql-8.0.41-winx64
 :::
 
-> 将`C:\mysql-8.0.24-winx64\bin`目录配置到`环境变量path`当中
+> 将`D:\0-ProgrammingSoftware\MySQL\mysql-8.0.41-winx64\bin`目录配置到`环境变量path`当中
 
 ![MySQL安装教程](./MySQL安装教程/MySQL安装教程-10.png)
 
@@ -102,6 +102,8 @@ cd命令切换到`mysql的bin目录`下，执行`mysqld --initialize --console`�
 
 > 停止mysql服务的命令：`net stop mysql`
 
+![MySQL安装教程](./MySQL安装教程/MySQL安装教程-25.png)
+
 ::: warning 警告
 启停mysql服务也可以在上一步的图中点击右键进行启停服务。
 :::
@@ -110,7 +112,7 @@ cd命令切换到`mysql的bin目录`下，执行`mysqld --initialize --console`�
 
 ![MySQL安装教程](./MySQL安装教程/MySQL安装教程-16.png)
 
-> 修改MySQL的root账户密码：`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码'`;
+> 修改MySQL的root账户密码：`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';`
 
 ![MySQL安装教程](./MySQL安装教程/MySQL安装教程-17.png)
 
@@ -163,7 +165,7 @@ cd命令切换到`mysql的bin目录`下，执行`mysqld --initialize --console`�
 
 ![MySQL安装教程](./MySQL安装教程/MySQL安装教程-24.png)
 
-::: tip 解释`“mysql -uroot -h127.0.0.1 -p1234”`的含义
+::: tip 解释`“mysql -uroot -h127.0.0.1 -p1225”`的含义
 + -h中的h实际上是host单词的首字母。
 
 + 在-h后面的是远程计算机的ip地址。

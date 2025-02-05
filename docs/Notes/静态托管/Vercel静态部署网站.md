@@ -14,7 +14,7 @@
 
 * [域名一个](https://yiov.top/website/domain/)
 
-* [Github账户并已上传代码](https://yiov.top/website/pages/github.html)
+* [Github账户并已上传代码](./Github注册及使用.md)
 
 
 ## 注册

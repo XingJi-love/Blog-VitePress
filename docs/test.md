@@ -216,6 +216,34 @@ This is a dangerous warning.
 This is a details block.
 :::
 
+:::tabs
+== tab a
+a content
+== tab b
+b content
+:::
+
+:::tabs
+== tab a
+a content 2
+== tab b
+b content 2
+:::
+
+:::tabs key:ab
+== tab a
+a content
+== tab b
+b content
+:::
+
+:::tabs key:ab
+== 选项卡 a
+我是选项卡A的内容
+== 选项卡 b
+我是选项卡B的内容
+:::
+
 > [!NOTE]
 > 强调用户在快速浏览文档时也不应忽略的重要信息。
 

@@ -59,15 +59,15 @@ export default [
     ],
   },
   {
-    text: "Examples",
+    text: "静态托管",
     items: [
       {
-        text: "Markdown Examples",
-        link: "/markdown-examples",
+        text: "Github | 注册及使用",
+        link: "/Notes/静态托管/Github注册及使用",
       },
       {
-        text: "Runtime API Examples",
-        link: "/api-examples",
+        text: "Vercel | 静态部署网站",
+        link: "/Notes/静态托管/Vercel静态部署网站",
       },
     ],
   },

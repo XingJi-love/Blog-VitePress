@@ -8,6 +8,7 @@ export default [
       { text: "Git", link: "/Notes/Git/Git-学习笔记" },
       { text: "JavaSE", link: "/Notes/JavaSE总结/Windows下Java环境配置教程" },
       { text: "MySQL", link: "/Notes/MySQL/Navicat安装教程" },
+      { text: "静态部署", link: "/Notes/静态部署/Github注册及使用" },
     ],
   },
   { text: "测试", link: "/test" },

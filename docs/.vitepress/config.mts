@@ -24,6 +24,8 @@ import { AnnouncementPlugin } from "vitepress-plugin-announcement"; // 实现公
 
 import timeline from "vitepress-markdown-timeline"; // 实现时间线插件
 
+import { tabsMarkdownPlugin } from "vitepress-plugin-tabs"; // 实现多标签页插件
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN", //语言，可选 en-US
@@ -66,6 +68,7 @@ export default defineConfig({
       };
       md.use(groupIconMdPlugin); //代码组图标
       md.use(timeline); //时间线插件
+      md.use(tabsMarkdownPlugin); //多标签页插件
     },
   },
   // 实现自动为 VitePress 网站添加 RSS 订阅的插件

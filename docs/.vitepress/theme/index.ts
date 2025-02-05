@@ -46,6 +46,8 @@ import { InjectionKey } from "@nolebase/vitepress-plugin-enhanced-readabilities/
 
 import "vitepress-markdown-timeline/dist/theme/index.css"; // 时间线样式
 
+import { enhanceAppWithTabs } from "vitepress-plugin-tabs/client"; // 代码块多标签页插件
+
 const playlist = [
   {
     name: "白鸽乌鸦相爱的戏码-潘成（皮卡潘）",
@@ -197,6 +199,7 @@ export default {
     app.component("ArticleMetadata", ArticleMetadata);
     app.component("FriendsLinks", FriendsLinks); // 注册友链组件
     app.component("MNavLinks", MNavLinks); // 注册自定义导航组件
+    enhanceAppWithTabs(app); // 注册多标签页插件
     app.use(NolebaseGitChangelogPlugin); // 注册更新日志插件
     app.component(
       "NolebaseEnhancedReadabilitiesMenu",

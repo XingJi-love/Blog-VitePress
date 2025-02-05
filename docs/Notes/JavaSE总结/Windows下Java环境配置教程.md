@@ -9,6 +9,8 @@ date: 2024-07-27 16:03:07
 
 # Java | Windows下Java环境配置教程
 
+![Windows下Java环境配置教程](./Windows下Java环境配置教程/JAVA%20SE图片.webp)
+
 ## 前言
 
 这篇博客介绍Java环境的配置，主要是下载JDK，安装JDK，以及`path`、`JAVA_hOME`、`CLASSPAT`的配置，还会介绍配置这些的原因。

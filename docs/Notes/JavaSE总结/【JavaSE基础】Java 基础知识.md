@@ -9,6 +9,8 @@ date: 2024-08-19 00:07:00
 
 # Java | 基础知识
 
+![【JavaSE基础】Java 基础知识](./【JavaSE基础】Java%20基础知识/JAVA%20SE图片.webp)
+
 ## Java 常用的转义字符
 
 >在控制台，输入 tab 键，可以实现命令补全

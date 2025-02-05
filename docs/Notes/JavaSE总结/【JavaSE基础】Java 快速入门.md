@@ -9,6 +9,8 @@ date: 2024-08-01 14:06:46
 
 # Java | 快速入门
 
+![【JavaSE基础】Java 快速入门](./【JavaSE基础】Java%20快速入门/JAVA%20SE图片.webp)
+
 ## 需求说明
 
 要求开发一个 Hello.java 程序，可以输出 "hello,world!"

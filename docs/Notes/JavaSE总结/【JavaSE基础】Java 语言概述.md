@@ -9,6 +9,8 @@ date: 2024-07-31 11:54:06
 
 # Java | 语言概述
 
+![【JavaSE基础】Java 语言概述](./【JavaSE基础】Java%20语言概述/JAVA%20SE图片.webp)
+
 ## Java历史
 
 ### 什么是程序

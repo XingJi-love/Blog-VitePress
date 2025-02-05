@@ -9,6 +9,8 @@ date: 2024-10-13 16:24:18
 
 # Java | 变量
 
+![【JavaSE基础】变量](./【JavaSE基础】变量/JAVA%20SE图片.webp)
+
 ## 变量是程序的基本组成单位
 
 ![【JavaSE基础】变量](./【JavaSE基础】变量/image.png)

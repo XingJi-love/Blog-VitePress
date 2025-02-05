@@ -9,6 +9,8 @@ date: 2024-08-19 22:01:13
 
 # Java概述 | 章节作业
 
+![Java概述-章节作业](./【JavaSE基础】Java概述-章节作业/JAVA%20SE图片.webp)
+
 ![alt text](./【JavaSE基础】Java概述-章节作业/image.png)
 
 ## 编写hello world程序[Homework01.java]

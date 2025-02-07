@@ -1,6 +1,7 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
+gitChangelog: false
 
 hero:
   name: "XINGJI"
@@ -19,12 +20,6 @@ hero:
     - theme: alt
       text: GitHub
       link: https://github.com/XingJi-love
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
     - theme: alt
       text: My Navigation
       link: /nav

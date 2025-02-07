@@ -78,12 +78,6 @@
     "icon": "https://notes.fe-mm.com/logo.png"
   },
   {
-    "title": "VitePress",
-    "desc": "VitePress 快速上手中文教程，如果你也想搭建它，那跟我一起做吧",
-    "link": "https://vitepress.yiov.top",
-    "icon": "https://vitepress.yiov.top/logo.png"
-  },
-  {
     "title": "肯了个德的博客",
     "desc": "专注于分享没用的知识，你乐意看就多看看，保证你一看一个不吱声",
     "link": "https://leelaa.cn",
@@ -100,12 +94,6 @@
     "desc": "运气是计划之外的东西",
     "link": "https://www.vvhan.com",
     "icon": "https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640"
-  },
-  {
-    "title": "菜园前端",
-    "desc": "小白都能看懂的笔记，提供 24 小时技术解答",
-    "link": "https://note.noxussj.top?s=y6",
-    "icon": "https://note.noxussj.top/logo.png"
   },
   {
     "title": "纸鹿摸鱼处",
@@ -141,7 +129,7 @@
     "title": "小霜南风",
     "desc": "散落一些碎花，凝结一些轻痕",
     "link": "https://blog.viper3.top",
-    "icon": "/小霜南风.png"
+    "icon": "/小霜南风头像.png"
   },
   {
     "title": "时光の流言",

@@ -12,4 +12,5 @@ export default [
     ],
   },
   { text: "测试", link: "/test" },
+  { text: "关于我", link: "/about" },
 ];

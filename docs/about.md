@@ -4,275 +4,83 @@ comment: false
 gitChangelog: false
 ---
 
-<!-- index.md -->
-<xgplayer url="/科幻片.mp4" poster="/科幻片.png" />
-
-GitHub链接图标：[GitHub](https://github.com/)
-
-油管链接图标：[Youtube](https://www.youtube.com/)
-
-B站链接图标：[哔哩哔哩](https://www.bilibili.com/)
-
-CSDN链接图标：[CSDN](https://www.csdn.net/)
-
-[点我跳转：基础功能](#基础功能)
-
-* [vuejs.org](https://vuejs.org/)
-
-* [GitHub 上的 VitePress](https://github.com/vuejs/vitepress)
-
-<iframe 
-style="width:100%; aspect-ratio:16/9; margin-top: 2em;" 
-src="https://www.youtube.com/embed/bzyMLoSwYvk" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-allowfullscreen>
-</iframe>
-
-
-<iframe 
-style="width:100%; aspect-ratio:16/9; margin-top: 2em;" 
-src="//player.bilibili.com/player.html?bvid=BV1YptMeMEcV" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-allowfullscreen>
-</iframe>
-
-| Tables        |      Are      |  Cool |
-| ------------- | :-----------: | ----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
-
-* VitePress <Badge type="info" text="default" />
-* VitePress <Badge type="tip" text="^1.9.0" />
-* VitePress <Badge type="warning" text="beta" />
-* VitePress <Badge type="danger" text="caution" />
-
-```ts{2-3,5}
-export default defineConfig({
-  lang: 'zh-CN',
-  title: "VitePress",
-  description: "我的vitpress文档教程",
-  titleTemplate: '另起标题覆盖title' ,
-})
-```
-
-```ts{4}
-export default defineConfig({
-  lang: 'zh-CN',
-  title: "VitePress",
-  description: "我的vitpress文档教程", // [!code focus]
-  titleTemplate: '另起标题覆盖title' ,
-})
-```
-
-```ts{4-5}
-export default defineConfig({
-  lang: 'zh-CN', 
-  title: "VitePress", 
-  description: "我的vitpress文档教程", // [!code --]
-  description: "更详细的vitpress中文文档教程", // [!code ++]
-  titleTemplate: '另起标题覆盖title' ,
-})
-```
-
-```ts{4-5}
-export default defineConfig({
-  lang: 'zh-CN', 
-  title: "VitePress", 
-  description: "我的vitpress文档教程", // [!code error]
-  description: "更详细的vitpress中文文档教程", // [!code warning]
-  titleTemplate: '另起标题覆盖title' ,
-})
-```
-
-<Linkcard url="https://vitepress.yiov.top/" title="Vitepress中文搭建教程" description="https://vitepress.yiov.top/" logo="https://vitepress.yiov.top/logo.png"/>
-
-<Linkcard url="https://yiov.top/computer/markdown.html" title="Markdown的简单用法" description="https://yiov.top/computer/markdown.html" logo="https://i.p-i.vip/47/20250105-6779fe143ce45.png"/>
-
-```sh
-#默认有行号
-pnpm -v
-```
-
-```sh:no-line-numbers
-#关闭行号
-pnpm -v
-```
-
-::: code-group
-
-```sh [pnpm]
-#查询pnpm版本
-pnpm -v
-```
-
-```sh [yarn]
-#查询yarn版本
-yarn -v
-```
-
-:::
-
-
-::: code-group
-
-```sh [npm]
-npm install vitepress-plugin-group-icons
-```
-
-```sh [yarn]
-yarn add vitepress-plugin-group-icons
-```
-
-```sh [pnpm]
-pnpm add vitepress-plugin-group-icons
-```
-
-```sh [bun]
-bun add vitepress-plugin-group-icons
-```
-
-:::
-
-
-::: code-group
-```sh [pnpm]
-pnpm -v
-```
-
-```sh [yarn]
-yarn -v
-```
-
-```sh [bun]
-bun -v
-```
-:::
-
-
-<script setup>
-import { VPTeamMembers } from 'vitepress/theme'
-
-const members = [
-  {
-    avatar: 'https://www.github.com/yyx990803.png',
-    name: 'Evan You',
-    title: 'Creator',
-    links: [
-      { icon: 'github', link: 'https://github.com/yyx990803' },
-      { icon: 'twitter', link: 'https://twitter.com/youyuxi' }
-    ]
-  },
-  {
-    avatar: 'https://www.github.com/kiaking.png',
-    name: 'Kia King Ishii',
-    title: 'Developer',
-    links: [
-      { icon: 'github', link: 'https://github.com/kiaking' },
-      { icon: 'twitter', link: 'https://twitter.com/KiaKing85' }
-    ]
-  },
-]
-</script>
-
-# Our Team
-
-Say hello to our awesome team.
-
-<VPTeamMembers size="medium" :members="members" />
-
-![](https://img.shields.io/badge/just_do_it-blue?style=for-the-badge&logo=alipay&logoColor=1677FF&label=%E6%94%AF%E4%BB%98%E5%AE%9D&labelColor=lightgrey)
-
-<sapn class="marker-text">这里是重重点</sapn>
-
-
-<sapn class="marker-text-highlight">这里是荧光笔</sapn>
-
-
-<sapn class="marker-evy">这里是尤雨溪的主页样式，鼠标放在我上面看效果</sapn>
-
-
-> 更新时间：2024年
-
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-:::tabs
-== tab a
-a content
-== tab b
-b content
-:::
-
-:::tabs
-== tab a
-a content 2
-== tab b
-b content 2
-:::
-
-:::tabs key:ab
-== tab a
-a content
-== tab b
-b content
-:::
-
-:::tabs key:ab
-== 选项卡 a
-我是选项卡A的内容
-== 选项卡 b
-我是选项卡B的内容
-:::
-
-> [!NOTE]
-> 强调用户在快速浏览文档时也不应忽略的重要信息。
-
-> [!TIP]
-> 有助于用户更顺利达成目标的建议性信息。
-
-> [!IMPORTANT]
-> 对用户达成目标至关重要的信息。
-
-> [!WARNING]
-> 因为可能存在风险，所以需要用户立即关注的关键内容。
-
-> [!CAUTION]
-> 行为可能带来的负面影响。
-
-
-::: timeline 2023-04-24
-- 一个非常棒的开源项目 H5-Dooring 目前 star 3.1k
-  - 开源地址 https://github.com/MrXujiang/h5-Dooring
-  - 基本介绍 http://h5.dooring.cn/doc/zh/guide/
-- 《深入浅出webpack》 http://webpack.wuhaolin.cn/
-:::
-
-::: timeline 2023-04-23
-:::
-
-
-#### 后端技术栈
+<center>
+  <a href="https://home.xingji.fun/">
+    <img src="/hello.png" alt="Hello">
+  </a>
+</center>
+
+
+<div style="display: flex; justify-content: center; align-items: center; height: 10vh;">
+  <h1 align="center">𝐇𝐞𝐥𝐥𝐨, 𝐟𝐞𝐥𝐥𝐨𝐰 <𝚌𝚘𝚍𝚎𝚛𝚜></𝚌𝚘𝚍𝚎𝚛𝚜>!</h1>
+  <div style="display: flex; justify-content: center; align-items: center; height: 10vh;">
+    <img src="/image.gif" width="50px" alt="">
+  </div>
+</div>
+
+<p align="center">
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=25&pause=1000&center=true&vCenter=true&random=false&width=600&lines=Welcome+to+my+GitHub+profile+page!;I+am+XINGJI+obsessed+with+programming!" />
+</p>
+
+<center>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/XingJi-love/XingJi-love//output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/XingJi-love/XingJi-love/output/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/XingJi-love/XingJi-love/output/github-contribution-grid-snake.svg">
+  </picture>
+</center>
+
+
+<p align="center">
+    <img src="https://profile-counter.glitch.me/XingJi-love/count.svg" alt="Visitor Count" />
+</p>
+
+[<img src="/icons.png" alt="点击进入个人站点">](https://home.xingji.fun)
+
+<p align="center"><img align="center" width="280" src="/menu-logo.svg#gh-dark-mode-only"/></p>
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=github,git,c,java,js,css,kali,ubuntu,linux,idea,eclipse,vscode,visualstudio,webstorm,sublime,vercel,netlify" />
+  </a>
+</p>
+
+
+## 📋 Tech Stack
+
+[![My Skills](https://skillicons.dev/icons?i=c,go,rust,python,arduino,lua,nodejs,php,react,next,vue,nuxt,angular,express,tailwindcss,redux,bootstrap,html,css,js,jquery,ts,less,scss,fastapi,django,flask,pytorch,tensorflow,opencv,qt,electron,tauri,threejs)](https://skillicons.dev)
+
+## 🔨 Tools
+
+[![My Skills](https://skillicons.dev/icons?i=mysql,sqlite,redis,postgresql,rabbitmq,docker,kubernetes,nginx,git,npm,pnpm,yarn,vite,vitest,webpack,babel,cmake,anaconda,github,grafana,githubactions,jenkins,figma,aws,azure,gcp,cloudflare,vercel,netlify,heroku)](https://skillicons.dev)
+
+## 📲 网站运营
+
+| Icon         | Name       | Link                                                               |
+| ------------ | ---------- | ------------------------------------------------------------------ |
+| 🏠 Home       | 个人主页   | [https://home.xingji.fun/](https://home.xingji.fun/)               |
+| 🪄 Blog       | 个人博客   | [https://love.xingji.fun/](https://love.xingji.fun/)               |
+| 🪄 Blog       | 个人博客   | [https://blog.xingji.fun/](https://blog.xingji.fun/)               |
+| 🪄 Blog       | 个人博客   | [https://vite.xingji.fun/](https://vite.xingji.fun/)               |
+| 🪄 Blog       | 个人博客   | [https://vue.xingji.fun/](https://vue.xingji.fun/)                 |
+| 📊 Statistics | 访客统计   | [https://umami.xingji.fun/](https://umami.xingji.fun/)             |
+| 🖼️ Image Bed  | 自建图床   | [https://pix.xingjilove.us.kg/](https://pix.xingjilove.us.kg/)     |
+| 🖼️ Image Bed  | 自建图床   | [https://img.xingjilove.us.kg/](https://img.xingjilove.us.kg/)     |
+| 🎨 Design     | 封面设计   | [https://minicover.xingji.fun/](https://minicover.xingji.fun/)     |
+| 🖥️ Detection  | 站点检测   | [https://site-status.xingji.fun/](https://site-status.xingji.fun/) |
+| 🤖 GPT        | 自建GPT    | [https://chat.xingji.fun/](https://chat.xingji.fun/)               |
+| ☁️ Tencent    | 腾讯开发者 | [https://cloud.tencent.com/](https://cloud.tencent.com/)           |
+
+📕 &nbsp;**最新博客文章**
+<!-- BLOG-POST-LIST:START -->
+- [数据结构-绪论](https://xingji.fun/posts/20240907/)
+- [【JavaSE基础】Java概述-章节作业](https://xingji.fun/posts/18951/)
+- [【JavaSE基础】Java 基础知识](https://xingji.fun/posts/64063/)
+- [【JavaSE基础】Java 快速入门](https://xingji.fun/posts/9023/)
+- [【JavaSE基础】Java 语言概述](https://xingji.fun/posts/18950/)
+<!-- BLOG-POST-LIST:END -->
+
+## 后端技术栈
 
 <p>
   <img src="https://img.shields.io/badge/-Spring-6DB33F?logo=Spring&logoColor=FFF" alt="Spring" style="display: inline-block;" />&nbsp;
@@ -307,7 +115,7 @@ b content
   <img src="https://img.shields.io/badge/-GraphQL-FFF?logo=GraphQL&logoColor=E10098" alt="GraphQL" style="display: inline-block;" />&nbsp;
 </p>
 
-#### 前端技术栈
+## 前端技术栈
 
 <p>
   <img src="https://img.shields.io/badge/-Vue3-C0C0C0?logo=Vue.js&logoColor=4FC08D" alt="Vue3" style="display: inline-block;" />&nbsp;
@@ -329,7 +137,7 @@ b content
   <img src="https://img.shields.io/badge/-Less-D3D3D3?logo=Less&logoColor=1D365D" alt="Less" style="display: inline-block;" />&nbsp;
 </p>
 
-#### DevOps
+## DevOps
 
 <p>
   <img src="https://img.shields.io/badge/-Git-F05032?logo=Git&logoColor=FFF" alt="Git" style="display: inline-block;" />&nbsp;
@@ -346,7 +154,7 @@ b content
   <img src="https://img.shields.io/badge/-Ubuntu-E95420?logo=Ubuntu&logoColor=FFF" alt="Ubuntu" style="display: inline-block;" />&nbsp;
 </p>
 
-#### 运维技术栈
+## 运维技术栈
 
 <p>
   <img src="https://img.shields.io/badge/-阿里云-FF6A00?logo=Alibaba-Cloud&logoColor=FFF" alt="阿里云" style="display: inline-block;" />&nbsp;
@@ -358,14 +166,14 @@ b content
   <img src="https://img.shields.io/badge/-Lua-FFF?&logo=Lua&logoColor=2C2D72" alt="Lua" style="display: inline-block;" />&nbsp;
 </p>
 
-#### 测试技术栈
+## 测试技术栈
 
 <p>
   <img src="https://img.shields.io/badge/-Postman-FF6C37?logo=Postman&logoColor=FFF" alt="Postman" style="display: inline-block;" />&nbsp;
   <img src="https://img.shields.io/badge/-JMeter-D3D3D3?logo=Apache-JMeter&logoColor=D22128" alt="JMeter" style="display: inline-block;" />&nbsp;
 </p>
 
-#### 开发工具
+## 开发工具
 
 <p>
   <img src="https://img.shields.io/badge/-Intellij%20IDEA-000?logo=Intellij-IDEA&logoColor=FFF" alt="Intellij IDEA" style="display: inline-block;" />&nbsp;
@@ -376,7 +184,7 @@ b content
   <img src="https://img.shields.io/badge/-VSCode-C0C0C0?logo=Visual-Studio-Code&logoColor=007ACC" alt="VSCode" style="display: inline-block;" />&nbsp;
 </p>
 
-#### 其他
+## 其他
 
 <p>
   <img src="https://img.shields.io/badge/-Markdown-000?logo=Markdown&logoColor=FFF" alt="Markdown" style="display: inline-block;" />&nbsp;

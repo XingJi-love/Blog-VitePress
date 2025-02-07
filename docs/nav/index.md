@@ -4,6 +4,7 @@ layoutClass: m-nav-layout
 sidebar: false
 prev: false
 next: false
+gitChangelog: false
 ---
 
 <style src="/.vitepress/theme/style/nav.css"></style>

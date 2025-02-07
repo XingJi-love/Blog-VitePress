@@ -145,12 +145,6 @@ const friends = [
         "icon": "https://notes.fe-mm.com/logo.png"
     },
     {
-        "title": "VitePress",
-        "desc": "VitePress 快速上手中文教程，如果你也想搭建它，那跟我一起做吧",
-        "link": "https://vitepress.yiov.top",
-        "icon": "https://vitepress.yiov.top/logo.png"
-    },
-    {
         title: "肯了个德的博客",
         desc: "专注于分享没用的知识，你乐意看就多看看，保证你一看一个不吱声",
         link: "https://leelaa.cn",

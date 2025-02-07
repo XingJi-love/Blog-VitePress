@@ -45,6 +45,24 @@
 
 ![Navicat安装教程](./Navicat安装教程/Navicat安装-6.png)
 
+## 连接本地数据库
+
+### 打开Navicat
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-8.png)
+
+### 点击左上角的`+`号，选择`MySQL`
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-9.png)
+
+### 输入连接信息
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-10.png)
+
+### 连接成功
+
+![Navicat安装教程](./Navicat安装教程/Navicat安装-11.png)
+
 ::: tip 提示
 这是一个收费软件，需要注册，注册码可以在网上搜索。可以看看这篇CSDN的文章[Navicat破解](https://blog.csdn.net/qq_36324341/article/details/140777029)
 :::

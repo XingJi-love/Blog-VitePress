@@ -93,7 +93,15 @@ import MFriends from './home/MFriends.vue'
 
 :::
 
-<Linkcard url="https://yiov.top/computer/markdown.html" title="Markdown的简单用法" description="https://yiov.top/computer/markdown.html" logo="https://i.p-i.vip/47/20250105-6779fe143ce45.png"/>
-
-
-![最近评论背景.png](https://i.p-i.vip/47/20241108-672d9051e725c.png)
+<Carousel :slides="[
+  { image: 'https://i.p-i.vip/47/20241108-672d9051e725c.png', alt: '蛇姐' },
+  { image: 'https://i.p-i.vip/47/20240920-66ed7ac062c15.jpg', alt: '蛇姐' },
+  { image: 'https://i.p-i.vip/47/20240920-66ed7afce263f.jpg', alt: '蛇姐' },
+  { image: 'https://i.p-i.vip/47/20240920-66ed9b2fa01f5.jpg', alt: '蛇姐' },
+  { image: 'https://i.p-i.vip/47/20240920-66ed9b363be69.jpg', alt: '蛇姐' },
+  { image: 'https://i.p-i.vip/47/20241023-6718a82cbb5e2.png', alt: '蛇姐' },
+  { image: 'https://i.p-i.vip/47/20241023-6718a8585926b.png', alt: '蛇姐' }
+]" 
+:interval="3000"
+:autoplay="true" 
+/>

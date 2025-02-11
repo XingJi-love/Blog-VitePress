@@ -21,8 +21,6 @@ import { useRoute } from "vitepress";
 import { NProgress } from "nprogress-v2/dist/index.js"; // 进度条组件
 import "nprogress-v2/dist/index.css"; // 进度条样式
 
-import FriendsLinks from "./components/FriendsLinks.vue"; // 友链组件
-
 import { useData } from "vitepress"; // VitePress搭建个人导航
 import MNavLinks from "./components/MNavLinks.vue"; // 自定义导航组件
 
@@ -192,14 +190,13 @@ export default {
 
   enhanceApp({ app, router, ctx }) {
     // 注册全局组件
-    app.component("Linkcard", Linkcard);
-    app.component("HomeUnderline", HomeUnderline);
-    app.component("xgplayer", xgplayer);
+    app.component("Linkcard", Linkcard); // 注册链接卡片组件
+    app.component("HomeUnderline", HomeUnderline); // 注册首页下划线组件
+    app.component("xgplayer", xgplayer); // 注册视频播放器组件
     app.component("DataPanel", DataPanel);
-    app.component("confetti", confetti);
-    app.component("update", update);
-    app.component("ArticleMetadata", ArticleMetadata);
-    app.component("FriendsLinks", FriendsLinks); // 注册友链组件
+    app.component("confetti", confetti); // 注册烟花组件
+    app.component("update", update); // 注册更新日志组件
+    app.component("ArticleMetadata", ArticleMetadata); // 文章元数据
     app.component("MNavLinks", MNavLinks); // 注册自定义导航组件
     app.component("Carousel", Carousel); // 注册轮播图组件
     enhanceAppWithTabs(app); // 注册多标签页插件

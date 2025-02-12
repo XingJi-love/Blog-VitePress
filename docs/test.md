@@ -151,6 +151,18 @@ bun -v
 ```
 :::
 
+```c [HelloWorld.c]
+#include <stdio.h>
+
+int main(){
+
+  printf("Hello World !!!");
+
+  return 0;
+}
+
+```
+
 
 <script setup>
 import { VPTeamMembers } from 'vitepress/theme'
@@ -177,7 +189,7 @@ const members = [
 ]
 </script>
 
-# Our Team
+## Our Team
 
 Say hello to our awesome team.
 

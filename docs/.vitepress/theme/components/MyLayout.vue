@@ -1,5 +1,4 @@
 <!-- .vitepress/theme/MyLayout.vue -->
-
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
@@ -36,7 +35,7 @@ document.documentElement.animate(
 </script>
 
 <template>
-    <DefaultTheme.Layout>
+    <DefaultTheme.Layout v-bind="$attrs">
         <!-- 这里可以插入其他插槽组件 -->
         <template #doc-footer-before>
             <backtotop />

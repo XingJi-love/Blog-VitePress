@@ -48,6 +48,8 @@ import { enhanceAppWithTabs } from "vitepress-plugin-tabs/client"; // 代码块�
 
 import Carousel from "./components/Carousel.vue"; // 轮播图组件
 
+import LoveTimer from "./components/LoveTimer.vue"; // 爱情倒计时组件
+
 const playlist = [
   {
     name: "白鸽乌鸦相爱的戏码-潘成（皮卡潘）",
@@ -199,6 +201,7 @@ export default {
     app.component("ArticleMetadata", ArticleMetadata); // 文章元数据
     app.component("MNavLinks", MNavLinks); // 注册自定义导航组件
     app.component("Carousel", Carousel); // 注册轮播图组件
+    app.component("LoveTimer", LoveTimer); // 注册爱情倒计时组件
     enhanceAppWithTabs(app); // 注册多标签页插件
     app.use(NolebaseGitChangelogPlugin); // 注册更新日志插件
     app.component(

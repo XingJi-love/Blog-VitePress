@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@theojs/lumen": "^5.4.0",
+    "axios": "^1.7.9",
     "oh-my-live2d": "^0.19.3",
     "vitepress-plugin-announcement": "^0.1.4",
     "vitepress-plugin-rss": "^0.3.1"

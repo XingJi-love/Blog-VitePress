@@ -1,7 +1,7 @@
 export default [
   { text: "首页", link: "/" },
   { text: "导航", link: "/nav" },
-  { text: "音乐", link: "https://music.xpin.us.kg", target: "_self" },
+  { text: "音乐", link: "https://music.xpin.top", target: "_self" },
   {
     text: "学习笔记",
     items: [

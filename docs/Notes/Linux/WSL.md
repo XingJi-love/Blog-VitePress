@@ -1,4 +1,4 @@
-# Linux on Windows 子系统 (WSL)
+# Linux | Linux on Windows 子系统 (WSL)
 
 
 ## 开启 WSL 的两个前提

@@ -62,7 +62,7 @@ export default [
     text: "Linux",
     items: [
       {
-        test: "Linux | WSL",
+        test: "Linux | Linux on Windows 子系统 (WSL)",
         link: "/Notes/Linux/WSL",
       },
     ],

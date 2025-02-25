@@ -59,6 +59,15 @@ export default [
     ],
   },
   {
+    text: "Linux",
+    items: [
+      {
+        test: "Linux | WSL",
+        link: "/Notes/Linux/WSL",
+      },
+    ],
+  },
+  {
     text: "静态托管",
     items: [
       {

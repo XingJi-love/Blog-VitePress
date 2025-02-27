@@ -62,7 +62,7 @@ export default [
     text: "Linux",
     items: [
       {
-        test: "Linux | WSL安装教程",
+        text: "Linux | WSL安装教程",
         link: "/Notes/Linux/WSL安装教程",
       },
     ],

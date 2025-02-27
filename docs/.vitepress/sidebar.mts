@@ -56,6 +56,10 @@ export default [
         text: "MySQL | MySQL安装教程",
         link: "/Notes/MySQL/MySQL安装教程",
       },
+      {
+        text: "MySQL | MySQL基本命令",
+        link: "/Notes/MySQL/MySQL基本命令",
+      },
     ],
   },
   {

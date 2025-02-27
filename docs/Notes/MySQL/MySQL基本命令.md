@@ -116,8 +116,11 @@ mysql> show tables;
 ```sql
 create database 数据库名称;
 ```
+
+::: tip 提示
 + create database 创建数据库。
 + powernode 数据库名称。
+:::
 
 ```sql
 create database powernode;
@@ -181,8 +184,11 @@ Empty set (0.01 sec)
 ```sql
 drop database 数据库名称;
 ```
+
+::: tip 提示
 + drop database 删除数据库。
 + powernode 数据库名称。
+:::
 
 
 ```sql
@@ -209,9 +215,11 @@ mysql> show databases;
 
 ## 退出mysql
 
-   1. exit
-   2. quit
-   3. ctrl + c
+::: tip 提示
+1. exit
+2. quit
+3. ctrl + c
+:::
 
 ## 查看当前mysql版本
 
@@ -427,9 +435,9 @@ mysql> show tables;
 
 - 使用其他的mysql客户端工具也可以执行sql脚本，比如navicat。使用source命令执行sql脚本的优点：**可支持大文件**。
 
-
+::: tip 提示
 注意：`source命令`后面是`sql脚本文件的绝对路径`，`sql脚本文件的绝对路径`中`不能包含中文`。
-
+:::
 
 ## 熟悉测试数据
 

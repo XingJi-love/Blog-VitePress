@@ -1,5 +1,6 @@
-# Linux | WSL安装教程
+# Linux | WSL 安装教程
 
+![WSL安装教程](./WSL安装教程/Linux.png)
 
 ## 开启 WSL 的两个前提
 

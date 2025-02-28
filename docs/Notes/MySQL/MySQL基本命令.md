@@ -7,7 +7,7 @@
 ```sql
 show databases;
 ```
-+ MySQL自带四个数据库：`information_schema`、`mysql`、`performance_schema`、`sys`。
+> MySQL自带四个数据库：`information_schema`、`mysql`、`performance_schema`、`sys`。
 
 ```sql
 mysql> show databases;
@@ -36,7 +36,7 @@ mysql> select database();
 +------------+
 1 row in set (0.00 sec)
 ```
-+ `NULL`表示当前没有使用任何数据库。
+> `NULL`表示当前没有使用任何数据库。
 
 
 ## 切换到某个数据库
@@ -54,7 +54,7 @@ use mysql;
 mysql> use mysql;
 Database changed
 ```
-`Database changed`表示切换数据库成功。
+> `Database changed`表示切换数据库成功。
 
 
 ### 列出当前数据库中有哪些表
@@ -125,7 +125,7 @@ create database 数据库名称;
 ```sql
 create database powernode;
 ```
-> 原始数据库
+> `原始`数据库
 
 ```sql
 mysql> show databases;
@@ -139,7 +139,7 @@ mysql> show databases;
 +--------------------+
 4 rows in set (0.01 sec)
 ```
-> 创建数据库
+> `创建`数据库
 
 ```sql
 mysql> create database powernode;
@@ -165,7 +165,7 @@ mysql> show databases;
 use powernode;
 ```
 
-> 使用powernode数据库
+> `使用powernode数据库`
 
 ```sql
 mysql> use powernode;
@@ -195,7 +195,7 @@ drop database 数据库名称;
 drop database powernode;
 ```
 
-> 删除数据库powernode
+> `删除数据库powernode`
 
 ```sql
 mysql> drop database powernode;

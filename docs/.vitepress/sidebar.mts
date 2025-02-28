@@ -60,6 +60,10 @@ export default [
         text: "MySQL | MySQL基本命令",
         link: "/Notes/MySQL/MySQL基本命令",
       },
+      {
+        text: "MySQL | DQL语句-简单查询",
+        link: "/Notes/MySQL/DQL语句-简单查询",
+      },
     ],
   },
   {

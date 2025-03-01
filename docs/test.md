@@ -208,6 +208,32 @@ Say hello to our awesome team.
 
 > 更新时间：2024年
 
+> [!NOTE]
+> 强调用户在快速浏览文档时也不应忽略的重要信息。
+
+> [!TIP]
+> 有助于用户更顺利达成目标的建议性信息。
+
+> [!IMPORTANT]
+> 对用户达成目标至关重要的信息。
+
+> [!WARNING]
+> 因为可能存在风险，所以需要用户立即关注的关键内容。
+
+> [!CAUTION]
+> 行为可能带来的负面影响。
+
+
+::: timeline 2023-04-24
+- 一个非常棒的开源项目 H5-Dooring 目前 star 3.1k
+  - 开源地址 https://github.com/MrXujiang/h5-Dooring
+  - 基本介绍 http://h5.dooring.cn/doc/zh/guide/
+- 《深入浅出webpack》 http://webpack.wuhaolin.cn/
+:::
+
+::: timeline 2023-04-23
+:::
+
 
 ::: info
 This is an info box.
@@ -257,31 +283,47 @@ b content
 我是选项卡B的内容
 :::
 
-> [!NOTE]
-> 强调用户在快速浏览文档时也不应忽略的重要信息。
 
-> [!TIP]
-> 有助于用户更顺利达成目标的建议性信息。
-
-> [!IMPORTANT]
-> 对用户达成目标至关重要的信息。
-
-> [!WARNING]
-> 因为可能存在风险，所以需要用户立即关注的关键内容。
-
-> [!CAUTION]
-> 行为可能带来的负面影响。
+```mermaid
+flowchart LR
+  Start --> Stop
+```
 
 
-::: timeline 2023-04-24
-- 一个非常棒的开源项目 H5-Dooring 目前 star 3.1k
-  - 开源地址 https://github.com/MrXujiang/h5-Dooring
-  - 基本介绍 http://h5.dooring.cn/doc/zh/guide/
-- 《深入浅出webpack》 http://webpack.wuhaolin.cn/
-:::
+```mermaid
+graph LR
+    A[Java 数据类型] --> B[原始数据类型]
+    A[Java 数据类型] --> C[引用数据类型]
+    
+    B --> D[整数类型]
+    B --> E[浮点类型]
+    B --> F[字符类型]
+    B --> G[布尔类型]
+    
+    D --> H[int]
+    D --> I[long]
+    D --> J[short]
+    D --> K[byte]
+    
+    E --> L[float]
+    E --> M[double]
+    
+    F --> N[char]
+    
+    G --> O[boolean]
+    
+    C --> P[类]
+    C --> Q[接口]
+    C --> R[数组]
+```
 
-::: timeline 2023-04-23
-:::
+
+```mermaid
+pie title Pets adopted by volunteers
+  "Dogs" : 386
+  "Cats" : 85
+  "Rats" : 15
+```
 
 
 #### 后端技术栈

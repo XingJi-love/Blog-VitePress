@@ -26,6 +26,8 @@ import timeline from "vitepress-markdown-timeline"; // 实现时间线插件
 
 import { tabsMarkdownPlugin } from "vitepress-plugin-tabs"; // 实现多标签页插件
 
+import { MermaidMarkdown, MermaidPlugin } from "vitepress-plugin-mermaid"; // 实现mermaid流程图插件
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN", //语言，可选 en-US
@@ -69,6 +71,7 @@ export default defineConfig({
       md.use(groupIconMdPlugin); //代码组图标
       md.use(timeline); //时间线插件
       md.use(tabsMarkdownPlugin); //多标签页插件
+      md.use(MermaidMarkdown); //mermaid流程图插件
     },
   },
   // 实现自动为 VitePress 网站添加 RSS 订阅的插件
@@ -77,6 +80,7 @@ export default defineConfig({
     plugins: [
       RssPlugin(RSS),
       groupIconVitePlugin(), //代码组图标
+      MermaidPlugin(), //mermaid流程图插件
       AnnouncementPlugin({
         title: "公告",
         body: [
@@ -124,12 +128,14 @@ export default defineConfig({
         "vitepress",
         "@nolebase/ui",
       ],
+      include: ["mermaid"], // mermaid 流程图插件
     },
     ssr: {
       noExternal: [
         "@nolebase/vitepress-plugin-enhanced-readabilities",
         "@nolebase/vitepress-plugin-highlight-targeted-heading",
         "@nolebase/ui",
+        "mermaid", // mermaid 流程图插件
       ],
     },
   },

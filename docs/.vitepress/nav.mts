@@ -12,6 +12,10 @@ export default [
       { text: "静态部署", link: "/Notes/静态托管/Github注册及使用" },
     ],
   },
+  {
+    text: "证书考试",
+    items: [{ text: "软考中级", link: "/Exam/SDE/软考中级-软件设计师" }],
+  },
   { text: "测试", link: "/test" },
   { text: "关于我", link: "/about" },
 ];

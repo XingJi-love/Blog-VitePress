@@ -578,32 +578,97 @@ mysql> select ename ,(sal+1000)*12 from emp;
 select ename, sal * 12 from emp;
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620453661204-ca783845-5f31-49fc-90d8-0f4426598cde.png#averageHue=%2313100f&height=364&id=EQnXg&originHeight=364&originWidth=387&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22636&status=done&style=shadow&title=&width=387)
-以上的查询结果列名“sal * 12”可读性较差，是否可以给查询结果的列名进行重命名呢？
+```sql
+mysql> select ename,sal * 12 from emp;
++--------+----------+
+| ename  | sal * 12 |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.04 sec)
+```
+
+> 以上的查询结果列名“`sal * 12`”可读性较差，是否可以给`查询结果`的列名进行`重命名`呢？
 
 ### as关键字
 
-- 使用as关键字
+> 使用`as关键字`
 
 ```sql
 select ename, sal * 12 as yearsal from emp;
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620454420847-c739365b-440e-4cf7-b1e2-2bcf6d5cdb8b.png#averageHue=%2312100f&height=372&id=NImNH&originHeight=372&originWidth=473&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25001&status=done&style=shadow&title=&width=473)
-通过as关键字起别名后，查询结果列显示yearsal，可读性增强。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=G4NWU&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql
+mysql> select ename,sal * 12 as yearsal from emp;
++--------+----------+
+| ename  | yearsal  |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.00 sec)
+```
+
+> 通过`as关键字`起别名后，查询结果列显示`yearsal`，`可读性增强`。
+
 
 ### 省略as关键字
 
-- 其实as关键字可以省略，只要使用空格即可
+> 其实`as关键字`可以省略，只要使用`空格`即可
 
 ```sql
 select ename, sal * 12 yearsal from emp;
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620466356467-fb4612f8-72f6-4506-b2bc-1744846c171d.png#averageHue=%2311100e&height=363&id=XWTbX&originHeight=363&originWidth=464&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24234&status=done&style=shadow&title=&width=464)
+```sql
+mysql> select ename,sal * 12 yearsal from emp;
++--------+----------+
+| ename  | yearsal  |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.01 sec)
+```
 
-- 通过以上测试，得知as可以省略，可以使用空格代替as，但如果别名中有空格呢？
+> **通过以上测试，得知`as可以省略`，可以使用`空格代替as`，但如果`别名中有空格`呢？**
 
 ### 别名中有空格
 
@@ -611,29 +676,153 @@ select ename, sal * 12 yearsal from emp;
 select ename, sal * 12 year sal from emp;
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620466540145-98adb10e-15a2-46df-9179-7e41ae1fc322.png#averageHue=%2313110f&height=87&id=LnbYI&originHeight=87&originWidth=946&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12503&status=done&style=shadow&title=&width=946)
-可以看出，执行报错了，说语法有问题，这是为什么？分析一下：SQL语句编译器在检查该语句的时候，在year后面遇到了空格，会继续找from关键字，但year后面不是from关键字，所以编译器报错了。怎么解决这个问题？记住：如果别名中有空格的话，可以将这个别名使用双引号或者单引号将其括起来。
+```sql
+mysql> select ename,sal * 12 year sal from emp;
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sal from emp' at line 1
+```
+> **可以看出，`执行报错了`，说语法有问题，这是`为什么`？**
+
+> `分析一下`：SQL语句编译器在检查该语句的时候，在`year后面`遇到了`空格`，会继续找`from关键字`，但year后面不是from关键字，所以`编译器报错`了。
+
+> **怎么解决这个问题？**
+
+> 记住：如果别名中`有空格`的话，可以将这个别名使用`双引号或者单引号`将其括起来。
+
 
 ```sql
 select ename, sal * 12 "year sal" from emp;
-select ename, sal * 12 'year sal' from emp;
+select ename, sal * 12 'year sal' from emp; ——>单引号是标准
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620467027246-b5cce57e-3ca3-4b3f-9298-a21fc3bb77c3.png#averageHue=%23110f0e&height=744&id=kyi8P&originHeight=744&originWidth=558&originalType=binary&ratio=1&rotation=0&showTitle=false&size=53259&status=done&style=shadow&title=&width=558)
-**在mysql中，字符串既可以使用双引号也可以使用单引号，但还是建议使用单引号，因为单引号属于标准SQL。**
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=V2sJs&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql
+mysql> select ename,sal * 12 "year sal" from emp;
++--------+----------+
+| ename  | year sal |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.01 sec)
+
+
+mysql> select ename,sal * 12 'year sal' from emp;
++--------+----------+
+| ename  | year sal |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.00 sec)
+```
+
+**在mysql中，字符串既可以使用`双引号也可以使用单引号`，但还是建议使用`单引号`，因为`单引号属于标准SQL`。**
+
 
 ### 别名中有中文
 
-- 如果别名采用中文呢？
+> **如果别名采用中文呢？**
 
 ```sql
 select ename, sal * 12 年薪 from emp;
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1620467760618-b5df74f5-c8ee-4e39-88a9-e10fde59bb56.png#averageHue=%2311100e&height=373&id=AsiUs&originHeight=373&originWidth=445&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24025&status=done&style=shadow&title=&width=445)
-**别名是中文是可以的，但是对于低版本的mysql来说会报错，需要添加双引号或单引号。**我们当前使用的mysql版本是：8.0.24
+```sql
+mysql> select ename,sal * 12 年薪 from emp;
++--------+----------+
+| ename  | 年薪     |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.00 sec)
+```
 
-- [ ] 任务：查询所有员工的信息，要求每个字段名采用中文显示。
+> **别名是中文是可以的，但是对于`低版本的mysql来说会报错`，需要添加`双引号或单引号`。** 我们当前使用的mysql版本是：`8.0.41`,不会报错。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=e5sVc&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+> `任务`：查询`所有员工的信息`，要求每个`字段(每一列的表头)`名采用`中文显示`。
+
+```sql
+select empno 员工编号, ename 员工姓名, job 员工职位, mgr 上级编号, hiredate 入职日期, sal 工资, comm 奖金, deptno 部门编号 from emp;
+```
+
+```sql
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select empno 员工编号, ename 员工姓名, job 员工职位, mgr 上级编号, hiredate 入职日期, sal 工资, comm 奖金, deptno 部门编号 from emp;
++----------+----------+-----------+----------+------------+---------+---------+----------+
+| 员工编号 | 员工姓名 | 员工职位  | 上级编号 | 入职日期   | 工资    | 奖金    | 部门编号 |
++----------+----------+-----------+----------+------------+---------+---------+----------+
+|     7369 | SMITH    | CLERK     |     7902 | 1980-12-17 |  800.00 |    NULL |       20 |
+|     7499 | ALLEN    | SALESMAN  |     7698 | 1981-02-20 | 1600.00 |  300.00 |       30 |
+|     7521 | WARD     | SALESMAN  |     7698 | 1981-02-22 | 1250.00 |  500.00 |       30 |
+|     7566 | JONES    | MANAGER   |     7839 | 1981-04-02 | 2975.00 |    NULL |       20 |
+|     7654 | MARTIN   | SALESMAN  |     7698 | 1981-09-28 | 1250.00 | 1400.00 |       30 |
+|     7698 | BLAKE    | MANAGER   |     7839 | 1981-05-01 | 2850.00 |    NULL |       30 |
+|     7782 | CLARK    | MANAGER   |     7839 | 1981-06-09 | 2450.00 |    NULL |       10 |
+|     7788 | SCOTT    | ANALYST   |     7566 | 1987-04-19 | 3000.00 |    NULL |       20 |
+|     7839 | KING     | PRESIDENT |     NULL | 1981-11-17 | 5000.00 |    NULL |       10 |
+|     7844 | TURNER   | SALESMAN  |     7698 | 1981-09-08 | 1500.00 |    0.00 |       30 |
+|     7876 | ADAMS    | CLERK     |     7788 | 1987-05-23 | 1100.00 |    NULL |       20 |
+|     7900 | JAMES    | CLERK     |     7698 | 1981-12-03 |  950.00 |    NULL |       30 |
+|     7902 | FORD     | ANALYST   |     7566 | 1981-12-03 | 3000.00 |    NULL |       20 |
+|     7934 | MILLER   | CLERK     |     7782 | 1982-01-23 | 1300.00 |    NULL |       10 |
++----------+----------+-----------+----------+------------+---------+---------+----------+
+14 rows in set (0.00 sec)
+```

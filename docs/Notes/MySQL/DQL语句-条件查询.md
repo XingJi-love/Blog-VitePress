@@ -54,8 +54,9 @@ where
 
 ### 等于 =
 
-判断等量关系，支持多种数据类型，比如：数字、字符串、日期等。
-案例1：查询月薪3000的员工编号及姓名
+判断`等量关系`，支持`多种数据类型`，比如：`数字、字符串、日期`等。
+
+> 案例1：查询`月薪3000`的`员工编号及姓名`
 
 ```sql
 select 
@@ -64,10 +65,31 @@ from
   emp
 where
   sal = 3000;
+
+select empno,ename from emp where sal = 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621907694609-eea9c573-f409-4291-b065-afdbf568e8c7.png#averageHue=%2312100f&height=267&id=Y8ZCX&originHeight=267&originWidth=306&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10989&status=done&style=shadow&title=&width=306)
-案例2：查询员工FORD的岗位及月薪
+```sql
+mysql> select empno,ename from emp where sal = 3000;
++-------+-------+
+| empno | ename |
++-------+-------+
+|  7788 | SCOTT |
+|  7902 | FORD  |
++-------+-------+
+2 rows in set (0.02 sec)
+
+mysql> select empno,ename,sal from emp where sal = 3000;-- 判断是否查询成功
++-------+-------+---------+
+| empno | ename | sal     |
++-------+-------+---------+
+|  7788 | SCOTT | 3000.00 |
+|  7902 | FORD  | 3000.00 |
++-------+-------+---------+
+2 rows in set (0.00 sec)
+```
+
+> 案例2：查询员工`FORD的岗位及月薪`
 
 ```sql
 select
@@ -76,10 +98,23 @@ from
 	emp
 where
 	ename = 'FORD';
+
+select job, sal from emp where ename = 'FORD';-- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621907754724-3f628fe9-0c56-4057-8be7-60d0bf968b6c.png#averageHue=%2312100f&height=254&id=KB48O&originHeight=254&originWidth=309&originalType=binary&ratio=1&rotation=0&showTitle=false&size=9820&status=done&style=shadow&title=&width=309)
-存储在表emp中的员工姓名是FORD，全部大写，如果在查询的时候，写成全部小写会怎样呢？
+```sql 
+mysql> select job, sal from emp where ename = 'FORD';
+
++---------+---------+
+| job     | sal     |
++---------+---------+
+| ANALYST | 3000.00 |
++---------+---------+
+1 row in set (0.01 sec)
+```
+
+
+> 存储在表emp中的员工姓名是`FORD`，`全部大写`，如果在查询的时候，**`写成全部小写会怎样呢`**？
 
 ```sql
 select
@@ -90,9 +125,18 @@ where
 	ename = 'ford';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621907908980-acfef2ac-247a-434a-846d-aebe132c534b.png#averageHue=%23131110&height=255&id=fOGhC&originHeight=255&originWidth=268&originalType=binary&ratio=1&rotation=0&showTitle=false&size=9405&status=done&style=shadow&title=&width=268)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=vKAPe&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-通过测试发现，即使写成小写ford，也是可以查询到结果的，**不过这里需要注意的是：在Oracle数据库当中是查询不到数据的，Oracle的语法要比MySQL的语法严谨。对于SQL语句本身来说是不区分大小写的，但是对于表中真实存储的数据，大写A和小写a还是不一样的，这一点Oracle做的很好。MySQL的语法更随性。另外在Oracle当中，字符串是必须使用单引号括起来的，但在MySQL当中，字符串可以使用单引号，也可以使用双引号**，如下：
+```sql
+mysql> select job, sal from emp where ename = 'ford';
+
++---------+---------+
+| job     | sal     |
++---------+---------+
+| ANALYST | 3000.00 |
++---------+---------+
+1 row in set (0.00 sec)
+```
+
+> 通过测试发现，即使写成小写ford，也是可以查询到结果的，**不过这里需要注意的是：在`Oracle数据库`当中是`查询不到数据`的，`Oracle的语法要比MySQL`的`语法严谨`。对于SQL语句本身来说是不区分大小写的，但是对于表中真实存储的数据，大写A和小写a还是不一样的，这一点Oracle做的很好。MySQL的语法更随性。另外在`Oracle`当中，字符串是`必须使用单引号`括起来的，但在MySQL当中，字符串可以使用`单引号`，也可以使用`双引号`**，如下：
 
 ```sql
 select
@@ -103,8 +147,18 @@ where
   ename = "FORD";
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621908335672-ce3770ed-b906-44ad-8e6a-1255e620f77c.png#averageHue=%23110f0e&height=152&id=nVwF9&originHeight=152&originWidth=550&originalType=binary&ratio=1&rotation=0&showTitle=false&size=9330&status=done&style=shadow&title=&width=550)
-案例3：查询岗位是MANAGER的员工编号及姓名
+```sql
+mysql> select job, sal from emp where ename = "FORD";
+
++---------+---------+
+| job     | sal     |
++---------+---------+
+| ANALYST | 3000.00 |
++---------+---------+
+1 row in set (0.00 sec)
+```
+
+> 案例3：查询`岗位是MANAGER`的`员工编号及姓名`
 
 ```sql
 select
@@ -115,16 +169,37 @@ where
   job = 'MANAGER';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621908485311-e63dfa85-7530-4d2e-8652-f5885287dda7.png#averageHue=%23100f0e&height=190&id=vTZba&originHeight=190&originWidth=588&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13081&status=done&style=shadow&title=&width=588)
+```sql
+mysql> select empno,ename from emp where job = 'MANAGER';
 
-- [ ] 任务：查询工资级别是1的最低工资以及最高工资
++-------+-------+
+| empno | ename |
++-------+-------+
+|  7566 | JONES |
+|  7698 | BLAKE |
+|  7782 | CLARK |
++-------+-------+
+3 rows in set (0.00 sec)
+```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=LSu5h&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> `任务`：查询`工资级别`是`1的最低工资以及最高工资`
+
+```sql
+mysql> select losal,hisal from salgrade where grade = 1;
+
++-------+-------+
+| losal | hisal |
++-------+-------+
+|   700 |  1200 |
++-------+-------+
+1 row in set (0.00 sec)
+```
 
 ### 不等于 <> 或 !=
 
-判断非等量关系，支持字符串、数字、日期类型等。不等号有两种写法，第一种<>，第二种!=，第二种写法和Java程序中的不等号相同，第一种写法比较诡异，不过也很好理解，比如<>3，表示小于3、大于3，就是不等于3。你get到了吗？
-案例1：查询工资不是3000的员工编号、姓名、薪资
+判断`非等量关系`，支持`字符串、数字、日期类型`等。不等号有两种写法，`第一种<>`，`第二种!=`，第二种写法和Java程序中的不等号相同，第一种写法比较诡异，不过也很好理解，比如`<>3`，表示`小于3、大于3，就是不等于3`。`你get到了吗？`
+
+> 案例1：查询`工资不是3000`的`员工编号、姓名、薪资`
 
 ```sql
 select
@@ -133,10 +208,33 @@ from
   emp
 where
   sal <> 3000;
+
+select empno,ename,sal from emp where sal <> 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909279969-92f574b8-825b-4774-ab25-b5ccb058ebd5.png#averageHue=%2312100f&height=365&id=x0euZ&originHeight=365&originWidth=577&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31965&status=done&style=shadow&title=&width=577)
-案例2：查询工作岗位不是MANAGER的员工姓名和岗位
+```sql 
+mysql> select empno,ename,sal from emp where sal <> 3000;
+
++-------+--------+---------+
+| empno | ename  | sal     |
++-------+--------+---------+
+|  7369 | SMITH  |  800.00 |
+|  7499 | ALLEN  | 1600.00 |
+|  7521 | WARD   | 1250.00 |
+|  7566 | JONES  | 2975.00 |
+|  7654 | MARTIN | 1250.00 |
+|  7698 | BLAKE  | 2850.00 |
+|  7782 | CLARK  | 2450.00 |
+|  7839 | KING   | 5000.00 |
+|  7844 | TURNER | 1500.00 |
+|  7876 | ADAMS  | 1100.00 |
+|  7900 | JAMES  |  950.00 |
+|  7934 | MILLER | 1300.00 |
++-------+--------+---------+
+12 rows in set (0.00 sec)
+```
+
+> 案例2：查询`工作岗位不是MANAGER`的`员工姓名和岗位`
 
 ```sql
 select
@@ -145,13 +243,64 @@ from
 	emp
 where
 	job <> 'MANAGER';
+
+select ename,job from emp where job <> 'MANAGER'; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909394164-d589f9f5-30a1-477c-aef6-b659ae36d9e8.png#averageHue=%2311100f&height=351&id=X5qgA&originHeight=351&originWidth=575&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26497&status=done&style=shadow&title=&width=575)
+```sql
+mysql> select ename,job from emp where job <> 'MANAGER';
 
-- [ ] 任务：查询不在部门编号为10的部门工作的员工信息
++--------+-----------+
+| ename  | job       |
++--------+-----------+
+| SMITH  | CLERK     |
+| ALLEN  | SALESMAN  |
+| WARD   | SALESMAN  |
+| MARTIN | SALESMAN  |
+| SCOTT  | ANALYST   |
+| KING   | PRESIDENT |
+| TURNER | SALESMAN  |
+| ADAMS  | CLERK     |
+| JAMES  | CLERK     |
+| FORD   | ANALYST   |
+| MILLER | CLERK     |
++--------+-----------+
+11 rows in set (0.00 sec)
+```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=rXXwQ&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> 任务：查询`不在部门编号`为`10的部门工作的员工信息`
+
+```sql
+select
+  *
+from
+  emp
+where
+  deptno <> 10;
+
+select * from emp where deptno <> 10; -- 也可以写成一行
+```
+
+```sql
+mysql> select * from emp where deptno <> 10;
+
++-------+--------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7788 | SCOTT  | ANALYST  | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK    | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
++-------+--------+----------+------+------------+---------+---------+--------+
+11 rows in set (0.00 sec)
+```
 
 ## 大于、大于等于、小于、小于等于
 

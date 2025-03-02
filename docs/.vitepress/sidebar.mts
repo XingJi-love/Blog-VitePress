@@ -65,6 +65,10 @@ export default {
           text: "MySQL | DQL语句-简单查询",
           link: "/Notes/MySQL/DQL语句-简单查询",
         },
+        {
+          text: "MySQL | DQL语句-条件查询",
+          link: "/Notes/MySQL/DQL语句-条件查询",
+        },
       ],
     },
     {

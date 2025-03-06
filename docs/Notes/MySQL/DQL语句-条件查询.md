@@ -308,7 +308,7 @@ mysql> select * from emp where deptno <> 10;
 
 ### 大于 >
 
-案例：找出薪资大于3000的员工姓名、薪资
+> 案例: 找出`薪资大于3000`的`员工姓名、薪资`
 
 ```sql
 select 
@@ -317,14 +317,25 @@ from
   emp
 where
   sal > 3000;
+
+select ename,sal from emp where sal > 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909653019-47b3d57f-3690-46fb-9f47-7906f0fd3245.png#averageHue=%2311100f&height=148&id=k0f1J&originHeight=148&originWidth=514&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8657&status=done&style=shadow&title=&width=514)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ydNP9&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql
+mysql> select ename,sal from emp where sal > 3000;
+
++-------+---------+
+| ename | sal     |
++-------+---------+
+| KING  | 5000.00 |
++-------+---------+
+1 row in set (0.01 sec)
+```
+
 
 ### 大于等于 >=
 
-案例：找出薪资大于等于3000的员工姓名、薪资
+> 案例: 找出`薪资大于等于3000`的`员工姓名、薪资`
 
 ```sql
 select 
@@ -333,13 +344,27 @@ from
   emp
 where
   sal >= 3000;
+
+select ename,sal from emp where sal >= 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909723383-d1a6872b-5790-4d89-875b-e1116ea539cf.png#averageHue=%23110f0e&height=190&id=pnLPe&originHeight=190&originWidth=528&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11463&status=done&style=shadow&title=&width=528)
+```sql
+mysql> select ename,sal from emp where sal >= 3000;
+
++-------+---------+
+| ename | sal     |
++-------+---------+
+| SCOTT | 3000.00 |
+| KING  | 5000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+3 rows in set (0.00 sec)
+```
+
 
 ### 小于 <
 
-案例：找出薪资小于3000的员工姓名、薪资
+> 案例: 找出`薪资小于3000`的`员工姓名、薪资`
 
 ```sql
 select 
@@ -348,9 +373,31 @@ from
   emp
 where
   sal < 3000;
+
+select ename,sal from emp where sal < 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909833614-f9d57a1f-1d48-4d14-aaef-83c5bddb89a8.png#averageHue=%23110f0e&height=346&id=Ln9DW&originHeight=346&originWidth=535&originalType=binary&ratio=1&rotation=0&showTitle=false&size=24457&status=done&style=shadow&title=&width=535)
+```sql
+mysql> select ename,sal from emp where sal < 3000;
+
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| SMITH  |  800.00 |
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| TURNER | 1500.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| MILLER | 1300.00 |
++--------+---------+
+11 rows in set (0.00 sec)
+```
+
 
 ### 小于等于 <=
 
@@ -363,17 +410,41 @@ from
   emp
 where
   sal <= 3000;
+
+select ename,sal from emp where sal <= 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621909895715-9af5ab2f-b445-4b44-a643-fd2a312cac2c.png#averageHue=%23110f0e&height=387&id=ZVSfe&originHeight=387&originWidth=536&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27408&status=done&style=shadow&title=&width=536)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=VCbJ6&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql 
+mysql> select ename,sal from emp where sal <= 3000;
+
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| SMITH  |  800.00 |
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| SCOTT  | 3000.00 |
+| TURNER | 1500.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| FORD   | 3000.00 |
+| MILLER | 1300.00 |
++--------+---------+
+13 rows in set (0.00 sec)
+```
+
 
 ## and
 
 ---
 
-and表示并且，还有另一种写法：&&
-案例：找出薪资大于等于3000并且小于等于5000的员工姓名、薪资。
+> `and`表示`并且`，还有另一种写法：`&&`
+
+> 案例: 找出薪资大于等于3000并且小于等于5000的员工姓名、薪资。
 
 ```sql
 select
@@ -382,21 +453,63 @@ from
   emp
 where
   sal >= 3000 and sal <= 5000;
+
+select ename,sal from emp where sal >= 3000 and sal <= 5000; -- 也可以写成一行
+
+select ename,sal from emp where sal >= 3000 && sal <= 5000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621910545661-438867ac-b8d0-4a80-929e-5a758b44add4.png#averageHue=%23100f0e&height=193&id=GpkEk&originHeight=193&originWidth=681&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12734&status=done&style=shadow&title=&width=681)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621910577682-f852440b-94f8-4299-89ad-c0a88fefc0d1.png#averageHue=%23100f0e&height=187&id=AyScE&originHeight=187&originWidth=672&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13060&status=done&style=shadow&title=&width=672)
+```sql
+mysql> select ename,sal from emp where sal >=3000 and sal <
+=5000;
 
-- [ ] 任务：找出工资级别为2~4（包含2和4）的最低工资和最高工资。
++-------+---------+
+| ename | sal     |
++-------+---------+
+| SCOTT | 3000.00 |
+| KING  | 5000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+3 rows in set (0.00 sec)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=XfnXa&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+mysql> select ename,sal from emp where sal >=3000 && sal <=
+5000;
+
++-------+---------+
+| ename | sal     |
++-------+---------+
+| SCOTT | 3000.00 |
+| KING  | 5000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+3 rows in set, 1 warning (0.00 sec)
+```
+
+> `任务`：**找出`工资级别为2~4（包含2和4）`的`最低工资和最高工资`。**
+
+```sql
+mysql> select losal,hisal from salgrade where grade >= 2 an
+d grade <= 4;
+
++-------+-------+
+| losal | hisal |
++-------+-------+
+|  1201 |  1400 |
+|  1401 |  2000 |
+|  2001 |  3000 |
++-------+-------+
+3 rows in set (0.01 sec)
+```
+
 
 ## or
 
 ---
 
-or表示或者，还有另一种写法：||
-案例：找出工作岗位是MANAGER和SALESMAN的员工姓名、工作岗位
+> **`or`表示`或者`，还有另一种写法：`||`**
+
+> 案例：找出`工作岗位`是`MANAGER和SALESMAN`的`员工姓名、工作岗位`
 
 ```sql
 select 
@@ -405,12 +518,29 @@ from
   emp
 where
   job = 'MANAGER' or job = 'SALESMAN';
+
+select ename,job from emp where job = 'MANAGER' or job = 'SALESMAN'; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621910850853-c7030458-0c8f-4040-bc29-c6fa66caca7c.png#averageHue=%23110f0e&height=376&id=tQUI3&originHeight=376&originWidth=492&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22698&status=done&style=shadow&title=&width=492)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621910943353-4a9fb152-67b9-4044-a2b4-b90a2fbf3f57.png#averageHue=%23110f0e&height=370&id=k83WP&originHeight=370&originWidth=471&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22916&status=done&style=shadow&title=&width=471)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=yWWia&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-注意：这个题目描述中有这样一句话：MANAGER和SALESMAN，有的同学一看到“和”，就直接使用“and”了，因为“和”对应的英文单词是“and”，如果是这样的话，就大错特错了，因为and表示并且，使用and表示工作岗位既是MANAGER又是SALESMAN的员工，这样的员工是不存在的，因为每一个员工只有一个岗位，不可能同时从事两个岗位。所以使用and是查询不到任何结果的。如下
+```sql
+mysql> select ename,job from emp where job = 'MANAGER' or j
+ob = 'SALESMAN';
+
++--------+----------+
+| ename  | job      |
++--------+----------+
+| ALLEN  | SALESMAN |
+| WARD   | SALESMAN |
+| JONES  | MANAGER  |
+| MARTIN | SALESMAN |
+| BLAKE  | MANAGER  |
+| CLARK  | MANAGER  |
+| TURNER | SALESMAN |
++--------+----------+
+7 rows in set (0.00 sec)
+```
+
+> **注意：这个题目描述中有这样一句话：`MANAGER和SALESMAN`，有的同学一看到“`和`”，就直接使用“`and`”了，因为“和”对应的英文单词是“and”，如果是这样的话，就大错特错了，因为and表示并且，使用and表示工作岗位既是MANAGER又是SALESMAN的员工，这样的员工是不存在的，因为每一个员工只有一个岗位，不可能同时从事两个岗位。所以使用and是查询不到任何结果的。如下**
 
 ```sql
 select 
@@ -419,21 +549,54 @@ from
   emp
 where
   job = 'MANAGER' and job = 'SALESMAN';
+
+select ename,job from emp where job = 'MANAGER' and job = 'SALESMAN'; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621911189669-be42f087-b388-4eb2-80b7-602766996b82.png#averageHue=%23100f0e&height=151&id=DRxAe&originHeight=151&originWidth=471&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8765&status=done&style=shadow&title=&width=471)
+```sql
+mysql> select ename,job from emp where job = 'MANAGER' and job = 'SALESMAN';
 
-- [ ] 任务：查询20和30部门的员工信息。
+Empty set (0.00 sec)
+```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=E82Cs&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+> **`任务`：查询`20和30部门`的`员工信息`。**
+
+```sql
+select * from emp where deptno = 20 or deptno = 30;
+```
+
+```sql
+mysql> select * from emp where deptno = 20 or deptno = 30;
+
++-------+--------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7788 | SCOTT  | ANALYST  | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK    | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
++-------+--------+----------+------+------------+---------+---------+--------+
+11 rows in set (0.00 sec)
+```
+
 
 ## and和or的优先级问题
 
 ---
 
-and和or同时出现时，and优先级较高，会先执行，如果希望or先执行，这个时候需要给or条件添加小括号。另外，以后遇到不确定的优先级时，可以通过添加小括号的方式来解决。对于优先级问题没必要记忆。
-案例：找出薪资小于1500，并且部门编号是20或30的员工姓名、薪资、部门编号。
-先来看一下错误写法：
+> **`and和or同时出现`时，`and优先级较高`，会`先执行`，如果希望`or先执行`，这个时候需要给`or条件添加小括号`。另外，以后遇到不确定的优先级时，可以通过`添加小括号`的方式来解决。对于优先级问题没必要记忆。**
+
+> **案例：找出`薪资小于1500`，并且`部门编号`是`20或30的员工姓名、薪资、部门编号`。**
+
+>> **先来看一下错误写法：**
 
 ```sql
 select
@@ -442,10 +605,31 @@ from
   emp
 where
   sal < 1500 and deptno = 20 or deptno = 30;
+
+select ename,sal,deptno from emp where sal < 1500 and deptno = 20 or deptno = 30; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621912213872-f2b1fe9e-384c-404e-bf24-d81bd895ae23.png#averageHue=%2311100f&height=388&id=DymCc&originHeight=388&originWidth=524&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26693&status=done&style=shadow&title=&width=524)
-认真解读题意得知：薪资小于1500是一个大前提，要找出的是薪资小于1500的，满足这个条件的前提下，再找部门编号是20或30的，显然以上的运行结果中出现了薪资为1600的，为什么1600的会出现呢？这是因为“sal < 1500 and deptno = 20”结合在一起了，“depnto = 30”成了一个独立的条件。会导致部门编号为30的所有员工全部查询出来。我们应该让“deptno = 20 or deptno = 30”结合在一起，正确写法如下：
+```sql
+mysql> select ename,sal,deptno from emp where sal < 1500 and deptno = 20 or deptno = 30;
+
++--------+---------+--------+
+| ename  | sal     | deptno |
++--------+---------+--------+
+| SMITH  |  800.00 |     20 |
+| ALLEN  | 1600.00 |     30 |
+| WARD   | 1250.00 |     30 |
+| MARTIN | 1250.00 |     30 |
+| BLAKE  | 2850.00 |     30 |
+| TURNER | 1500.00 |     30 |
+| ADAMS  | 1100.00 |     20 |
+| JAMES  |  950.00 |     30 |
++--------+---------+--------+
+8 rows in set (0.00 sec)
+```
+
+> 认真解读题意得知：`薪资小于1500是一个大前提`，要找出的是薪资小于1500的，满足这个条件的前提下，`再找部门编号是20或30的`，显然以上的运行结果中出现了薪资为1600的，为什么1600的会出现呢？这是因为“`sal < 1500 and deptno = 20`”结合在一起了，“`depnto = 30`”成了一个独立的条件。`会导致部门编号为30的所有员工全部查询出来`。我们应该让“`deptno = 20 or deptno = 30`”结合在一起，
+
+>> **正确写法如下：**
 
 ```sql
 select
@@ -454,24 +638,68 @@ from
   emp
 where
   sal < 1500 and (deptno = 20 or deptno = 30);
+
+select ename,sal,deptno from emp where sal < 1500 and (deptno = 20 or deptno = 30); -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621912713447-a9b7aeee-4998-4eae-8e53-71353a405890.png#averageHue=%2311100e&height=330&id=g19B4&originHeight=330&originWidth=539&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21912&status=done&style=shadow&title=&width=539)
+```sql
+mysql> select ename,sal,deptno from emp where sal < 1500 and (deptno = 20 or deptno = 30);
 
-- [ ] 任务：找出薪资小于1500的，并且工作岗位是CLERK和SALESMAN的员工姓名、薪资、岗位。
++--------+---------+--------+
+| ename  | sal     | deptno |
++--------+---------+--------+
+| SMITH  |  800.00 |     20 |
+| WARD   | 1250.00 |     30 |
+| MARTIN | 1250.00 |     30 |
+| ADAMS  | 1100.00 |     20 |
+| JAMES  |  950.00 |     30 |
++--------+---------+--------+
+5 rows in set (0.00 sec)
+```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=L1XhP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> `任务`：找出`薪资小于1500`的，并且`工作岗位是CLERK和SALESMAN`的`员工姓名、薪资、岗位`。
+```sql
+select 
+  ename,sal,job
+from
+  emp
+where
+  sal < 1500 and (job = 'CLERK' or job = 'SALESMAN');
+
+select ename,sal,job from emp where sal < 1500 and (job = 'CLERK' or job = 'SALESMAN'); -- 也可以写成一行
+```
+
+```sql
+mysql> select ename,sal,job from emp where sal < 1500 and (job = 'CLERK' or job = 'SALESMAN');
+
++--------+---------+----------+
+| ename  | sal     | job      |
++--------+---------+----------+
+| SMITH  |  800.00 | CLERK    |
+| WARD   | 1250.00 | SALESMAN |
+| MARTIN | 1250.00 | SALESMAN |
+| ADAMS  | 1100.00 | CLERK    |
+| JAMES  |  950.00 | CLERK    |
+| MILLER | 1300.00 | CLERK    |
++--------+---------+----------+
+6 rows in set (0.00 sec)
+```
+
 
 ## between...and...
 
 ---
 
-between...and...等同于 >= and <=
-做区间判断的，包含左右两个边界值。
-它支持数字、日期、字符串等数据类型。
-between...and...在使用时一定是**左小右大**。左大右小时无法查询到数据。
-between...and... 和 >= and <=只是在写法结构上有区别，执行原理和效率方面没有区别。
-案例：找出薪资在1600到3000的员工姓名、薪资
+> **`between...and...`等同于 `>= and <=`**
++ 做区间判断的，包含`左右两个边界值`。
+
++ 它支持`数字、日期、字符串`等数据类型。
+
++ between...and...在使用时一定是 **`左小右大`**。**`左大右小时无法查询到数据`**。
+
++ between...and... 和 `>= and <=`只是在写法结构上有区别，执行原理和效率方面没有区别。
+
+> 案例：找出`薪资在1600到3000`的`员工姓名、薪资`。
 
 ```sql
 select 
@@ -480,10 +708,28 @@ from
   emp
 where
 	sal between 1600 and 3000;
+
+select ename,sal from emp where sal between 1600 and 3000; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621913942714-15a74832-d5da-4215-8991-35a3d48f7061.png#averageHue=%2312100f&height=344&id=GTVA6&originHeight=344&originWidth=374&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17629&status=done&style=shadow&title=&width=374)
-采用左大右小的方式：
+```sql
+mysql> select ename,sal from emp where sal between 1600 and 3000;
+
++-------+---------+
+| ename | sal     |
++-------+---------+
+| ALLEN | 1600.00 |
+| JONES | 2975.00 |
+| BLAKE | 2850.00 |
+| CLARK | 2450.00 |
+| SCOTT | 3000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+6 rows in set (0.00 sec)
+```
+
+
+>> 采用`左大右小`的方式：
 
 ```sql
 select 
@@ -492,29 +738,80 @@ from
   emp
 where
 	sal between 3000 and 1600;
+
+select ename,sal from emp where sal between 3000 and 1600; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914030809-2ebf83da-aba0-429d-970e-2f6906611f11.png#averageHue=%2311100f&height=147&id=OG0Ah&originHeight=147&originWidth=358&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7418&status=done&style=shadow&title=&width=358)
-没有查询到任何数据，所以在使用的时候一定要注意：**左小右大**。
+```sql
+mysql> select ename,sal from emp where sal between 3000 and 1600;
 
-- [ ] 任务：查询在1982-01-23到1987-04-19之间入职的员工
+Empty set (0.00 sec)
+```
+> 没有查询到任何数据，所以在使用的时候一定要注意：**左小右大**。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914250873-25bff9ba-b4e6-4145-a5f8-9036fba35627.png#averageHue=%23161312&height=169&id=IPUnM&originHeight=169&originWidth=783&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20676&status=done&style=shadow&title=&width=783)
-注意：以上SQL语句中日期需要加上单引号。
+> `任务`：查询在`1982-01-23`到`1987-04-19`之间`入职的员工`。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=JTZOF&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql
+select
+  *
+from
+  emp
+where
+  hiredate between '1982-01-23' and '1987-04-19';
+
+select * from emp where hiredate between '1982-01-23' and '1987-04-19'; -- 也可以写成一行
+```
+
+```sql
+mysql> select * from emp;
+
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where hiredate between '1982-01-23' and '1987-04-19';
+
++-------+--------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+---------+------+------------+---------+------+--------+
+|  7788 | SCOTT  | ANALYST | 7566 | 1987-04-19 | 3000.00 | NULL |     20 |
+|  7934 | MILLER | CLERK   | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+---------+------+------------+---------+------+--------+
+2 rows in set (0.00 sec)
+```
+
+> **注意：以上SQL语句中`日期`需要加上`单引号`**。
+
 
 ## is null、is not null
 
 ---
 
-判断某个数据是否为null，不能使用等号，只能使用 is null
-判断某个数据是否不为null，不能使用不等号，只能使用 is not null
-在数据库中null不是一个值，不能用等号和不等号衡量，null代表什么也没有，没有数据，没有值
++ **判断某个数据`是否为null`，不能使用等号，只能使用 `is null`**
+
++ **判断某个数据是`否不为null`，不能使用不等号，只能使用 `is not null`**
+
+> 在`数据库`中`null不是一个值`，不能用等号和不等号衡量，`null`代表`什么也没有`，`没有数据，没有值`
 
 ### is null
 
-案例1：找出津贴为空的员工姓名、薪资、津贴。
+> 案例1：找出`津贴为空`的`员工姓名、薪资、津贴`。
 
 ```sql
 select
@@ -523,10 +820,31 @@ from
   emp
 where
   comm is null;
+
+select ename,sal,comm from emp where comm is null; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914737738-74345239-9ea8-4afa-a4bf-68fb0bb26e98.png#averageHue=%23161310&height=427&id=B8Ayw&originHeight=427&originWidth=298&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23224&status=done&style=shadow&title=&width=298)
-我们使用等号，尝试一下：
+```sql
+mysql> select ename,sal,comm from emp where comm is null;
+
++--------+---------+------+
+| ename  | sal     | comm |
++--------+---------+------+
+| SMITH  |  800.00 | NULL |
+| JONES  | 2975.00 | NULL |
+| BLAKE  | 2850.00 | NULL |
+| CLARK  | 2450.00 | NULL |
+| SCOTT  | 3000.00 | NULL |
+| KING   | 5000.00 | NULL |
+| ADAMS  | 1100.00 | NULL |
+| JAMES  |  950.00 | NULL |
+| FORD   | 3000.00 | NULL |
+| MILLER | 1300.00 | NULL |
++--------+---------+------+
+10 rows in set (0.01 sec)
+```
+
+>> 我们使用`等号`，尝试一下：
 
 ```sql
 select
@@ -535,15 +853,21 @@ from
   emp
 where
   comm = null;
+
+select ename,sal,comm from emp where comm = null; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914817611-97c0858b-a248-4a10-9fba-e5152283b553.png#averageHue=%2312100f&height=149&id=p0pLx&originHeight=149&originWidth=247&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5999&status=done&style=shadow&title=&width=247)
-查询不到任何数据，所以判断是否为空，不能用等号。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Byo2n&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql
+mysql> select ename,sal,comm from emp where comm = null;
+
+Empty set (0.00 sec)
+```
+> 查询不到任何数据，所以判断是否为空，不能用等号。
+
 
 ### is not null
 
-案例2：找出津贴不为空的员工姓名、薪资、津贴
+> 案例2：找出`津贴不为空`的`员工姓名、薪资、津贴`。
 
 ```sql
 select
@@ -552,11 +876,24 @@ from
   emp
 where
   comm is not null;
+
+select ename,sal,comm from emp where comm is not null; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621914906515-cfd5351e-22bc-4184-b6d5-785f27049020.png#averageHue=%23141210&height=311&id=hC9OP&originHeight=311&originWidth=315&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15140&status=done&style=shadow&title=&width=315)
+```sql
+mysql> select ename,sal,comm from emp where comm is not null;
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=pBBB0&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
++--------+---------+---------+
+| ename  | sal     | comm    |
++--------+---------+---------+
+| ALLEN  | 1600.00 |  300.00 |
+| WARD   | 1250.00 |  500.00 |
+| MARTIN | 1250.00 | 1400.00 |
+| TURNER | 1500.00 |    0.00 |
++--------+---------+---------+
+4 rows in set (0.01 sec)
+```
+
 
 ## in、not in
 
@@ -564,12 +901,16 @@ where
 
 ### in
 
-job in('MANAGER','SALESMAN','CLERK') 等同于 job = 'MANAGER' or job = 'SALESMAN' or job = 'CLERK'
-sal in(1600, 3000, 5000) 等同于 sal = 1600 or sal = 3000 or sal = 5000
-in后面有一个小括号，小括号当中有多个值，值和值之间采用逗号隔开
-sal in(1500, 5000)，需要注意的是：这个并不是说薪资在1500到5000之间，in不代表区间，表示sal是1500的和sal是5000的
-案例1：找出工作岗位是MANAGER和SALESMAN的员工姓名、薪资、工作岗位
-第一种：使用or
++ `job in('MANAGER','SALESMAN','CLERK')` 等同于 `job = 'MANAGER' or job = 'SALESMAN' or job = 'CLERK'`
+
++ `sal in(1600, 3000, 5000)` 等同于 `sal = 1600 or sal = 3000 or sal = 5000`
+in后面有一个小括号，小括号当中有多个值，值和值之间采用`逗号隔开`
+
++ `sal in(1500, 5000)`，需要注意的是：这个并`不是说薪资在1500到5000之间`，in不代表区间，表示`sal是1500的`和`sal是5000的`
+
+> 案例1：找出`工作岗位是MANAGER和SALESMAN`的`员工姓名、薪资、工作岗位`
+
+>> **第一种：`使用or`**
 
 ```sql
 select
@@ -578,10 +919,29 @@ from
   emp
 where
   job = 'MANAGER' or job = 'SALESMAN';
+
+select ename,sal,job from emp where job =  'MANAGER' or job = 'SALESMAN'; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621979207586-14dece4a-ce7f-4db8-a43f-bbfee6fd6133.png#averageHue=%2313110f&height=435&id=O2KwT&originHeight=435&originWidth=549&originalType=binary&ratio=1&rotation=0&showTitle=false&size=35206&status=done&style=shadow&title=&width=549)
-第二种：使用in
+```sql
+mysql> select ename,sal,job from emp where job =  'MANAGER' or job = 'SALESMAN';
+
++--------+---------+----------+
+| ename  | sal     | job      |
++--------+---------+----------+
+| ALLEN  | 1600.00 | SALESMAN |
+| WARD   | 1250.00 | SALESMAN |
+| JONES  | 2975.00 | MANAGER  |
+| MARTIN | 1250.00 | SALESMAN |
+| BLAKE  | 2850.00 | MANAGER  |
+| CLARK  | 2450.00 | MANAGER  |
+| TURNER | 1500.00 | SALESMAN |
++--------+---------+----------+
+7 rows in set (0.00 sec)
+```
+
+
+>> **第二种：`使用in`**
 
 ```sql
 select
@@ -590,10 +950,28 @@ from
   emp
 where
   job in('MANAGER', 'SALESMAN');
+
+select ename,sal,job from emp where job in('MANAGER', 'SALESMAN'); -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621979288013-a6975d0e-46f9-43d8-a226-6df047e6490e.png#averageHue=%23141210&height=438&id=GI28U&originHeight=438&originWidth=470&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33948&status=done&style=shadow&title=&width=470)
-案例2：找出薪资是1500/1600/3000的员工姓名、工作岗位
+```sql
+mysql> select ename,sal,job from emp where job in('MANAGER', 'SALESMAN');
+
++--------+---------+----------+
+| ename  | sal     | job      |
++--------+---------+----------+
+| ALLEN  | 1600.00 | SALESMAN |
+| WARD   | 1250.00 | SALESMAN |
+| JONES  | 2975.00 | MANAGER  |
+| MARTIN | 1250.00 | SALESMAN |
+| BLAKE  | 2850.00 | MANAGER  |
+| CLARK  | 2450.00 | MANAGER  |
+| TURNER | 1500.00 | SALESMAN |
++--------+---------+----------+
+7 rows in set (0.00 sec)
+```
+
+> 案例2：找出`薪资是1500/1600/3000`的`员工姓名、工作岗位`
 
 ```sql
 select
@@ -602,20 +980,98 @@ from
   emp
 where
   sal in(1500, 1600, 3000);
+
+select ename,job from emp where sal in(1500, 1600, 3000); -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621979430766-b7dc80d4-568a-4216-a173-6ec7c49d1f9c.png#averageHue=%2311100f&height=371&id=vsqSR&originHeight=371&originWidth=433&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20173&status=done&style=shadow&title=&width=433)
+```sql
+mysql> select ename,job from emp where sal in(1500, 1600, 3000);
 
-- [ ] 任务：找出部门编号是10和20的员工编号、姓名。（要求使用两种方案）
++--------+----------+
+| ename  | job      |
++--------+----------+
+| ALLEN  | SALESMAN |
+| SCOTT  | ANALYST  |
+| TURNER | SALESMAN |
+| FORD   | ANALYST  |
++--------+----------+
+4 rows in set (0.00 sec)
+```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=MHkjM&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> `任务`：找出`部门编号是10和20`的`员工编号、姓名`。（要求使用两种方案）
+
+>> **第一种：`使用or`**
+
+```sql
+select 
+  empno,ename
+from
+  emp
+where
+  deptno = 10 or deptno = 20;
+
+select empno,ename from emp where deptno = 10 or deptno = 20; -- 也可以写成一行
+```
+
+```sql
+mysql> select empno,ename from emp where deptno = 10 or deptno = 20;
+
++-------+--------+
+| empno | ename  |
++-------+--------+
+|  7369 | SMITH  |
+|  7566 | JONES  |
+|  7782 | CLARK  |
+|  7788 | SCOTT  |
+|  7839 | KING   |
+|  7876 | ADAMS  |
+|  7902 | FORD   |
+|  7934 | MILLER |
++-------+--------+
+8 rows in set (0.00 sec)
+```
+
+>> **第二种：`使用in`**
+
+```sql
+select 
+  empno,ename
+from
+  emp
+where
+  deptno in(10, 20);
+
+select empno,ename from emp where deptno in(10, 20); -- 也可以写成一行
+```
+
+```sql
+mysql> select empno,ename from emp where deptno in(10, 20);
+
++-------+--------+
+| empno | ename  |
++-------+--------+
+|  7369 | SMITH  |
+|  7566 | JONES  |
+|  7782 | CLARK  |
+|  7788 | SCOTT  |
+|  7839 | KING   |
+|  7876 | ADAMS  |
+|  7902 | FORD   |
+|  7934 | MILLER |
++-------+--------+
+8 rows in set (0.00 sec)
+```
+
 
 ### not in
 
-job not in('MANAGER','SALESMAN') 等同于 job <> 'MANAGER' and job <> 'SALESMAN'
-sal not in(1600, 5000) 等同于 sal <> 1600 and sal <> 5000
-案例：找出工作岗位不是MANAGER和SALESMAN的员工姓名、工作岗位
-第一种：使用and
++ `job not in('MANAGER','SALESMAN')`等同于 `job <> 'MANAGER' and job <> 'SALESMAN'`
+
++ `sal not in(1600, 5000)` 等同于 `sal <> 1600 and sal <> 5000`
+
+> 案例：找出工作岗位`不是MANAGER和SALESMAN`的`员工姓名、工作岗位`
+
+>> **第一种：使用`and`**
 
 ```sql
 select 
@@ -624,10 +1080,28 @@ from
   emp
 where
   job <> 'MANAGER' and job <> 'SALESMAN';
+
+select ename,job from emp where job <> 'MANAGER' and job <> 'SALESMAN'; -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621980958567-7c01fd48-a1ec-4392-85e1-120b86865b99.png#averageHue=%23100f0e&height=406&id=N24ds&originHeight=406&originWidth=599&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26784&status=done&style=shadow&title=&width=599)
-第二种：使用not in
+```sql
+mysql> select ename,job from emp where job <> 'MANAGER' and job <> 'SALESMAN';
+
++--------+-----------+
+| ename  | job       |
++--------+-----------+
+| SMITH  | CLERK     |
+| SCOTT  | ANALYST   |
+| KING   | PRESIDENT |
+| ADAMS  | CLERK     |
+| JAMES  | CLERK     |
+| FORD   | ANALYST   |
+| MILLER | CLERK     |
++--------+-----------+
+7 rows in set (0.00 sec)
+```
+
+>> **第二种：使用`not in`**
 
 ```sql
 select 
@@ -636,13 +1110,61 @@ from
   emp
 where
   job not in('MANAGER', 'SALESMAN');
+
+select ename,job from emp where job not in('MANAGER', 'SALESMAN'); -- 也可以写成一行
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1621981036376-d6cecc7a-b7b8-4342-a83e-19ee49d77697.png#averageHue=%23110f0e&height=436&id=udgWf&originHeight=436&originWidth=537&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28126&status=done&style=shadow&title=&width=537)
+```sql
+mysql> select ename,job from emp where job not in('MANAGER', 'SALESMAN');
 
-- [ ] 任务：找出薪资不是1600和3000的员工姓名、薪资。
++--------+-----------+
+| ename  | job       |
++--------+-----------+
+| SMITH  | CLERK     |
+| SCOTT  | ANALYST   |
+| KING   | PRESIDENT |
+| ADAMS  | CLERK     |
+| JAMES  | CLERK     |
+| FORD   | ANALYST   |
+| MILLER | CLERK     |
++--------+-----------+
+7 rows in set (0.00 sec)
+```
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=zGsfo&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> **`任务`：找出`薪资不是1600和3000`的`员工姓名、薪资`。**
+
+```sql
+select 
+  ename,sal
+from
+  emp
+where
+  sal not in(1600, 3000);
+
+select ename,sal from emp where sal not in(1600, 3000); -- 也可以写成一行
+```
+
+```sql
+mysql> select ename,sal from emp where sal not in(1600, 3000);
+
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| SMITH  |  800.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| KING   | 5000.00 |
+| TURNER | 1500.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| MILLER | 1300.00 |
++--------+---------+
+11 rows in set (0.00 sec)
+```
+
 
 ### in、not in 与 NULL
 

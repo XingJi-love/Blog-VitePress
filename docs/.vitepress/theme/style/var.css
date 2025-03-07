@@ -52,12 +52,16 @@
 /* .vitepress/theme/style/var.css */
 
 .medium-zoom-overlay {
-    z-index: 30;
+    background-color: var(--vp-c-bg) !important;
+    z-index: 100;
 }
 
-.medium-zoom-image {
-    z-index: 9999 !important;
-    /* 给的值是21，但是实测盖不住，直接999 */
+.medium-zoom-overlay~img {
+    z-index: 101;
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+    opacity: 0.9 !important;
 }
 
 /* 自定义鼠标样式 */

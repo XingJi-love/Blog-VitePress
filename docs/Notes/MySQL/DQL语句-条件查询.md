@@ -1375,46 +1375,88 @@ D组or和in的执行时间： or的执行时间为：6min 17s     in的执行�
 
 ---
 
-模糊查询又被称为模糊匹配，在实际开发中使用较多，比如：查询公司中所有姓张的，查询岗位中带有经理两个字的职位等等，这些都需要使用模糊查询。
-模糊查询的语法格式如下：
+> `模糊查询`又被称为`模糊匹配`，在实际开发中使用较多，比如：**`查询公司中所有姓张的`，查询岗位中`带有经理两个字的职位`等等，这些都需要使用`模糊查询`**。
+
+>> 模糊查询的`语法格式`如下：
 
 ```sql
 select .. from .. where 字段 like '通配符表达式';
 ```
 
-在模糊查询中，通配符主要包括两个：一个是%，一个是下划线_。其中%代表任意多个字符。下划线_代表任意一个字符。
-案例1：查询员工名字以'S'开始的员工姓名
+> 在模糊查询中，通配符主要包括两个：一个是`%`，一个是下划线`_`。其中`%`代表`任意多个字符`。`下划线_`代表`任意一个字符`。
+
+> 案例1：查询员工名字以'S'开始的员工姓名
 
 ```sql
 select ename from emp where ename like 'S%';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1622000884924-f3303ff0-cb9a-4393-831c-01d3e705606d.png#averageHue=%230f0e0d&height=201&id=nTI0r&originHeight=201&originWidth=636&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11624&status=done&style=shadow&title=&width=636)
-案例2：查询员工名字以'T'结尾的员工姓名
+```sql
+mysql> select ename from emp where ename like 'S%';
++-------+
+| ename |
++-------+
+| SMITH |
+| SCOTT |
++-------+
+2 rows in set (0.01 sec)
+```
+
+> 案例2：查询`员工名字以'T'结尾`的`员工姓名`
 
 ```sql
 select ename from emp where ename like '%T';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1622000970235-0265da36-1e10-4da5-abb8-c651452fad21.png#averageHue=%230f0e0d&height=188&id=skACT&originHeight=188&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10432&status=done&style=shadow&title=&width=624)
-案例3：查询员工名字中含有'O'的员工姓名
+```sql
+mysql> select ename from emp where ename like '%T';
++-------+
+| ename |
++-------+
+| SCOTT |
++-------+
+1 row in set (0.00 sec)
+```
+
+> 案例3：查询员工名字中含有'O'的员工姓名
 
 ```sql
 select ename from emp where ename like '%O%';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1622001027995-71da44df-e3b1-4e56-a6e2-922a50ccc2b7.png#averageHue=%230f0e0e&height=231&id=Aa56U&originHeight=231&originWidth=632&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13088&status=done&style=shadow&title=&width=632)
+```sql
+mysql> select ename from emp where ename like '%O%';
++-------+
+| ename |
++-------+
+| JONES |
+| SCOTT |
+| FORD  |
++-------+
+3 rows in set (0.00 sec)
+```
 
-
-案例4：查询员工名字中第二个字母是'A'的员工姓名
+> 案例4：查询`员工名字中第二个字母是'A'`的`员工姓名`
 
 ```sql
 select ename from emp where ename like '_A%';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1622001108864-1abbac56-669f-4c35-9b48-6d80452ad8ce.png#averageHue=%230f0e0d&height=226&id=ICQ6h&originHeight=226&originWidth=636&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13307&status=done&style=shadow&title=&width=636)
-案例5：查询学员名字中含有下划线的。
-执行以下SQL语句，先准备测试数据：
+```sql
+mysql> select ename from emp where ename like '_A%';
++--------+
+| ename  |
++--------+
+| WARD   |
+| MARTIN |
+| JAMES  |
++--------+
+3 rows in set (0.00 sec)
+```
+
+> 案例5：查询`学员名字中含有下划线`的。
+
+>> 执行以下`SQL语句`，先准备`测试数据`：
 
 ```sql
 drop table if exists student;
@@ -1428,18 +1470,89 @@ insert into student(id,name) values(3, 'jack_son');
 select * from student;
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/21376908/1622001536746-e0d05c73-f941-4f28-9190-bbfcf248c41b.png#averageHue=%2311100f&height=222&id=ttwgx&originHeight=222&originWidth=371&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10496&status=done&style=shadow&title=&width=371)
-查询学员名字中含有下划线的，执行以下SQL试试：
+>> 查看`原始powernode表结构`：
+
+```sql
+mysql> show tables;
++---------------------+
+| Tables_in_powernode |
++---------------------+
+| dept                |
+| emp                 |
+| salgrade            |
++---------------------+
+3 rows in set (0.01 sec)
+```
+
+>> 创建`student表`：
+
+```sql
+mysql> drop table if exists student;
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> create table student(
+    ->   id int,
+    ->   name varchar(255)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into student(id,name) values(1, 'susan');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student(id,name) values(2, 'lucy');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student(id,name) values(3, 'jack_son');
+Query OK, 1 row affected (0.01 sec)
+```
+
+>> 查看`student表`中的数据：
+
+```sql
+mysql> select * from student;
+
++------+----------+
+| id   | name     |
++------+----------+
+|    1 | susan    |
+|    2 | lucy     |
+|    3 | jack_son |
++------+----------+
+3 rows in set (0.00 sec)
+```
+
+> 查询`学员名字中含有下划线的`，执行以下SQL试试：
 
 ```sql
 select * from student where name like '%_%';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667523151909-c112a3cb-9968-4b4a-8bee-5a75c4b6a9f2.png#averageHue=%230f0e0e&clientId=ud0c47669-2d83-4&from=paste&height=232&id=u08a9aa32&originHeight=232&originWidth=664&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12182&status=done&style=shadow&taskId=u2055ec95-4933-45ca-b17f-c384a54205d&title=&width=664)
-显然这个查询结果不是我们想要的，以上SQL之所以将所有数据全部显示了，因为下划线代表任意单个字符，如果你想让这个下划线变成一个普通的下划线字符，就要使用转义字符了，在mysql当中转义字符是“\”，这个和java语言中的转义字符是一样的：
+```sql
+mysql> select * from student where name like '%_%';
+
++------+----------+
+| id   | name     |
++------+----------+
+|    1 | susan    |
+|    2 | lucy     |
+|    3 | jack_son |
++------+----------+
+3 rows in set (0.00 sec)
+```
+
+> 显然这个查询结果不是我们想要的，以上SQL之所以将所有数据全部显示了，**因为`下划线代表任意单个字符`，如果你想让这个`下划线`变成一个`普通的下划线字符`**，就要使用转义字符了，在`mysql当中转义字符`是“`\`”，这个和java语言中的转义字符是一样的：
 
 ```sql
 select * from student where name like '%\_%';
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1667523291579-62dc328f-17ef-4e97-a22a-374ade19e797.png#averageHue=%23100f0e&clientId=ud0c47669-2d83-4&from=paste&height=139&id=u14f2fd6c&originHeight=139&originWidth=635&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7682&status=done&style=shadow&taskId=u5f6488c4-25a2-4517-8936-801669b340e&title=&width=635)
+```sql
+mysql> select * from student where name like '%\_%';
+
++------+----------+
+| id   | name     |
++------+----------+
+|    3 | jack_son |
++------+----------+
+1 row in set (0.00 sec)
+```

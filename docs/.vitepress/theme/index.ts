@@ -153,19 +153,15 @@ export default {
   },
 
   setup() {
-    // 图片放大功能初始化
+    // 图片缩放
     const route = useRoute();
-    const { frontmatter } = useData();
-
     const initZoom = () => {
       // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
-      mediumZoom(".main img", { margin: 100, background: "" }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
+      mediumZoom('.main img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
     };
-
     onMounted(() => {
       initZoom();
     });
-
     watch(
       () => route.path,
       () => nextTick(() => initZoom())
@@ -183,7 +179,7 @@ export default {
         lang: "zh-CN",
       },
       {
-        frontmatter,
+        frontmatter: useData().frontmatter,
         route,
       },
       //默认值为true，表示已启用，此参数可以忽略；

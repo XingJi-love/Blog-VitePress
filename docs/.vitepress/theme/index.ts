@@ -55,6 +55,31 @@ let homePageStyle: HTMLStyleElement | undefined;
 
 const playlist = [
   {
+    name: "That Girl-Olly Murs",
+    author: "Olly Murs",
+    file: "/mp3/That Girl-Olly Murs.mp3",
+  },
+  {
+    name: "我怀念的-孙燕姿",
+    author: "孙燕姿",
+    file: "/mp3/我怀念的-孙燕姿.mp3",
+  },
+  {
+    name: "瞬-郑润泽",
+    author: "郑润泽",
+    file: "/mp3/瞬-郑润泽.mp3",
+  },
+  {
+    name: "唯一-G.E.M.邓紫棋",
+    author: "G.E.M.邓紫棋",
+    file: "/mp3/唯一-G.E.M.邓紫棋.mp3",
+  },
+  {
+    name: "特别的人-方大同",
+    author: "方大同",
+    file: "/mp3/特别的人-方大同.mp3",
+  },
+  {
     name: "白鸽乌鸦相爱的戏码-潘成（皮卡潘）",
     author: "潘成(皮卡潘)",
     file: "/mp3/白鸽乌鸦相爱的戏码-潘成（皮卡潘）.mp3",

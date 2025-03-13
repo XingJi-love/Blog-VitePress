@@ -93,10 +93,9 @@ import MFriends from './home/MFriends.vue'
 
 :::
 
-
 <LoveTimer />
 
-
+<!--
 <Carousel :slides="[
   { image: 'https://i.p-i.vip/47/20241108-672d9051e725c.png', alt: '蛇姐' },
   { image: 'https://i.p-i.vip/47/20240920-66ed7ac062c15.jpg', alt: '蛇姐' },
@@ -109,3 +108,4 @@ import MFriends from './home/MFriends.vue'
 :interval="3000"
 :autoplay="true" 
 />
+-->

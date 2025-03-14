@@ -16,6 +16,11 @@ export default [
     text: "证书考试",
     items: [{ text: "软考中级", link: "/Exam/SDE/软考中级-软件设计师" }],
   },
-  { text: "测试", link: "/test" },
+  { 
+    text: "CS常识",
+    items: [
+      { text: "软件行业常识", link: "/CS/软件设计架构" }],
+  },
+  //{ text: "测试", link: "/test" },
   { text: "关于我", link: "/about" },
 ];

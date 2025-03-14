@@ -73,11 +73,11 @@ gitChangelog: false
 
 📕 &nbsp;**最新博客文章**
 <!-- BLOG-POST-LIST:START -->
-- [数据结构-绪论](https://xingji.fun/posts/20240907/)
-- [【JavaSE基础】Java概述-章节作业](https://xingji.fun/posts/18951/)
-- [【JavaSE基础】Java 基础知识](https://xingji.fun/posts/64063/)
-- [【JavaSE基础】Java 快速入门](https://xingji.fun/posts/9023/)
-- [【JavaSE基础】Java 语言概述](https://xingji.fun/posts/18950/)
+- [MySQL | DQL语句-条件查询](https://vite.xingji.fun/Notes/MySQL/DQL语句-条件查询.html)
+- [Git | 学习笔记（待更新）](https://vite.xingji.fun/Notes/Git/Git-学习笔记.html)
+- [软考中级 | 软件设计师](https://vite.xingji.fun/Exam/SDE/软考中级-软件设计师.html)
+- [Git | 相关命令](https://vite.xingji.fun/Notes/Git/Git-相关命令.html)
+- [Git | 使用及上传代码到仓库](https://vite.xingji.fun/Notes/Git/Git使用及上传代码到仓库.html)
 <!-- BLOG-POST-LIST:END -->
 
 ## 后端技术栈

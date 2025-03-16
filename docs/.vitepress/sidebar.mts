@@ -69,6 +69,18 @@ export default {
           text: "MySQL | DQL语句-条件查询",
           link: "/Notes/MySQL/DQL语句-条件查询",
         },
+        {
+          text: "MySQL | DQL语句-排序操作",
+          link: "/Notes/MySQL/DQL语句-排序操作",
+        },
+        {
+          text: "MySQL | DQL语句-distinct去重",
+          link: "/Notes/MySQL/DQL语句-distinct去重",
+        },
+        {
+          text: "MySQL | DQL语句-数据处理函数",
+          link: "/Notes/MySQL/DQL语句-数据处理函数",
+        },
       ],
     },
     {

@@ -14,9 +14,9 @@ import { inBrowser } from "vitepress";
 import busuanzi from "busuanzi.pure.js";
 import DataPanel from "./components/DataPanel.vue";
 
-import mediumZoom from "medium-zoom";
+//import mediumZoom from "medium-zoom";
 import { onMounted, watch, nextTick } from "vue";
-import { useRoute } from "vitepress";
+//import { useRoute } from "vitepress";
 
 import { NProgress } from "nprogress-v2/dist/index.js"; // 进度条组件
 import "nprogress-v2/dist/index.css"; // 进度条样式
@@ -49,6 +49,16 @@ import { enhanceAppWithTabs } from "vitepress-plugin-tabs/client"; // 代码块�
 import Carousel from "./components/Carousel.vue"; // 轮播图组件
 
 import LoveTimer from "./components/LoveTimer.vue"; // 爱情倒计时组件
+
+import 'viewerjs/dist/viewer.min.css'; // 图片预览插件
+import imageViewer from 'vitepress-plugin-image-viewer';
+import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
+import { useRoute } from 'vitepress';
+
+//代码块添加折叠功能
+/*import codeblocksFold from 'vitepress-plugin-codeblocks-fold'; // 导入方法
+import 'vitepress-plugin-codeblocks-fold/style/index.css'; // 导入样式
+*/
 
 // 彩虹背景动画样式
 let homePageStyle: HTMLStyleElement | undefined;
@@ -179,7 +189,17 @@ export default {
 
   setup() {
     // 图片缩放
-    const route = useRoute();
+    const route = useRoute();// 注册图片查看器组件
+    imageViewer(route); // 注册图片查看器组件
+
+    // 代码块折叠
+    /*const { frontmatter } = useData();
+    codeblocksFold({ route, frontmatter });
+    codeblocksFold({ route, frontmatter }, true, 400); // 代码块折叠，参数：是否默认折叠，默认折叠高度
+    */
+
+    // 图片缩放
+    /*const route = useRoute();
     const initZoom = () => {
       // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
       mediumZoom('.main img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
@@ -190,7 +210,7 @@ export default {
     watch(
       () => route.path,
       () => nextTick(() => initZoom())
-    );
+    );*/
 
     // giscus配置
     giscusTalk(
@@ -226,6 +246,7 @@ export default {
     app.component("MNavLinks", MNavLinks); // 注册自定义导航组件
     app.component("Carousel", Carousel); // 注册轮播图组件
     app.component("LoveTimer", LoveTimer); // 注册爱情倒计时组件
+    app.component('vImageViewer', vImageViewer); // 注册图片查看器组件
     enhanceAppWithTabs(app); // 注册多标签页插件
     app.use(NolebaseGitChangelogPlugin); // 注册更新日志插件
     app.component(

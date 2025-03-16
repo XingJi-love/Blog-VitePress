@@ -1,4 +1,4 @@
-# distinct去重
+# MySQL | DQL语句-distinct去重
 
 查询工作岗位
 

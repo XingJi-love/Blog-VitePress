@@ -27,6 +27,7 @@
     "@theojs/lumen": "^5.4.0",
     "axios": "^1.7.9",
     "oh-my-live2d": "^0.19.3",
+    "viewerjs": "^1.11.7",
     "vitepress-plugin-announcement": "^0.1.4",
     "vitepress-plugin-codeblocks-fold": "^1.2.35",
     "vitepress-plugin-image-viewer": "^1.1.6",

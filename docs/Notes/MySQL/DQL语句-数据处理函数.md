@@ -1,5 +1,7 @@
 # MySQL | DQL语句-数据处理函数
 
+![MySQL安装教程](./MySQL安装教程/MySQL.png)
+
 ---
 
 ```sql

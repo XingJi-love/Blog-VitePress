@@ -122,3 +122,48 @@ time {
 .VPSocialLinks.VPNavBarSocialLinks.social-links {
     margin-right: 0;
 }
+
+
+/* 自定义标题样式 - 仅在文档页面生效 */
+.VPDoc .vp-doc h1[id],
+.VPDoc .vp-doc h2[id],
+.VPDoc .vp-doc h3[id],
+.VPDoc .vp-doc h4[id],
+.VPDoc .vp-doc h5[id],
+.VPDoc .vp-doc h6[id] {
+    position: relative;
+    margin-top: 1rem; 
+    margin-bottom: 1rem;
+    font-weight: bold;
+    cursor: text;
+}
+
+.VPDoc .vp-doc h1[id] {
+  padding-bottom: 0.3em;
+  margin: 2.4em auto 1.2em;
+  font-size: 2em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.VPDoc .vp-doc h1[id]::after {
+  display: block;
+  width: 100px;
+  height: 2px;
+  margin: 0.2em auto 0;
+  content: "";
+  border-bottom: 2px dashed var(--vp-c-brand-1);
+}
+
+.VPDoc .vp-doc h2[id] {
+  margin: 2em 0 0.75em -0.5em;
+  padding: 0.3em;
+  font-weight: bold;
+  line-height: 0.8;
+  border: 1px dashed var(--vp-c-brand-2);
+  border-left: 4px solid var(--vp-c-brand-2);
+}
+
+.VPDoc .vp-doc h2[id] .header-anchor {
+  top: 6px;
+}

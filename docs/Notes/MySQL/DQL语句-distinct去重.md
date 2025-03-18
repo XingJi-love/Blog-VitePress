@@ -1,5 +1,7 @@
 # MySQL | DQL语句-distinct去重
 
+![MySQL安装教程](./MySQL安装教程/MySQL.png)
+
 查询工作岗位
 
 ```sql

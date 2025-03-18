@@ -58,6 +58,7 @@ export default defineConfig({
   },
 
   markdown: {
+    toc: {level: [1,2,3,4,5,6]}, //目录深度
     image: {
       lazyLoading: true, // 开启图片懒加载
     },

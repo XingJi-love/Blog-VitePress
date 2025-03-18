@@ -114,7 +114,7 @@
     "icon": "https://homulilly.com/images/avatar.jpg"
   },
   {
-    "title": "Jiawei’s Blog",
+    "title": "Jiawei's Blog",
     "desc": "念头通达",
     "link": "https://www.chujiaweicode.top",
     "icon": "https://www.chujiaweicode.top/static/favicons/site-logo.png"
@@ -166,5 +166,23 @@
     "desc": "但愿日子清静抬头遇见的满是柔情",
     "link": "https://blog.bsgun.cn",
     "icon": "https://oss-cdn.bsgun.cn/logo/avatar.256.png"
-  }
+  },
+  {
+    "title": "ToLiucyLinux",
+    "desc": "享运维人生,探技术奥秘。ToLiucyLinux,Linux学习优质指南,助你构筑知识体系。",
+    "link": "http://liuchenyang.top",
+    "icon": "http://liuchenyang.top/picture.jpg"
+  },
+  {
+    "title": "CodePedia",
+    "desc": "快速上手Java",
+    "link": "https://leocoder.cn",
+    "icon": "/CodePedia头像.png"
+  },
+  {
+    "title": "上冬十二",
+    "desc": "到最后，竟庆幸于夕阳仍留在身上",
+    "link": "https://oragekk.me",
+    "icon": "https://oragekk.me/logo.svg"
+  } 
 ]

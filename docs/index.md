@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "XINGJI"
-  text: "VitePress个人知识库"
+  text: "XINGJI个人知识库"
   tagline: 迄今所有人生都大写着失败，但不妨碍我继续向前✨
   image:
     src: https://wmimg.com/i/1236/2024/10/670117f551433.jpg # text 和 tagline 区域旁的图片 https://cdn-us.imgs.moe/2025/02/27/Grok-1_vEnhu3YcGH.png

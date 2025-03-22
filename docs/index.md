@@ -93,7 +93,7 @@ import MFriends from './home/MFriends.vue'
 
 :::
 
-<LoveTimer />
+<!-- <LoveTimer /> -->
 
 <!--
 <Carousel :slides="[

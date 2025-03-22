@@ -96,18 +96,54 @@ mysql> select upper(ename) as ename from emp;
 +--------+
 14 rows in set (0.03 sec)
 ```
-还有一个和upper函数功能相同的函数ucase，也可以转大写，了解一下即可：
+
+> 还有一个和`upper函数`功能相同的函数`ucase`，也可以`转大写`，了解一下即可：
+
 ```sql
 # 查询所有员工姓名，以大写形式展现
 select ucase(ename) as ename from emp;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566229563-55802f88-f6d6-436a-b478-18832d7a0342.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=534&id=uff6a6590&originHeight=534&originWidth=674&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23082&status=done&style=shadow&taskId=uface697c-6972-498a-86af-50b161e48cd&title=&width=674)
+
+```sql
+mysql> select ucase(ename) as ename from emp;
+
++--------+
+| ename  |
++--------+
+| SMITH  |
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| ADAMS  |
+| JAMES  |
+| FORD   |
+| MILLER |
++--------+
+14 rows in set (0.00 sec)
+```
+
 ```sql
 # 查询员工smith的岗位、薪资（假如你不知道数据库表中的人名是大写、小写还是大小写混合）
 select ename, job, sal from emp where upper(ename) = 'SMITH';
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566360054-6e77882a-21fc-4b6e-9a04-3e0098606db8.png#averageHue=%23100f0e&clientId=u005f32df-cdfa-4&from=paste&height=178&id=uf8993c00&originHeight=178&originWidth=982&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11947&status=done&style=shadow&taskId=u72025ccb-5725-4313-bf7b-3edebed799a&title=&width=982)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Myp3w&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+```sql
+mysql> select ename,job,sal from emp where upper(ename)='SMITH';
+
++-------+-------+--------+
+| ename | job   | sal    |
++-------+-------+--------+
+| SMITH | CLERK | 800.00 |
++-------+-------+--------+
+1 row in set (0.00 sec)
+```
+
 ### 转小写lower和lcase
 **很简单，不再赘述，直接上代码：**
 ```sql
@@ -115,26 +151,128 @@ select ename, job, sal from emp where upper(ename) = 'SMITH';
 select lower(ename) as ename from emp;
 select lcase(ename) as ename from emp;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566699289-0a479f71-ecf4-4a3f-ac4c-8516a4f0fee8.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=216&id=u0f889bef&originHeight=216&originWidth=646&originalType=binary&ratio=1&rotation=0&showTitle=false&size=9493&status=done&style=shadow&taskId=u5f16833e-e425-424b-a769-1761dd7023f&title=&width=646)
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668566716526-c8fac5f9-7079-4738-a3d1-2a5c3c5e1145.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=189&id=ue19b9b87&originHeight=189&originWidth=643&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8007&status=done&style=shadow&taskId=u7fc1e3dd-17d7-4f33-b8ed-b88901fb087&title=&width=643)
+
+```sql
+mysql> select lower(ename) as ename from emp;
+
++--------+
+| ename  |
++--------+
+| smith  |
+| allen  |
+| ward   |
+| jones  |
+| martin |
+| blake  |
+| clark  |
+| scott  |
+| king   |
+| turner |
+| adams  |
+| james  |
+| ford   |
+| miller |
++--------+
+14 rows in set (0.00 sec)
+```
+
+```sql
+mysql> select lcase(ename) as ename from emp;
+
++--------+
+| ename  |
++--------+
+| smith  |
+| allen  |
+| ward   |
+| jones  |
+| martin |
+| blake  |
+| clark  |
+| scott  |
+| king   |
+| turner |
+| adams  |
+| james  |
+| ford   |
+| miller |
++--------+
+14 rows in set (0.00 sec)
+```
+
 ### 截取字符串substr
-语法：substr('被截取的字符串', 起始下标, 截取长度)
-有两种写法：
-第一种：substr('被截取的字符串', 起始下标, 截取长度)
-第二种：substr('被截取的字符串', 起始下标)，当第三个参数“截取长度”缺失时，截取到字符串末尾
-注意：起始下标从1开始，不是从0开始。（1表示从左侧开始的第一个位置，-1表示从右侧开始的第一个位置。）
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668567142258-6748508c-c3bb-440f-8ad7-c64df6c0028d.png#averageHue=%23100f0e&clientId=u005f32df-cdfa-4&from=paste&height=648&id=u521d5ef0&originHeight=648&originWidth=664&originalType=binary&ratio=1&rotation=0&showTitle=false&size=35242&status=done&style=shadow&taskId=u50bb124d-9e6b-4c8a-b48c-76594e0ec3c&title=&width=664)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=xkp87&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-练习：找出员工名字中第二个字母是A的
+
+> **语法：`substr('被截取的字符串', 起始下标, 截取长度)`**
+
+>> 有两种写法：
+
+> 第一种：`substr('被截取的字符串', 起始下标, 截取长度)`
+
+> 第二种：`substr('被截取的字符串', 起始下标)`，当第三个参数“截取长度”缺失时，截取到字符串末尾
+
+> **注意：`起始下标从1开始，不是从0开始`。（`1`表示`从左侧开始的第一个位置`，`-1`表示`从右侧开始的第一个位置`。）**
+
+```sql
+mysql> select substr('abcdef',1,3);
+
++----------------------+
+| substr('abcdef',1,3) |
++----------------------+
+| abc                  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select substr('abcdef',2,3);
+
++----------------------+
+| substr('abcdef',2,3) |
++----------------------+
+| bcd                  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select substr('abcdef',2);
+
++--------------------+
+| substr('abcdef',2) |
++--------------------+
+| bcdef              |
++--------------------+
+1 row in set (0.00 sec)
+```
+
+> **`练习`：找出`员工名字`中`第二个字母是A`的**
+
 ```sql
 select ename from emp where substr(ename, 2, 1) = 'A';
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668567271612-710d3592-6111-4ab5-97c1-12f809ac7645.png#averageHue=%230f0e0d&clientId=u005f32df-cdfa-4&from=paste&height=254&id=u2313b4ee&originHeight=254&originWidth=854&originalType=binary&ratio=1&rotation=0&showTitle=false&size=14523&status=done&style=shadow&taskId=u8ae9b244-f6d3-441c-89d0-4466eaa73e4&title=&width=854)
+
+```sql
+mysql> select ename from emp where substr(ename,2,1) = 'A';
+
++--------+
+| ename  |
++--------+
+| WARD   |
+| MARTIN |
+| JAMES  |
++--------+
+3 rows in set (0.00 sec)
+```
+
 ### 获取字符串长度length
+
+```sql
+
+```
+
+ 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672736218451-70fddda1-2541-4c91-9f39-3f968a6b6e12.png#averageHue=%23100f0f&clientId=uc0e8c595-6b95-4&from=paste&height=167&id=u69789788&originHeight=167&originWidth=525&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7442&status=done&style=shadow&taskId=u39c20cea-67f3-49eb-9d8e-8c548360b72&title=&width=525)
 注意：一个汉字是2个长度。
+
 ### 获取字符的个数char_length
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672736125194-177317bd-f65c-4c05-bda7-f58961b78fd7.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=uKcvT&originHeight=168&originWidth=582&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8283&status=done&style=shadow&taskId=u2abebb18-4522-415a-bf80-859153252d1&title=&width=582)
+
 ### 字符串拼接
 语法：concat('字符串1', '字符串2', '字符串3'....)
 拼接的字符串数量没有限制。

@@ -262,138 +262,602 @@ mysql> select ename from emp where substr(ename,2,1) = 'A';
 
 ### 获取字符串长度length
 
-```sql
+> **`统计字节数`，而不是字符数。**
 
+```sql
+select length('你好123');
 ```
 
- 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672736218451-70fddda1-2541-4c91-9f39-3f968a6b6e12.png#averageHue=%23100f0f&clientId=uc0e8c595-6b95-4&from=paste&height=167&id=u69789788&originHeight=167&originWidth=525&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7442&status=done&style=shadow&taskId=u39c20cea-67f3-49eb-9d8e-8c548360b72&title=&width=525)
-注意：一个汉字是2个长度。
+```sql
+mysql> select length('你好123');
+
++-------------------+
+| length('你好123') |
++-------------------+
+|                 7 |
++-------------------+
+1 row in set (0.00 sec)
+```
+**注意：`一个汉字是2个长度`。**
 
 ### 获取字符的个数char_length
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672736125194-177317bd-f65c-4c05-bda7-f58961b78fd7.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=uKcvT&originHeight=168&originWidth=582&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8283&status=done&style=shadow&taskId=u2abebb18-4522-415a-bf80-859153252d1&title=&width=582)
+
+> **`统计字符数`，而不是字节数。**
+
+```sql
+select char_length('你好123');
+```
+
+```sql 
+mysql> select char_length('你好123');
+
++------------------------+
+| char_length('你好123') |
++------------------------+
+|                      5 |
++------------------------+
+1 row in set (0.00 sec)
+```
 
 ### 字符串拼接
-语法：concat('字符串1', '字符串2', '字符串3'....)
-拼接的字符串数量没有限制。
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668569810019-a8c939c4-518d-4ed9-961a-27d4440d13d0.png#averageHue=%2311100f&clientId=u005f32df-cdfa-4&from=paste&height=437&id=u00e5d696&originHeight=437&originWidth=860&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29849&status=done&style=shadow&taskId=ufbffbf88-a2ed-4341-a706-959748e2260&title=&width=860)
-注意：在mysql8之前，双竖线||也是可以完成字符串拼接的。但在mysql8之后，||只作为逻辑运算符，不能再进行字符串拼接了。
+
+> 语法：`concat('字符串1', '字符串2', '字符串3'....)`
+
+> 拼接的`字符串数量没有限制`。
+
+```sql
+select concat('abc', 'def', 'xyz');
+```
+
+```sql
+mysql> select concat('abc','def','xyz');
+
++---------------------------+
+| concat('abc','def','xyz') |
++---------------------------+
+| abcdefxyz                 |
++---------------------------+
+1 row in set (0.00 sec)
+```
+> 注意：在mysql8之前，双竖线||也是可以完成字符串拼接的。但在mysql8之后，`||只作为逻辑运算符`，**不能再进行字符串拼接了**。
+
 ```sql
 select 'abc' || 'def' || 'xyz';
 ```
-mysql8之后，|| 只作为“或者”运算符，例如：找出工资高于3000或者低于900的员工姓名和薪资：
+> mysql8之后，`|| 只作为“或者”运算符`，例如：找出`工资高于3000或者低于900`的`员工姓名和薪资`：
+
 ```sql
 select ename, sal from emp where sal > 3000 || sal < 900;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669780282134-d3a16d8a-e0fc-4744-beff-83b3579f6161.png#averageHue=%230f0f0e&clientId=u6210fc1e-5e54-4&from=paste&height=196&id=uc7e77230&originHeight=196&originWidth=950&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11249&status=done&style=shadow&taskId=u19693054-9222-4df2-899e-3ed69a01a71&title=&width=950)
-mysql中可以使用+进行字符串的拼接吗？不可以，在mysql中+只作加法运算，在进行加法运算时，会将加号两边的数据尽最大的努力转换成数字再求和，如果无法转换成数字，最终运算结果通通是0
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=r5hjr&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+```sql
+mysql> select ename,sal from emp where sal > 3000 || sal < 900;
+
++-------+---------+
+| ename | sal     |
++-------+---------+
+| SMITH |  800.00 |
+| KING  | 5000.00 |
++-------+---------+
+2 rows in set, 1 warning (0.00 sec)
+```
+> **mysql中可以使用+进行字符串的拼接吗？**`不可以`，在mysql中+只作加法运算，在进行加法运算时，会将加号两边的数据尽最大的努力转换成数字再求和，如果无法转换成数字，最终运算结果通通是0
+
+
 ### 去除字符串前后空白trim
+
 ```sql
 select concat(trim('    abc    '), 'def');
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570023583-bcf0b431-c34c-486b-9ee0-e571ff3c158d.png#averageHue=%2310100f&clientId=u005f32df-cdfa-4&from=paste&height=204&id=u800e8929&originHeight=204&originWidth=715&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12536&status=done&style=shadow&taskId=uc6e946c5-bd11-4f08-83a5-34b7d5e1a78&title=&width=715)
-默认是去除前后空白，也可以去除指定的前缀后缀，例如：
-去除前置0
+
+```sql
+mysql> select concat(trim('    abc    '), 'def');
+
++------------------------------------+
+| concat(trim('    abc    '), 'def') |
++------------------------------------+
+| abcdef                             |
++------------------------------------+
+1 row in set (0.00 sec)
+```
+> **默认是`去除前后空白`，也可以`去除指定的前缀后缀`**，例如：
+
+>> **去除前置0**
+
 ```sql
 select trim(leading '0' from '000111000');
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570194415-8f78ced1-8f36-42d3-a829-b81fc4132c85.png#averageHue=%23121110&clientId=u005f32df-cdfa-4&from=paste&height=214&id=u54da0ae5&originHeight=214&originWidth=706&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12307&status=done&style=shadow&taskId=u4bd5c984-5076-4b41-936e-2cb2934e2a0&title=&width=706)
-去除后置0
+
+```sql
+mysql> select trim(leading '0' from '000111000');
+
++------------------------------------+
+| trim(leading '0' from '000111000') |
++------------------------------------+
+| 111000                             |
++------------------------------------+
+1 row in set (0.00 sec)
+```
+
+>> **去除后置0**
+
 ```sql
 select trim(trailing '0' from '000111000');
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570218215-c862c7d8-1ee3-4066-8e25-055767efee61.png#averageHue=%2312100f&clientId=u005f32df-cdfa-4&from=paste&height=207&id=ud1b70c2d&originHeight=207&originWidth=704&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11888&status=done&style=shadow&taskId=u3680db7d-b909-4cfe-8636-aef9213b9cb&title=&width=704)
-前置0和后置0全部去除
+
+```sql
+mysql> select trim(trailing '0' from '000111000');
+
++-------------------------------------+
+| trim(trailing '0' from '000111000') |
++-------------------------------------+
+| 000111                              |
++-------------------------------------+
+1 row in set (0.00 sec)
+```
+
+>> **前置0和后置0全部去除**
+
 ```sql
 select trim(both '0' from '000111000');
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1668570238062-dff388d3-3106-457d-a9ae-819f41821792.png#averageHue=%2311100f&clientId=u005f32df-cdfa-4&from=paste&height=203&id=uca889e8f&originHeight=203&originWidth=678&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10559&status=done&style=shadow&taskId=u39829e4b-560a-42a1-b27c-315e566e9ae&title=&width=678)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=EDgfQ&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+```sql
+mysql> select trim(trailing '0' from '000111000');
+
++-------------------------------------+
+| trim(trailing '0' from '000111000') |
++-------------------------------------+
+| 000111                              |
++-------------------------------------+
+1 row in set (0.00 sec)
+```
+
 ## 数字相关
+
 ### rand()和rand(x)
-rand()生成0到1的随机浮点数。
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669797997130-63b2c8d0-6169-4ee8-9b6b-c3087e9d733b.png#averageHue=%2311100f&clientId=u57006619-2538-4&from=paste&height=432&id=uc1af8ae1&originHeight=432&originWidth=488&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21196&status=done&style=shadow&taskId=uf2b4c16d-fc16-42a5-91c6-c840e24096b&title=&width=488)
-rand(x)生成0到1的随机浮点数，通过指定整数x来确定每次获取到相同的浮点值。
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798044104-7fc0b727-ff91-4d3e-be33-9954d556afe2.png#averageHue=%23121110&clientId=u57006619-2538-4&from=paste&height=431&id=uddf41de3&originHeight=431&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23014&status=done&style=shadow&taskId=uc8b8c1f9-b44d-4886-8442-9c6d0e0beb7&title=&width=404)
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798069147-75492782-759d-46d9-84c5-a83b3a63594c.png#averageHue=%23121110&clientId=u57006619-2538-4&from=paste&height=431&id=ud22d346e&originHeight=431&originWidth=417&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21817&status=done&style=shadow&taskId=u01cf1b31-7d8b-4bc0-8eba-573138f7c49&title=&width=417)
+
+> rand()生成`0到1的随机浮点数`。
+
+```sql
+mysql> select rand();
+
++--------------------+
+| rand()             |
++--------------------+
+| 0.4465609550909707 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select rand();
+
++--------------------+
+| rand()             |
++--------------------+
+| 0.3695505944728391 |
++--------------------+
+1 row in set (0.00 sec)
+```
+
+> rand(x)生成`0到1的随机浮点数`，通过`指定整数x`来确定每次获取到`相同的浮点值`。
+
+```sql
+mysql> select rand(2);
++--------------------+
+| rand(2)            |
++--------------------+
+| 0.6555866465490187 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select rand(2);
++--------------------+
+| rand(2)            |
++--------------------+
+| 0.6555866465490187 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select rand(5);
++---------------------+
+| rand(5)             |
++---------------------+
+| 0.40613597483014313 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select rand(5);
++---------------------+
+| rand(5)             |
++---------------------+
+| 0.40613597483014313 |
++---------------------+
+1 row in set (0.00 sec)
+```
+
+
 ### round(x)和round(x,y)四舍五入
-round(x) 四舍五入，保留整数位，舍去所有小数
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798450055-e26955bd-ea2d-445a-be98-721b54d3ca35.png#averageHue=%2311100f&clientId=u57006619-2538-4&from=paste&height=427&id=u633ac709&originHeight=427&originWidth=438&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19800&status=done&style=shadow&taskId=u5ae99c90-04bd-47b9-9338-3be2146f355&title=&width=438)
-round(x,y) 四舍五入，保留y位小数
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798534269-9c494800-7878-4ccf-bacc-a8c4cdafbbe6.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=656&id=ub44adc1f&originHeight=656&originWidth=467&originalType=binary&ratio=1&rotation=0&showTitle=false&size=30665&status=done&style=shadow&taskId=u06d2a339-d070-4c04-9d62-a6ca361ad3c&title=&width=467)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=lpAuL&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+> round(x) `四舍五入`，`保留整数位，舍去所有小数`
+
+```sql
+mysql> select round(9.754);
++--------------+
+| round(9.754) |
++--------------+
+|           10 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select round(9.454);
++--------------+
+| round(9.454) |
++--------------+
+|            9 |
++--------------+
+1 row in set (0.00 sec)
+```
+
+> round(x,y) `四舍五入`，`保留y位小数`
+
+```sql
+mysql> select round(9.454,1);
++----------------+
+| round(9.454,1) |
++----------------+
+|            9.5 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select round(9.454,0);
++----------------+
+| round(9.454,0) |
++----------------+
+|              9 |
++----------------+
+1 row in set (0.00 sec)
+```
+
+
 ### truncate(x, y)舍去
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798594158-7e51e7a5-27af-4f7f-8021-a751f425a316.png#averageHue=%2311100f&clientId=u57006619-2538-4&from=paste&height=220&id=u7586a0cc&originHeight=220&originWidth=492&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10521&status=done&style=shadow&taskId=u4aea8b0c-2612-4b7c-af22-e5b68687b80&title=&width=492)
-以上SQL表示保留两位小数，剩下的全部舍去。
+
+```sql
+mysql> select truncate(9.999,2);
++-------------------+
+| truncate(9.999,2) |
++-------------------+
+|              9.99 |
++-------------------+
+1 row in set (0.00 sec)
+```
+> 以上SQL表示`保留两位小数`，剩下的`全部舍去`。
+
 ### ceil与floor
-数字处理函数除了以上的之外，还有ceil和floor函数：
 
-- ceil函数：返回大于或等于数值x的最小整数
-- floor函数：返回小于或等于数值x的最大整数
+> **数字处理函数除了以上的之外，还有ceil和floor函数**：
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672735932932-f0dfc7de-1f77-4eb0-b6e9-b6c6c2ce7ae3.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=433&id=ua803b791&originHeight=433&originWidth=402&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13778&status=done&style=shadow&taskId=uf4127f6b-bfd8-454a-8aa8-2e1fec9edab&title=&width=402)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=HydiS&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+>> ceil(x) `向上取整`，`返回大于或等于x的最小整数`。
+
+>> floor(x) `向下取整`，`返回小于或等于x的最大整数`。
+
+```sql
+mysql> select ceil(5.3);
++-----------+
+| ceil(5.3) |
++-----------+
+|         6 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select floor(5.3);
++------------+
+| floor(5.3) |
++------------+
+|          5 |
++------------+
+1 row in set (0.00 sec)
+```
+
+
 ## 空处理
-ifnull(x, y)，空处理函数，当x为NULL时，将x当做y处理。
-ifnull(comm, 0)，表示如果员工的津贴是NULL时当做0处理。
-在SQL语句中，凡是有NULL参与的数学运算，最终的计算结果都是NULL：
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798864111-5cffd59f-d15c-4f6c-a2d8-0b623ec1f16c.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=658&id=ue1cf6783&originHeight=658&originWidth=408&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23225&status=done&style=shadow&taskId=ua42e9e3c-fa93-4f6c-979d-d5444c21108&title=&width=408)
-看这样一个需求：查询每个员工的年薪。（年薪 = (月薪 + 津贴) * 12个月。注意：有的员工津贴comm是NULL。）
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669798945415-90bccaa6-1dda-4ebd-bc50-63ab5ba2b89a.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=573&id=u514525d4&originHeight=573&originWidth=850&originalType=binary&ratio=1&rotation=0&showTitle=false&size=36066&status=done&style=shadow&taskId=ubb59ae71-c22d-456f-85bf-df0182998af&title=&width=850)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=qqGmB&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-以上查询结果中显示SMITH等人的年薪是NULL，这是为什么，这是因为SMITH等人的津贴comm是NULL，有NULL参与的数学运算，最终结果都是NULL，显然这个需要空处理，此时就用到了ifnull函数：
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1669799067232-4896fa47-5c64-409a-b970-dddc31e06050.png#averageHue=%23100f0e&clientId=u57006619-2538-4&from=paste&height=573&id=u59b02703&originHeight=573&originWidth=982&originalType=binary&ratio=1&rotation=0&showTitle=false&size=42887&status=done&style=shadow&taskId=u063b2776-3482-4b4f-888c-3623426b77b&title=&width=982)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=X7H0g&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+> **`ifnull(x, y)`，空处理函数，`当x为NULL`时，将`x当做y处理`。**
+
+> **`ifnull(comm, 0)`，表示如果`员工的津贴是NULL时当做0处理`。**
+
+>> **在SQL语句中，`凡是有NULL参与`的数学运算，最终的`计算结果都是NULL`**：
+
+```sql
+mysql> select null + 1;
++----------+
+| null + 1 |
++----------+
+|     NULL |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select null * 10;
++-----------+
+| null * 10 |
++-----------+
+|      NULL |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select null * 0;
++----------+
+| null * 0 |
++----------+
+|     NULL |
++----------+
+1 row in set (0.00 sec)
+```
+
+>> **看这样一个需求：`查询每个员工的年薪`。`（年薪 = (月薪 + 津贴) * 12个月`。注意：`有的员工津贴comm是NULL`。）**
+
+```sql
+mysql> select ename,(sal + comm) * 12 as yearsal from emp;
+
++--------+----------+
+| ename  | yearsal  |
++--------+----------+
+| SMITH  |     NULL |
+| ALLEN  | 22800.00 |
+| WARD   | 21000.00 |
+| JONES  |     NULL |
+| MARTIN | 31800.00 |
+| BLAKE  |     NULL |
+| CLARK  |     NULL |
+| SCOTT  |     NULL |
+| KING   |     NULL |
+| TURNER | 18000.00 |
+| ADAMS  |     NULL |
+| JAMES  |     NULL |
+| FORD   |     NULL |
+| MILLER |     NULL |
++--------+----------+
+14 rows in set (0.00 sec)
+```
+
+>> 以上查询结果中显示`SMITH等人的年薪是NULL`，这是为什么，这是因为`SMITH等人的津贴comm是NULL`，有`NULL参与的数学运算`，最终`结果都是NULL`，显然这个`需要空处理`，此时就用到了`ifnull函数`：
+
+```sql
+mysql> select ename,(sal + ifnull(comm, 0)) * 12 as yearsal from emp;
+
++--------+----------+
+| ename  | yearsal  |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 22800.00 |
+| WARD   | 21000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 31800.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.00 sec)
+```
+
 ## 日期和时间相关函数
+
 ### 获取当前日期和时间
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707310711-3115e4af-385c-4565-89c7-25bad76e8a6a.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=162&id=uc379723b&originHeight=162&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7211&status=done&style=shadow&taskId=uedf1c447-2a71-4f9a-9f96-98b9f249622&title=&width=404)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707382021-d8d296b7-9d9a-4072-b714-c99da604ac12.png#averageHue=%23151312&clientId=uc0e8c595-6b95-4&from=paste&height=163&id=ua9b22a07&originHeight=163&originWidth=377&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8104&status=done&style=shadow&taskId=u0aa13932-ae31-46ba-94b7-f5cee861153&title=&width=377)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707469394-4fe3f0fb-ca9e-4484-b939-db716f6ddd38.png#averageHue=%23131211&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=ue97dcb2c&originHeight=168&originWidth=801&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12054&status=done&style=shadow&taskId=uf047d345-596d-4f3c-a996-3d1f6850219&title=&width=801)
-now()和sysdate()的区别：
 
-- now()：获取的是执行select语句的时刻。
-- sysdate()：获取的是执行sysdate()函数的时刻。
+```sql
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2025-03-22 17:56:34 |
++---------------------+
+1 row in set (0.00 sec)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=l9noP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2025-03-22 17:56:38 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now(), sleep(2), sysdate();
++---------------------+----------+---------------------+
+| now()               | sleep(2) | sysdate()           |
++---------------------+----------+---------------------+
+| 2025-03-22 17:57:14 |        0 | 2025-03-22 17:57:16 |
++---------------------+----------+---------------------+
+1 row in set (2.00 sec)
+```
+> **注意：`now()`和`sysdate()`的区别**：
+
+- now()：获取的是`执行select语句的时刻`。
+- sysdate()：获取的是`执行sysdate()函数的时刻`。
+
+
 ### 获取当前日期
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707770762-e9723219-562f-4a53-9d8a-9055ee80c25d.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=543&id=ufc58343c&originHeight=655&originWidth=440&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29141&status=done&style=shadow&taskId=u707d5711-bda8-4f35-89c5-f39da3e879f&title=&width=365)
-获取当前日期有三种写法，掌握任意一种即可：
+
+```sql
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2025-03-22 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2025-03-22     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2025-03-22   |
++--------------+
+1 row in set (0.00 sec)
+```
+> 获取当前日期有三种写法，掌握任意一种即可：
 
 - curdate()
 - current_date()
 - current_date
+
 ### 获取当前时间
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672707856778-8eec2322-c3c8-4ddc-94c4-3e08eea430a8.png#averageHue=%23121010&clientId=uc0e8c595-6b95-4&from=paste&height=653&id=u57a306e4&originHeight=653&originWidth=430&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28651&status=done&style=shadow&taskId=ua03065f0-48bc-43c2-ae47-b77fab8249f&title=&width=430)
-获取档期时间有三种写法，掌握其中一种即可：
+
+```sql
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 18:16:27  |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 18:16:52       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time;
++--------------+
+| current_time |
++--------------+
+| 18:16:57     |
++--------------+
+1 row in set (0.00 sec)
+```
+> 获取档期时间有三种写法，掌握其中一种即可：
 
 - curtime()
 - current_time()
 - current_time
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=CDxHw&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 ### 获取单独的年、月、日、时、分、秒
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672708190559-a1d93032-699d-49dc-87cc-4ccb045bee28.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=651&id=u5badb85c&originHeight=651&originWidth=456&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28555&status=done&style=shadow&taskId=u742f8377-b4d8-44e9-950d-da020890e07&title=&width=456)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672708242288-89a20209-4ca2-4d1c-a1b0-5ad5f1179841.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=653&id=u7cfcb11b&originHeight=653&originWidth=483&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28868&status=done&style=shadow&taskId=u43769b4b-00e8-4dfb-a085-19858d725f1&title=&width=483)
-注意：这些函数在使用的时候，需要传递一个日期参数给它，它可以获取到你给定的这个日期相关的年、月、日、时、分、秒的信息。
-一次性提取一个给定日期的“年月日”部分，可以使用date()函数，例如：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672713926559-d9c4257b-3536-4124-b4f4-3fd3626a293e.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=u161f961c&originHeight=168&originWidth=438&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7552&status=done&style=shadow&taskId=ub9643e54-a1b4-424f-a2d7-e15c7538b83&title=&width=438)
-一次性提取一个给定日期的“时分秒”部分，可以使用time()函数，例如：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672721340191-9c568184-73b5-4c26-9035-95245016ba4f.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=161&id=u0bb5bc88&originHeight=161&originWidth=428&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7598&status=done&style=shadow&taskId=u09037fc7-e074-481b-bf6a-ccc8fc49cf6&title=&width=428)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=JhMuY&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+```sql
+mysql> select year(now());
++-------------+
+| year(now()) |
++-------------+
+|        2025 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select month(now());
++--------------+
+| month(now()) |
++--------------+
+|            3 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> select day(now());
++------------+
+| day(now()) |
++------------+
+|         22 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select hour(now());
++-------------+
+| hour(now()) |
++-------------+
+|          18 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select minute(now());
++---------------+
+| minute(now()) |
++---------------+
+|            20 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select second(now());
++---------------+
+| second(now()) |
++---------------+
+|            44 |
++---------------+
+1 row in set (0.00 sec)
+```
+> 注意：这些函数在使用的时候，需要传递一个日期参数给它，它可以获取到你给定的这个`日期相关的年、月、日、时、分、秒的信息`。
+
+>> 一次性提取一个`给定日期的“年月日”部分`，可以使用`date()函数`，例如：
+
+```sql
+mysql> select date(now());
++-------------+
+| date(now()) |
++-------------+
+| 2025-03-22  |
++-------------+
+1 row in set (0.00 sec)
+```
+
+>> 一次性提取一个`给定日期的“时分秒”部分`，可以使用`time()函数`，例如：
+
+```sql
+mysql> select time(now());
++-------------+
+| time(now()) |
++-------------+
+| 18:28:01    |
++-------------+
+1 row in set (0.00 sec)
+```
+
+
 ### date_add函数
-date_add函数的作用：给指定的日期添加间隔的时间，从而得到一个新的日期。
-date_add函数的语法格式：date_add(日期, interval expr 单位)，例如：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672709352877-e64de4c0-d776-4e30-908b-4a96c04bc186.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=174&id=ub79687f8&originHeight=174&originWidth=771&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11929&status=done&style=shadow&taskId=u79db77b4-bf0f-41ee-91ba-e6e48424d32&title=&width=771)
-以'2023-01-03'为基准，间隔3天之后的日期：'2023-01-06'
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672709436259-c6d671c6-ccc8-4109-9612-1f178801ef64.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=171&id=ub0dc1d88&originHeight=171&originWidth=778&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11798&status=done&style=shadow&taskId=u06a7162d-aafa-4469-8f12-d3ea81c1f63&title=&width=778)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=flAzu&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-以'2023-01-03'为基准，间隔3个月之后的日期：'2023-04-03'
+
+> `date_add函数的作用`：给指定的`日期添加间隔的时间`，从而得到一个`新的日期`。
+
+>> date_add函数的语法格式：`date_add(日期, interval expr 单位)`，例如：
+
+>> 以'2025-3-22'为基准，间隔3天之后的日期：'2025-3-25'
+
+```sql
+mysql> select date_add('2025-3-22', interval 3 day);
++---------------------------------------+
+| date_add('2025-3-22', interval 3 day) |
++---------------------------------------+
+| 2025-03-25                            |
++---------------------------------------+
+1 row in set (0.00 sec)
+```
+
+>> 以'2025-03-22'为基准，间隔3个月之后的日期：'2025-06-22'
 详细解释一下这个函数的相关参数：
 
-- 日期：一个日期类型的数据
-- interval：关键字，翻译为“间隔”，固定写法
-- expr：指定具体的间隔量，一般是一个数字。**也可以为负数，如果为负数，效果和date_sub函数相同**。
+```sql
+mysql> select date_add('2025-3-22', interval 3 month);
++-----------------------------------------+
+| date_add('2025-3-22', interval 3 month) |
++-----------------------------------------+
+| 2025-06-22                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+```
+- `日期`：一个`日期类型`的数据
+- `interval`：`关键字`，翻译为`“间隔”`，固定写法
+- `expr`：指定`具体的间隔量`，一般是`一个数字`。**也可以为`负数`，如果为`负数`，效果和`date_sub函数相同`**。
 - 单位：
    - year：年
    - month：月
@@ -405,12 +869,34 @@ date_add函数的语法格式：date_add(日期, interval expr 单位)，例如�
    - week：周
    - quarter：季度
 
-请分析下面这条SQL语句所表达的含义：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672710673500-8afb96ad-3aa5-4adb-9160-9aaac4b4ff83.png#averageHue=%23131211&clientId=uc0e8c595-6b95-4&from=paste&height=162&id=u455ecd04&originHeight=162&originWidth=1036&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12957&status=done&style=shadow&taskId=u3148a05b-3fbe-432e-8492-373fde1d2db&title=&width=1036)
-以上SQL表示：以2022-10-01 10:10:10为基准，在这个时间基础上添加-1微秒，也就是减去1微秒。
-以上SQL也可以采用date_sub函数完成，例如：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672710799157-9775a5b0-143f-493b-a6f0-cd8db5c6ca31.png#averageHue=%23131211&clientId=uc0e8c595-6b95-4&from=paste&height=159&id=u70af0451&originHeight=159&originWidth=990&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13185&status=done&style=shadow&taskId=u7bf2be69-c836-4951-bd99-69c09f553ec&title=&width=990)
-另外，单位也可以采用复合型单位，例如：
+> 请分析下面这条SQL语句所表达的含义：
+
+```sql
+mysql> select date_add('2025-3-22 19:16:16', interval -1 microsecond);
+
++---------------------------------------------------------+
+| date_add('2025-3-22 19:16:16', interval -1 microsecond) |
++---------------------------------------------------------+
+| 2025-03-22 19:16:15.999999                              |
++---------------------------------------------------------+
+1 row in set (0.00 sec)
+```
+>> 以上SQL表示：`以2025-3-22 19:16:16为基准`，在这个`时间基础上添加-1微秒`，也就是`减去1微秒`。
+
+> 以上SQL也可以`采用date_sub函数`完成，例如：
+
+```sql
+mysql> select date_sub('2025-3-22 19:16:16', interval 1 microsecond);
+
++--------------------------------------------------------+
+| date_sub('2025-3-22 19:16:16', interval 1 microsecond) |
++--------------------------------------------------------+
+| 2025-03-22 19:16:15.999999                             |
++--------------------------------------------------------+
+1 row in set (0.00 sec)
+```
+
+> 另外，`单位也可以采用复合型单位`，例如：
 
 - SECOND_MICROSECOND
 - MINUTE_MICROSECOND
@@ -424,18 +910,31 @@ date_add函数的语法格式：date_add(日期, interval expr 单位)，例如�
 - DAY_HOUR：几天几小时之后
 - YEAR_MONTH：几年几个月之后
 
-如果单位采用复合型的话，expr该怎么写呢？例如单位采用：day_hour，假设我要表示3天2小时之后，怎么写？
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672711325140-0a281589-4bc2-4fc8-bd7f-9a5ff180ba71.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=171&id=u186c11d0&originHeight=171&originWidth=1009&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13317&status=done&style=shadow&taskId=u2827b5bf-37d2-486f-9db8-fa8b15ce510&title=&width=1009)
-'3,2'这个应该很好理解，表示3天2个小时之后。'3,2'和day_hour是对应的。
+>> 如果`单位采用复合型`的话，expr该怎么写呢？例如单位采用：`day_hour`，假设我要`表示3天2小时之后`，怎么写？
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=BfJl7&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+```sql
+mysql> select date_add('2025-3-22 19:16:16', interval '3,2' day_hour);
+
++---------------------------------------------------------+
+| date_add('2025-3-22 19:16:16', interval '3,2' day_hour) |
++---------------------------------------------------------+
+| 2025-03-25 21:16:16                                     |
++---------------------------------------------------------+
+1 row in set (0.00 sec)
+```
+> `'3,2'`这个应该很好理解，表示`3天2个小时之后`。`'3,2'`和`day_hour`是对应的。
+
+
 ### date_format日期格式化函数
-将日期转换成具有某种格式的日期字符串，通常用在查询操作当中。（date类型转换成char类型）
-语法格式：date_format(日期, '日期格式')
-该函数有两个参数：
 
-- 第一个参数：日期。这个参数就是即将要被格式化的日期。类型是date类型。
-- 第二个参数：指定要格式化的格式字符串。
+**将`日期`转换成`具有某种格式的日期字符串`，通常用在查询操作当中。（`date类型`转换成`char类型`）**
+
+> 语法格式：`date_format(日期, '日期格式')`
+
+>> 该函数有两个参数：
+
+- 第一个参数：`日期`。这个参数就是`即将要被格式化的日期`。类型是`date类型`。
+- 第二个参数：指定要`格式化的格式字符串`。
    - %Y：四位年份
    - %y：两位年份
    - %m：月份（1..12）
@@ -444,14 +943,37 @@ date_add函数的语法格式：date_add(日期, interval expr 单位)，例如�
    - %i：分（0..59）
    - %s：秒（0..59）
 
-例如：获取当前系统时间，让其以这个格式展示：2000-10-11 20:15:30
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672716928881-badddb77-c670-43f3-8b25-8e2eb4952a04.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=uf1769116&originHeight=168&originWidth=790&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12687&status=done&style=shadow&taskId=u0936983e-6c2d-4e0f-96a9-905426534b9&title=&width=790)
-注意：在mysql当中，默认的日期格式就是：%Y-%m-%d %H:%i:%s，所以当你直接输出日期数据的时候，会自动转换成该格式的字符串：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672717081322-e99bdff0-76df-4fcc-958a-463bf9e65d9d.png#averageHue=%23131110&clientId=uc0e8c595-6b95-4&from=paste&height=164&id=udf0a9e15&originHeight=164&originWidth=369&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7005&status=done&style=shadow&taskId=ua8a7ba31-3b81-427d-8a55-a8a84114389&title=&width=369)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=AePyP&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> 例如：获取当前系统时间，让其以这个格式展示：2025-03-22 19:36:58
+
+```sql
+mysql> select date_format(now(), '%Y-%m-%d %H:%i:%s');
+
++-----------------------------------------+
+| date_format(now(), '%Y-%m-%d %H:%i:%s') |
++-----------------------------------------+
+| 2025-03-22 19:36:58                     |
++-----------------------------------------+
+```
+
+> 注意：在mysql当中，默认的日期格式就是：`%Y-%m-%d %H:%i:%s`，所以当你`直接输出日期数据`的时候，会`自动转换成该格式的字符串`：
+
+```sql
+mysql> select now();
+
++---------------------+
+| now()               |
++---------------------+
+| 2025-03-22 19:41:19 |
++---------------------+
+1 row in set (0.00 sec)
+```
+
 ### str_to_date函数
-该函数的作用是将char类型的日期字符串转换成日期类型date，通常使用在插入和修改操作当中。（char类型转换成date类型）
-假设有一个学生表t_student，学生有一个生日的字段，类型是date类型：
+
+***该函数的作用是`将char类型`的日期字符串转换成`日期类型date`，通常使用在`插入和修改`操作当中。（`char类型转换成date类型`）**
+
+> 假设有一个`学生表t_student`，学生有一个`生日的字段`，类型是`date类型`：
+
 ```sql
 drop table if exists t_student;
 create table t_student(

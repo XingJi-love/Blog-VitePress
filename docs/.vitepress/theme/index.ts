@@ -70,6 +70,11 @@ const playlist = [
     file: "/mp3/That Girl-Olly Murs.mp3",
   },
   {
+    name: "我愿 (变速版)-阿虾",
+    author: "阿虾",
+    file: "/mp3/我愿 (变速版)-阿虾.mp3",
+  },
+  {
     name: "我怀念的-孙燕姿",
     author: "孙燕姿",
     file: "/mp3/我怀念的-孙燕姿.mp3",

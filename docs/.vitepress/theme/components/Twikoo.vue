@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vitepress'
 
-const envId = 'https://twikoo.xingji.fun'
+const envId = 'https://twikoohzb.netlify.app'
 const twikooJs = ref(null)
 const router = useRouter()
 

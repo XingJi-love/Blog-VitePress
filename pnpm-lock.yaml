@@ -17,6 +17,9 @@ importers:
       oh-my-live2d:
         specifier: ^0.19.3
         version: 0.19.3
+      twikoo:
+        specifier: ^1.6.41
+        version: 1.6.41
       viewerjs:
         specifier: ^1.11.7
         version: 1.11.7

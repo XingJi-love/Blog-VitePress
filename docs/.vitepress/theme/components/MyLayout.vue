@@ -6,6 +6,8 @@ import { nextTick, provide } from 'vue'
 
 import backtotop from "./backtotop.vue"
 
+import Twikoo from './Twikoo.vue' // 引入 Twikoo 组件
+
 const { isDark } = useData()
 
 const enableTransitions = () => "startViewTransition" in document && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
@@ -55,6 +57,11 @@ document.documentElement.animate(
         <template #layout-top>
             <NolebaseHighlightTargetedHeading />
         </template>
+
+        <!-- 引入 Twikoo 组件 -->
+        <template #doc-after>
+          <Twikoo></Twikoo>
+        </template>
     </DefaultTheme.Layout>
 </template>
 
@@ -78,5 +85,11 @@ document.documentElement.animate(
 /* 修正因视图过渡导致的按钮图标偏移 */
 .check .icon {
     top: -2px;
+}
+
+/* 修正 Twikoo 组件的样式 */
+.twikoo .el-loading-spinner .circular {
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

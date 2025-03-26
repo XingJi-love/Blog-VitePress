@@ -124,7 +124,7 @@ time {
 }
 
 
-/* 自定义标题样式 - 仅在文档页面生效 */
+/* 自定义标题样式 - 仅在文档页面生效 
 .VPDoc .vp-doc h1[id],
 .VPDoc .vp-doc h2[id],
 .VPDoc .vp-doc h3[id],
@@ -166,4 +166,4 @@ time {
 
 .VPDoc .vp-doc h2[id] .header-anchor {
   top: 6px;
-}
+}*/

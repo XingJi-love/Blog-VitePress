@@ -982,54 +982,260 @@ create table t_student(
 );
 desc t_student;
 ```
-我们要给这个表插入一条数据：姓名zhangsan，生日85年10月1日，执行以下insert语句：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672718111465-698c085a-b3f1-4523-9f3f-d27ceb4410d5.png#averageHue=%231b1815&clientId=uc0e8c595-6b95-4&from=paste&height=59&id=u816b6342&originHeight=59&originWidth=1163&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13327&status=done&style=shadow&taskId=u25e9289a-7274-49fc-9db5-e54cc764c7d&title=&width=1163)
-错误原因：日期值不正确。意思是：birth字段需要一个日期，你给的这个字符串'10/01/1985'我识别不了。这种情况下，我们就可以使用str_to_date函数进行类型转换：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672718492868-58ab55ff-a4e7-481f-9c58-9c81014d1762.png#averageHue=%2315100f&clientId=uc0e8c595-6b95-4&from=paste&height=83&id=u3cdb0924&originHeight=83&originWidth=1379&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12797&status=done&style=shadow&taskId=u619f99b1-3107-44e6-8738-542c8b9aaf8&title=&width=1379)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672718610506-ec24a44e-7854-4037-8567-b42dfb9228c0.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=159&id=uf93570e5&originHeight=159&originWidth=533&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8550&status=done&style=shadow&taskId=ua5be6705-7bc3-46b4-9922-15d9020df6e&title=&width=533)
-当然，如果你提供的日期字符串格式能够被mysql解析，str_to_date函数是可以省略的，底层会自动调用该函数进行类型转换：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672718807175-8b62c13a-e771-482d-a999-7548501da25e.png#averageHue=%23110f0e&clientId=uc0e8c595-6b95-4&from=paste&height=625&id=u14b85262&originHeight=625&originWidth=1088&originalType=binary&ratio=1&rotation=0&showTitle=false&size=66015&status=done&style=shadow&taskId=uae019b86-851f-4348-962a-a15199adc0f&title=&width=1088)
-如果日期格式符合以上的几种格式，mysql都会自动进行类型转换的。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=qPxdF&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### dayofweek、dayofmonth、dayofyear函数
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672719401783-7ea51704-954a-4f96-aa81-3a8da4b34582.png#averageHue=%23110f0e&clientId=uc0e8c595-6b95-4&from=paste&height=665&id=u1a4c7890&originHeight=665&originWidth=685&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39505&status=done&style=shadow&taskId=u36f1ca0f-c525-47e4-8ccf-df5d8210281&title=&width=685)
-dayofweek：一周中的第几天（1~7），周日是1，周六是7。
-dayofmonth：一个月中的第几天（1~31）
-dayofyear：一年中的第几天（1~366）
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=aDRcH&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### last_day函数
-获取给定日期所在月的最后一天的日期：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672719572099-bba462b8-da22-42b7-9a40-9c2c545596ef.png#averageHue=%23121010&clientId=uc0e8c595-6b95-4&from=paste&height=163&id=u8cab6ec4&originHeight=163&originWidth=498&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8323&status=done&style=shadow&taskId=ucef40e03-23be-4936-a671-ac674c20438&title=&width=498)
-### datediff函数
-计算两个日期之间所差天数：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672720897012-c5e7e6dd-29de-46b0-b2c1-e1de3e8d6e54.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=169&id=u9b900968&originHeight=169&originWidth=865&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10814&status=done&style=shadow&taskId=ufb6d4060-84b9-44b3-8694-a9cf990bc54&title=&width=865)
-时分秒不算，只计算日期部分相差的天数。
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=H86Gm&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-### timediff函数
-计算两个日期所差时间，例如日期1和日期2所差10:20:30，表示差10小时20分钟30秒。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672721193551-f65b470a-9060-4010-b172-b34eb1787e55.png#averageHue=%23121110&clientId=uc0e8c595-6b95-4&from=paste&height=168&id=u56a06c8e&originHeight=168&originWidth=987&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11553&status=done&style=shadow&taskId=ua81b206f-eb6b-47b3-ad2a-e4b048fdd31&title=&width=987)
+>> 我们要给这个表插入一条数据：`姓名zhangsan`，生日`85年10月1日`，执行以下`insert语句`：
+```sql
+mysql> insert into t_student (name, birth) values ('zhangsan','10/1/1985');
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=URBHc&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+ERROR 1292 (22007): Incorrect date value: '10/1/1985' for column 'birth' at row 1
+```
+
+>> 错误原因：`日期值不正确`。意思是：birth字段需要一个日期，你给的这个字符串`'10/01/1985'`我识别不了。这种情况下，我们就可以使用`str_to_date函数`进行类型转换：
+
+```sql
+mysql> insert into t_student(name, birth) values('zhangsan', str_to_data('10/1/1985','%m%d%Y'));
+Query OK, 1 row affected, 1 warning (0.02 sec)
+```
+
+```sql
+mysql> select * from t_student;
++----------+------------+
+| name     | birth      |
++----------+------------+
+| zhangsan | 1985-10-01 |
++----------+------------+
+1 row in set (0.00 sec)
+```
+
+>> 当然，如果你`提供的日期字符串格式`能够被mysql解析，`str_to_date函数`是可以`省略`的，底层会自动调用该函数进行类型转换：
+
+```sql
+mysql> insert into t_student (name, birth) values('zhangsan','1985-10-1');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into t_student (name, birth) values('zhangsan','85-10-1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into t_student (name, birth) values('zhangsan','85/10/1');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> insert into t_student (name, birth) values('zhangsan','1985/10/1');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> select * from t_student;
++----------+------------+
+| name     | birth      |
++----------+------------+
+| zhangsan | 1985-10-01 |
+| zhangsan | 1985-10-01 |
+| zhangsan | 1985-10-01 |
+| zhangsan | 1985-10-01 |
+| zhangsan | 1985-10-01 |
++----------+------------+
+5 rows in set (0.00 sec)
+```
+> 如果日期格式符合以上的几种格式，mysql都会自动进行类型转换的。
+
+
+### dayofweek、dayofmonth、dayofyear函数
+
+```sql
+mysql> select dayofweek(now());
++------------------+
+| dayofweek(now()) |
++------------------+
+|                5 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select dayofmonth(now());
++-------------------+
+| dayofmonth(now()) |
++-------------------+
+|                27 |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> select dayofyear(now());
++------------------+
+| dayofyear(now()) |
++------------------+
+|               86 |
++------------------+
+1 row in set (0.00 sec)
+```
++ **dayofweek：`一周中的第几天（1~7）`，周日是1，周六是7。**
++ **dayofmonth：`一个月中的第几天（1~31）`**
++ **dayofyear：`一年中的第几天（1~366）`**
+
+
+### last_day函数
+
+> 获取`给定日期所在月的最后一天`的日期：
+
+```sql
+mysql> select last_day(now());
+
++-----------------+
+| last_day(now()) |
++-----------------+
+| 2025-03-31      |
++-----------------+
+1 row in set (0.01 sec)
+```
+
+### datediff函数
+
+> 计算`两个日期之间所差天数`：
+
+```sql
+mysql> select datediff('1970-02-01 20:10:30', '1970-01-01');
+
++-----------------------------------------------+
+| datediff('1970-02-01 20:10:30', '1970-01-01') |
++-----------------------------------------------+
+|                                            31 |
++-----------------------------------------------+
+1 row in set (0.01 sec)
+```
+> **`时分秒不算`，只`计算日期部分相差的天数`。**
+
+### timediff函数
+
+> **计算`两个日期所差时间`，例如日期1和日期2所差`10:20:30`，表示`差10小时20分钟30秒`。**
+
+```sql
+mysql> select timediff('1970-01-02 20:10:30','1970-01-01 20:09:30');
+
++-------------------------------------------------------+
+| timediff('1970-01-02 20:10:30','1970-01-01 20:09:30') |
++-------------------------------------------------------+
+| 24:01:00                                              |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+```
+
 ## if函数
-如果条件为TRUE则返回“YES”，如果条件为FALSE则返回“NO”：
+
+> 如果`条件为TRUE则返回“YES”`，如果`条件为FALSE则返回“NO”`：
+
 ```sql
 SELECT IF(500<1000, "YES", "NO");
 ```
-例如：如果工资高于3000，则输出1，反之则输出0
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672725980625-f929cbdc-41ec-49d4-a5de-bc753dfbe67e.png#averageHue=%230f0e0e&clientId=uc0e8c595-6b95-4&from=paste&height=536&id=ued7bfdee&originHeight=536&originWidth=747&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29371&status=done&style=shadow&taskId=uec5813f3-7f94-4ae2-9644-78e1fd281f6&title=&width=747)
-再例如：如果名字是SMITH的，工资上调10%，其他员工工资正常显示。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672726073468-51733168-6ebe-477d-9aba-267adcefd10a.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=534&id=uf2148f3a&originHeight=534&originWidth=992&originalType=binary&ratio=1&rotation=0&showTitle=false&size=38069&status=done&style=shadow&taskId=u7679358d-9412-4000-b8cd-872e9980209&title=&width=992)
-再例如：工作岗位是MANAGER的工资上调10%，是SALESMAN的工资上调20%，其他岗位工资正常。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672726371265-19128e1a-47cf-46b0-9b80-310d37010535.png#averageHue=%23100f0e&clientId=uc0e8c595-6b95-4&from=paste&height=532&id=u575eb753&originHeight=532&originWidth=1441&originalType=binary&ratio=1&rotation=0&showTitle=false&size=55630&status=done&style=shadow&taskId=uf0e71940-399c-4edf-bd67-14f893e719e&title=&width=1441)
-**上面这个需求也可以使用：case.. when.. then.. when.. then.. else.. end来完成：**
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672726864928-8206091b-3bd3-4f12-b784-173aff775d6f.png#averageHue=%23141210&clientId=uc0e8c595-6b95-4&from=paste&height=724&id=u37fc5544&originHeight=724&originWidth=561&originalType=binary&ratio=1&rotation=0&showTitle=false&size=57934&status=done&style=shadow&taskId=u812c7487-a5f1-4d90-a5bd-891e360d45b&title=&width=561)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=sWtRV&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## cast函数
-cast函数用于将值从一种数据类型转换为表达式中指定的另一种数据类型
-语法：cast(值 as 数据类型)
-例如：cast('2020-10-11' as date)，表示将字符串'2020-10-11'转换成日期date类型。
-在使用cast函数时，可用的数据类型包括：
 
+> 例如：如果`工资高于3000`，`则输出1，反之则输出0`
+
+```sql
+mysql> select ename,if(sal > 3000, 1, 0) from emp;
+
++--------+----------------------+
+| ename  | if(sal > 3000, 1, 0) |
++--------+----------------------+
+| SMITH  |                    0 |
+| ALLEN  |                    0 |
+| WARD   |                    0 |
+| JONES  |                    0 |
+| MARTIN |                    0 |
+| BLAKE  |                    0 |
+| CLARK  |                    0 |
+| SCOTT  |                    0 |
+| KING   |                    1 |
+| TURNER |                    0 |
+| ADAMS  |                    0 |
+| JAMES  |                    0 |
+| FORD   |                    0 |
+| MILLER |                    0 |
++--------+----------------------+
+14 rows in set (0.01 sec)
+```
+
+> 再例如：如果`名字是SMITH`的，`工资上调10%`，`其他员工工资正常显示`。
+
+```sql 
+mysql> select ename,if(ename='SMITH', sal*1.1 ,sal) as sal from emp;
+
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| SMITH  |  880.00 |
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| SCOTT  | 3000.00 |
+| KING   | 5000.00 |
+| TURNER | 1500.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| FORD   | 3000.00 |
+| MILLER | 1300.00 |
++--------+---------+
+14 rows in set (0.00 sec)
+```
+
+> 再例如：`工作岗位是MANAGER`的`工资上调10%`，是`SALESMAN`的`工资上调20%`，`其他岗位工资正常`。
+
+```sql 
+mysql> select ename,job,if(job='MANAGER', sal*1.1, if(job='SALESMAN',sal*1.2, sal)) as sal from emp;
+
++--------+-----------+---------+
+| ename  | job       | sal     |
++--------+-----------+---------+
+| SMITH  | CLERK     |  800.00 |
+| ALLEN  | SALESMAN  | 1920.00 |
+| WARD   | SALESMAN  | 1500.00 |
+| JONES  | MANAGER   | 3272.50 |
+| MARTIN | SALESMAN  | 1500.00 |
+| BLAKE  | MANAGER   | 3135.00 |
+| CLARK  | MANAGER   | 2695.00 |
+| SCOTT  | ANALYST   | 3000.00 |
+| KING   | PRESIDENT | 5000.00 |
+| TURNER | SALESMAN  | 1800.00 |
+| ADAMS  | CLERK     | 1100.00 |
+| JAMES  | CLERK     |  950.00 |
+| FORD   | ANALYST   | 3000.00 |
+| MILLER | CLERK     | 1300.00 |
++--------+-----------+---------+
+14 rows in set (0.00 sec)
+```
+
+> **上面这个需求也可以使用：`case.. when.. then.. when.. then.. else.. end`来完成：**
+
+```sql
+mysql> select ename,job,sal,(case job when 'MANAGER' then sal*1.1 when 'SALESMAN' then sal*1.2 else sal end) as newsal from emp;
+
++--------+-----------+---------+---------+
+| ename  | job       | sal     | newsal  |
++--------+-----------+---------+---------+
+| SMITH  | CLERK     |  800.00 |  800.00 |
+| ALLEN  | SALESMAN  | 1600.00 | 1920.00 |
+| WARD   | SALESMAN  | 1250.00 | 1500.00 |
+| JONES  | MANAGER   | 2975.00 | 3272.50 |
+| MARTIN | SALESMAN  | 1250.00 | 1500.00 |
+| BLAKE  | MANAGER   | 2850.00 | 3135.00 |
+| CLARK  | MANAGER   | 2450.00 | 2695.00 |
+| SCOTT  | ANALYST   | 3000.00 | 3000.00 |
+| KING   | PRESIDENT | 5000.00 | 5000.00 |
+| TURNER | SALESMAN  | 1500.00 | 1800.00 |
+| ADAMS  | CLERK     | 1100.00 | 1100.00 |
+| JAMES  | CLERK     |  950.00 |  950.00 |
+| FORD   | ANALYST   | 3000.00 | 3000.00 |
+| MILLER | CLERK     | 1300.00 | 1300.00 |
++--------+-----------+---------+---------+
+14 rows in set (0.00 sec)
+```
+
+
+## cast函数
+
++ cast函数用于将值从一种数据类型转换为表达式中指定的另一种数据类型
+
++ 语法：cast(值 as 数据类型)
+
+> 例如：`cast('2020-10-11' as date)`，表示`将字符串'2020-10-11'转换成日期date类型`。
+
+> 在使用cast函数时，可用的数据类型包括：
 - date：日期类型
 - time：时间类型
 - datetime：日期时间类型
@@ -1037,13 +1243,76 @@ cast函数用于将值从一种数据类型转换为表达式中指定的另一�
 - char：定长字符串类型
 - decimal：浮点型
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737293605-d7e38772-e9c3-40ab-a7ea-3311aa14a1a9.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=662&id=u174ddf1e&originHeight=662&originWidth=778&originalType=binary&ratio=1&rotation=0&showTitle=false&size=34283&status=done&style=shadow&taskId=u2531ed29-bfef-4efc-a5b0-6ff107330b6&title=&width=778)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737634602-96cdd564-1220-445e-9b18-b3f0a2a55379.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=435&id=ued100771&originHeight=435&originWidth=545&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18617&status=done&style=shadow&taskId=u559bfe74-f2ec-4e05-a37f-2cd08b29cde&title=&width=545)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737720321-3812fd42-d3a4-4985-96d2-629947d9ce48.png#averageHue=%23111010&clientId=uc0e8c595-6b95-4&from=paste&height=213&id=ua7df14ff&originHeight=213&originWidth=604&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10420&status=done&style=shadow&taskId=u66dc0647-a030-400f-8ec0-b3c2b22a844&title=&width=604)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737802812-d04d581c-138c-4e4e-97d4-c979558e9b2e.png#averageHue=%2311100f&clientId=uc0e8c595-6b95-4&from=paste&height=170&id=u214f15ff&originHeight=170&originWidth=714&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8572&status=done&style=shadow&taskId=ud2929b4c-8582-4dc3-a2ba-8de75b96e58&title=&width=714)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=zcFrS&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
-## 加密函数
-md5函数，可以将给定的字符串经过md5算法进行加密处理，字符串经过加密之后会生成一个固定长度32位的字符串，md5加密之后的密文通常是不能解密的：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1672737046172-5ee0458a-60c6-4bae-b075-94b7dee440ab.png#averageHue=%23131110&clientId=uc0e8c595-6b95-4&from=paste&height=220&id=u6e900f32&originHeight=220&originWidth=568&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10865&status=done&style=shadow&taskId=uabd2a6f3-e59b-4dac-ba4c-bcc743fafad&title=&width=568)
+```sql
+mysql> select cast('2020-10-11 20:15:30' as date);
++-------------------------------------+
+| cast('2020-10-11 20:15:30' as date) |
++-------------------------------------+
+| 2020-10-11                          |
++-------------------------------------+
+1 row in set (0.00 sec)
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ilOoD&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+mysql> select cast('2020-10-11 20:15:30' as time);
++-------------------------------------+
+| cast('2020-10-11 20:15:30' as time) |
++-------------------------------------+
+| 20:15:30                            |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast('2020-10-11 20:15:30' as datetime);
++-----------------------------------------+
+| cast('2020-10-11 20:15:30' as datetime) |
++-----------------------------------------+
+| 2020-10-11 20:15:30                     |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast('-5.3' as signed);
++------------------------+
+| cast('-5.3' as signed) |
++------------------------+
+|                     -5 |
++------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select cast('5.3' as signed);
++-----------------------+
+| cast('5.3' as signed) |
++-----------------------+
+|                     5 |
++-----------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select cast(123.456 as char(3));
++--------------------------+
+| cast(123.456 as char(3)) |
++--------------------------+
+| 123                      |
++--------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select cast('123.456' as decimal(5,1));
++---------------------------------+
+| cast('123.456' as decimal(5,1)) |
++---------------------------------+
+|                           123.5 |
++---------------------------------+
+1 row in set (0.00 sec)
+```
+
+
+## 加密函数
+
+> `md5函数`，可以将给定的字符串经过md5算法进行加密处理，字符串经过加密之后会生成`一个固定长度32位的字符串`，md5加密之后的密文通常是`不能解密`的：
+
+```sql
+mysql> select md5('powernode');
+
++----------------------------------+
+| md5('powernode')                 |
++----------------------------------+
+| 88cdef88bcdb8b2e33fb7b4f076cf803 |
++----------------------------------+
+1 row in set (0.01 sec)
+```

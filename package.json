@@ -6,7 +6,6 @@
     "@types/dom-view-transitions": "^1.0.5",
     "busuanzi.pure.js": "^1.0.3",
     "canvas-confetti": "^1.9.3",
-    "nprogress-v2": "^1.0.4",
     "vitepress": "^1.6.3",
     "vitepress-markdown-timeline": "^1.2.2",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
@@ -24,9 +23,6 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@theojs/lumen": "^5.4.0",
-    "axios": "^1.7.9",
-    "oh-my-live2d": "^0.19.3",
     "twikoo": "^1.6.41",
     "viewerjs": "^1.11.7",
     "vitepress-plugin-announcement": "^0.1.4",

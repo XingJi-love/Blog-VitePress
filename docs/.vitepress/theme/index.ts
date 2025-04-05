@@ -18,9 +18,6 @@ import DataPanel from "./components/DataPanel.vue";
 import { onMounted, watch, nextTick } from "vue";
 //import { useRoute } from "vitepress";
 
-import { NProgress } from "nprogress-v2/dist/index.js"; // 进度条组件
-import "nprogress-v2/dist/index.css"; // 进度条样式
-
 import { useData } from "vitepress"; // VitePress搭建个人导航
 import MNavLinks from "./components/MNavLinks.vue"; // 自定义导航组件
 
@@ -272,13 +269,8 @@ export default {
     } as Options); // 注册增强阅读配置
     vitepressMusic(playlist); // 注册音乐播放器组件
     if (inBrowser) {
-      NProgress.configure({ showSpinner: false });
-      router.onBeforeRouteChange = () => {
-        NProgress.start(); // 开始进度条
-      };
       router.onAfterRouteChanged = () => {
         busuanzi.fetch();
-        NProgress.done(); // 停止进度条
       };
     }
 

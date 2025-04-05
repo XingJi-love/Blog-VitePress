@@ -85,6 +85,10 @@ export default {
           text: "MySQL | DQL语句-分组函数-查询",
           link: "/Notes/MySQL/DQL语句-分组函数-查询",
         },
+        {
+          text: "MySQL | DQL语句-连接查询",
+          link: "/Notes/MySQL/DQL语句-连接查询",
+        },
       ],
     },
     {

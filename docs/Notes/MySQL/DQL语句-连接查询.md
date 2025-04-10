@@ -3,9 +3,9 @@
 ## 什么是连接查询
 
 1. 从一张表中查询数据称为单表查询。
-2. 从两张或更多张表中联合查询数据称为多表查询，又叫做连接查询。
+2. 从两张或更多张表中联合查询数据称为`多表查询`，又叫做连接查询。
 3. 什么时候需要使用连接查询？
-   1. 比如这样的需求：员工表中有员工姓名，部门表中有部门名字，要求查询每个员工所在的部门名字，这个时候就需要连接查询。
+   1. 比如这样的需求：`员工表中有员工姓名，部门表中有部门名字，要求查询每个员工所在的部门名字，这个时候就需要连接查询`。
 ## 连接查询的分类
 
 1. 根据语法出现的年代进行分类：
@@ -21,19 +21,130 @@
       2. 右外连接（右连接）
    3. 全连接
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=RfJym&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
 ## 笛卡尔积现象
 
-1. 当两张表进行连接查询时，如果没有任何条件进行过滤，最终的查询结果条数是两张表条数的乘积。为了避免笛卡尔积现象的发生，需要添加条件进行筛选过滤。
-2. 需要注意：添加条件之后，虽然避免了笛卡尔积现象，但是匹配的次数没有减少。
-3. 为了SQL语句的可读性，为了执行效率，建议给表起别名。
+> 1. 当两张表进行连接查询时，如果 **`没有任何条件进行过滤`**，最终的**`查询结果条数`**是**`两张表条数的乘积`**。为了避免笛卡尔积现象的发生，需要添加条件进行筛选过滤。
+> 2. 需要注意：`添加条件`之后，虽然避免了笛卡尔积现象，但是`匹配的次数没有减少`。
+> 3. 为了SQL语句的可读性，为了`执行效率`，建议`给表起别名`。
+
+**例子**：
+
+```sql
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.03 sec)
+
+mysql> select e.ename,d.dname from emp e,dept d;
++--------+------------+
+| ename  | dname      |
++--------+------------+
+| SMITH  | OPERATIONS |
+| SMITH  | SALES      |
+| SMITH  | RESEARCH   |
+| SMITH  | ACCOUNTING |
+| ALLEN  | OPERATIONS |
+| ALLEN  | SALES      |
+| ALLEN  | RESEARCH   |
+| ALLEN  | ACCOUNTING |
+| WARD   | OPERATIONS |
+| WARD   | SALES      |
+| WARD   | RESEARCH   |
+| WARD   | ACCOUNTING |
+| JONES  | OPERATIONS |
+| JONES  | SALES      |
+| JONES  | RESEARCH   |
+| JONES  | ACCOUNTING |
+| MARTIN | OPERATIONS |
+| MARTIN | SALES      |
+| MARTIN | RESEARCH   |
+| MARTIN | ACCOUNTING |
+| BLAKE  | OPERATIONS |
+| BLAKE  | SALES      |
+| BLAKE  | RESEARCH   |
+| BLAKE  | ACCOUNTING |
+| CLARK  | OPERATIONS |
+| CLARK  | SALES      |
+| CLARK  | RESEARCH   |
+| CLARK  | ACCOUNTING |
+| SCOTT  | OPERATIONS |
+| SCOTT  | SALES      |
+| SCOTT  | RESEARCH   |
+| SCOTT  | ACCOUNTING |
+| KING   | OPERATIONS |
+| KING   | SALES      |
+| KING   | RESEARCH   |
+| KING   | ACCOUNTING |
+| TURNER | OPERATIONS |
+| TURNER | SALES      |
+| TURNER | RESEARCH   |
+| TURNER | ACCOUNTING |
+| ADAMS  | OPERATIONS |
+| ADAMS  | SALES      |
+| ADAMS  | RESEARCH   |
+| ADAMS  | ACCOUNTING |
+| JAMES  | OPERATIONS |
+| JAMES  | SALES      |
+| JAMES  | RESEARCH   |
+| JAMES  | ACCOUNTING |
+| FORD   | OPERATIONS |
+| FORD   | SALES      |
+| FORD   | RESEARCH   |
+| FORD   | ACCOUNTING |
+| MILLER | OPERATIONS |
+| MILLER | SALES      |
+| MILLER | RESEARCH   |
+| MILLER | ACCOUNTING |
++--------+------------+
+56 rows in set (0.01 sec)
+```
+> 说明：
+> 1. 笛卡尔积现象：查询结果为`14*4=56`条记录。
+> 2. 给表起别名：`为了避免表名重复，给表起别名。`
+
+
 ## 内连接
+
 ### 什么叫内连接
-![内连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398804476-afbffad7-7d5a-4318-9e86-a3f8092dfcc8.png#averageHue=%23f7f5f5&clientId=u1be67ea7-0240-4&from=paste&height=233&id=u4f6abf7d&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29826&status=done&style=shadow&taskId=u51112874-93e5-4ef2-8366-f78cc265d04&title=&width=300)
-满足条件的记录才会出现在结果集中。
+
+![内连接](./DQL语句-连接查询/内连接.png)
+> 内连接：查询的结果是两张表的交集。
+> 满足条件的记录才会出现在结果集中。
+
 ### 内连接之等值连接
-连接时，条件为等量关系。
-案例：查询每个员工所在的部门名称，要求显示员工名、部门名。
+
+> 连接时，条件为等量关系。
+
+> **案例：查询`每个员工所在的部门名称`，要求显示`员工名、部门名`**。
+
 ```sql
 select
 	e.ename,d.dname
@@ -43,13 +154,89 @@ inner join
 	dept d
 on
 	e.deptno = d.deptno;
+
+SELECT e.ename, d.dname FROM emp e (inner) JOIN dept d ON e.deptno = d.deptno;
 ```
-注意：inner可以省略。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677401675659-04e46e96-9f00-4210-8beb-e8148807ae10.png#averageHue=%231a1613&clientId=u1be67ea7-0240-4&from=paste&height=380&id=u91e060d7&originHeight=380&originWidth=258&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15942&status=done&style=shadow&taskId=u2319a8db-57a3-4bcb-a42b-b58c46e0381&title=&width=258)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=clVoK&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+> **`员工表(emp)`**：
+```sql 
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.01 sec)
+```
+
+> **`部门表(dept)`**：
+```sql
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+```
+
+::: tip 提示
+通过上述员工表和部门表可知，`每个员工所在的部门名称`是通过`deptno`字段进行连接的。
+:::
+
+> **`内连接之等值连接查询结果:`**
+```sql
+mysql> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno;
++--------+------------+
+| ename  | dname      |
++--------+------------+
+| SMITH  | RESEARCH   |
+| ALLEN  | SALES      |
+| WARD   | SALES      |
+| JONES  | RESEARCH   |
+| MARTIN | SALES      |
+| BLAKE  | SALES      |
+| CLARK  | ACCOUNTING |
+| SCOTT  | RESEARCH   |
+| KING   | ACCOUNTING |
+| TURNER | SALES      |
+| ADAMS  | RESEARCH   |
+| JAMES  | SALES      |
+| FORD   | RESEARCH   |
+| MILLER | ACCOUNTING |
++--------+------------+
+14 rows in set (0.01 sec)
+```
+
+::: tip 提示
+1. 底层也是进行56次匹配，但是由于`deptno`是主键，所以只匹配一次。
+
+2. inner可以省略。
+:::
+
+
 ### 内连接之非等值连接
+
 连接时，条件是非等量关系。
-案例：查询每个员工的工资等级，要求显示员工名、工资、工资等级。
+
+> 案例：查询`每个员工的工资等级`，要求显示`员工名、工资、工资等级`。
+
 ```sql
 select
 	e.ename,e.sal,s.grade
@@ -59,12 +246,86 @@ join
 	salgrade s
 on
 	e.sal between s.losal and s.hisal;
+
+SELECT e.ename, e.sal, s.grade FROM emp e INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677401628377-11f115a0-b961-4e10-b411-97ea04a89035.png#averageHue=%23191613&clientId=u1be67ea7-0240-4&from=paste&height=380&id=u9ef14890&originHeight=380&originWidth=279&originalType=binary&ratio=1&rotation=0&showTitle=false&size=17957&status=done&style=shadow&taskId=u97872f0c-74c1-40ef-b3bb-607697cbe62&title=&width=279)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=ianfB&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+> **`员工表(emp)`**：
+```sql
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+```
+
+> **`工资等级表(salgrade)`**：
+```sql
+mysql> select * from salgrade;
++-------+-------+-------+
+| GRADE | LOSAL | HISAL |
++-------+-------+-------+
+|     1 |   700 |  1200 |
+|     2 |  1201 |  1400 |
+|     3 |  1401 |  2000 |
+|     4 |  2001 |  3000 |
+|     5 |  3001 |  9999 |
++-------+-------+-------+
+5 rows in set (0.00 sec)
+```
+
+::: tip 提示
+通过上述员工表和工资等级表可知，`每个员工的工资等级`是通过`sal`字段进行连接的。
+
+利用`between`关键字连接losal和hisal进行非等值连接。
+:::
+
+
+> **`内连接之非等值连接查询结果：`**
+```sql 
+mysql> SELECT e.ename, e.sal, s.grade FROM emp e INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
++--------+---------+-------+
+| ename  | sal     | grade |
++--------+---------+-------+
+| SMITH  |  800.00 |     1 |
+| ALLEN  | 1600.00 |     3 |
+| WARD   | 1250.00 |     2 |
+| JONES  | 2975.00 |     4 |
+| MARTIN | 1250.00 |     2 |
+| BLAKE  | 2850.00 |     4 |
+| CLARK  | 2450.00 |     4 |
+| SCOTT  | 3000.00 |     4 |
+| KING   | 5000.00 |     5 |
+| TURNER | 1500.00 |     3 |
+| ADAMS  | 1100.00 |     1 |
+| JAMES  |  950.00 |     1 |
+| FORD   | 3000.00 |     4 |
+| MILLER | 1300.00 |     2 |
++--------+---------+-------+
+14 rows in set (0.01 sec)
+```
+
+
 ### 内连接之自连接
-连接时，一张表看做两张表，自己和自己进行连接。
-案例：找出每个员工的直属领导，要求显示员工名、领导名。
+
+> 连接时，一张表看做两张表，`自己和自己进行连接`。
+
+> 案例：找出`每个员工的直属领导`，要求显示`员工名、领导名`。
 ```sql
 select
 	e.ename 员工名, l.ename 领导名
@@ -75,27 +336,58 @@ join
 on
 	e.mgr = l.empno;
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677402107820-a3fc38cc-4e13-4a39-8bb4-f1d9de713cd9.png#averageHue=%23161311&clientId=u1be67ea7-0240-4&from=paste&height=363&id=ub784a9c1&originHeight=363&originWidth=256&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15854&status=done&style=shadow&taskId=u67543946-a969-42f9-a55b-91571731d16&title=&width=256)
-思路：
-将emp表当做员工表 e
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677401951879-b0967e07-82f4-41e3-861e-d61e7d679e71.png#averageHue=%23141210&clientId=u1be67ea7-0240-4&from=paste&height=409&id=u4a5d8630&originHeight=409&originWidth=409&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28580&status=done&style=shadow&taskId=ua9050736-6b86-415c-9f4d-e4e8d72c0b5&title=&width=409)
-将emp表当做领导表 l
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677401973338-4bc03ba9-815d-4fca-90fb-de34e5848da3.png#averageHue=%2312100f&clientId=u1be67ea7-0240-4&from=paste&height=409&id=uffcf8f58&originHeight=409&originWidth=374&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19851&status=done&style=shadow&taskId=uad8210e5-8156-449c-bc2f-25f2614109b&title=&width=374)
-可以发现连接条件是：e.mgr = l.empno（员工的领导编号=领导的员工编号）
-注意：KING这个员工没有查询出来。如果想将KING也查询出来，需要使用外连接。
 
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=Kz0kN&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+> **`内连接之自连接查询结果:`**
+```sql
+mysql> select e.ename 员工, l.ename 领导 from emp e join emp l on e.mgr = l.empno;
++--------+-------+
+| 员工   | 领导  |
++--------+-------+
+| SMITH  | FORD  |
+| ALLEN  | BLAKE |
+| WARD   | BLAKE |
+| JONES  | KING  |
+| MARTIN | BLAKE |
+| BLAKE  | KING  |
+| CLARK  | KING  |
+| SCOTT  | JONES |
+| TURNER | BLAKE |
+| ADAMS  | SCOTT |
+| JAMES  | BLAKE |
+| FORD   | JONES |
+| MILLER | CLARK |
++--------+-------+
+13 rows in set (0.01 sec)
+```
+
+::: 提示
+
+![自连接](./DQL语句-连接查询/自连接.png)
+
+可以发现连接条件是：**`e.mgr = l.empno（员工的领导编号=领导的员工编号）`**
+
+**注意：`KING这个员工没有查询出来`。如果想将`KING也查询出来，需要使用外连接`。**
+:::
+
+
 ## 外连接
+
 ### 什么叫外连接
-内连接是满足条件的记录查询出来。也就是两张表的交集。
-外连接是除了满足条件的记录查询出来，再将其中一张表的记录全部查询出来，另一张表如果没有与之匹配的记录，自动模拟出NULL与其匹配。
+
+> **`内连接`是`满足条件的记录查询出来`。也就是`两张表的交集`**。
+
+> **`外连接`是`除了满足条件的记录查询出来`，再将`其中一张表的记录全部查询出来`，另一张表`如果没有与之匹配的记录`，`自动模拟出NULL与其匹配`。**
+
 左外连接：
-![左连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398828684-41b0bde2-1689-47a4-ae7b-3c5c4fb82ce6.png#averageHue=%23f5e6e4&clientId=u1be67ea7-0240-4&from=paste&height=233&id=ue0f4c04f&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=42064&status=done&style=shadow&taskId=u3697d149-d9f5-4090-8773-ffb0962ff90&title=&width=300)
+
+![左连接.png](./DQL语句-连接查询/左连接.png)
+
 右外连接：
-![右连接.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677398837026-688ff40f-d74b-4da6-a2e4-9573f5ba1580.png#averageHue=%23f4e6e3&clientId=u1be67ea7-0240-4&from=paste&height=233&id=ua18b1d44&originHeight=233&originWidth=300&originalType=binary&ratio=1&rotation=0&showTitle=false&size=43272&status=done&style=shadow&taskId=u4bb1c6ab-4c51-4fe0-938b-a7950969180&title=&width=300)
-![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=XFps5&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+![右连接.png](./DQL语句-连接查询/右连接.png)
+
 
 ### 外连接之左外连接（左连接）
+
 案例：查询所有部门信息，并且找出每个部门下的员工。
 ```sql
 select
@@ -189,7 +481,16 @@ on
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677404511432-b8fe8eb2-c828-4913-8d7c-a7b47a0ee270.png#averageHue=%23171411&clientId=u1be67ea7-0240-4&from=paste&height=381&id=u6047af30&originHeight=381&originWidth=324&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18547&status=done&style=shadow&taskId=uc90c12f6-bdbb-4221-abe5-dcc4e221c96&title=&width=324)
 
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=oPaaH&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
+
+
+
+
+
+
+
+
 # 子查询
+
 ## 什么是子查询
 
 1. select语句中嵌套select语句就叫做子查询。
@@ -201,7 +502,6 @@ select ..(select)..
 from ..(select)..
 where ..(select)..
 ```
-
 
 
 ## where后面使用子查询

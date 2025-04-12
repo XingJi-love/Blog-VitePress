@@ -1,17 +1,17 @@
 import { h } from "vue";
 import DefaultTheme from "vitepress/theme";
 import "./style/index.css"; /* 主题色 */
-import Linkcard from "./components/Linkcard.vue";
-import HomeUnderline from "./components/HomeUnderline.vue";
-import xgplayer from "./components/xgplayer.vue";
-import confetti from "./components/confetti.vue";
-import update from "./components/update.vue";
-import ArticleMetadata from "./components/ArticleMetadata.vue";
+import Linkcard from "./components/Linkcard.vue"; /* 友链卡片 */
+import HomeUnderline from "./components/HomeUnderline.vue"; /* 首页下划线 */
+import xgplayer from "./components/xgplayer.vue"; /* 音乐播放器 */
+import confetti from "./components/confetti.vue"; /* 烟花 */
+import update from "./components/update.vue"; /* 版本更新 */
+import ArticleMetadata from "./components/ArticleMetadata.vue"; /* 文章元数据 */
 
-import MyLayout from "./components/MyLayout.vue";
+import MyLayout from "./components/MyLayout.vue"; /* 自定义布局 */
 
-import { inBrowser } from "vitepress";
-import busuanzi from "busuanzi.pure.js";
+import { inBrowser } from "vitepress"; 
+import busuanzi from "busuanzi.pure.js"; // 网站访问量统计
 import DataPanel from "./components/DataPanel.vue";
 
 //import mediumZoom from "medium-zoom";
@@ -31,10 +31,10 @@ import "virtual:group-icons.css"; //代码组样式
 import { NolebaseGitChangelogPlugin } from "@nolebase/vitepress-plugin-git-changelog/client";
 import "@nolebase/vitepress-plugin-git-changelog/client/style.css"; // 更新日志插件
 
-import {
+import { 
   NolebaseEnhancedReadabilitiesMenu,
   NolebaseEnhancedReadabilitiesScreenMenu,
-} from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
+} from "@nolebase/vitepress-plugin-enhanced-readabilities/client"; // 阅读体验增强插件
 import "@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css";
 import type { Options } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";
 import { InjectionKey } from "@nolebase/vitepress-plugin-enhanced-readabilities/client";

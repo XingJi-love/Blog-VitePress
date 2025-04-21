@@ -24,7 +24,7 @@
 
 ### git clone
 
-```sh
+```sh [shell]
 # 拷贝一个 Git 仓库到本地
 git clone 仓库地址
 git clone 仓库地址 --depth 1 # 只克隆最近一次的 commit
@@ -32,7 +32,7 @@ git clone 仓库地址 --depth 1 # 只克隆最近一次的 commit
 
 ### git 配置
 
-```sh
+```sh [shell]
 # 查看当前的 Git 配置
 git config --list
 # 设置使用 Git 时的用户名称
@@ -43,24 +43,24 @@ git config [--global] user.email "邮箱"
 
 ### git 文件操作
 
-```sh
+```sh [shell]
 # 添加所有文件到暂存区
 git add .
 ```
 
-```sh
+```sh [shell]
 # 提交暂存区到仓库区
 git commit -m "提交信息"
 git commit --amend # 增补提交，使用上次的 commit 信息，不添加新的 commit 记录
 ```
 
-```sh
+```sh [shell]
 # 显示变更的文件
 git status
         -s # 精简输出
 ```
 
-```sh
+```sh [shell]
 # 只暂存被追踪的文件
 git stash
         save '说明信息' # 添加说明信息
@@ -77,7 +77,7 @@ git stash clear
 
 ### git 分支操作
 
-```sh
+```sh [shell]
 # 列出所有本地分支
 git branch
         [分支名] # 新建一个分支(停留在当前分支)
@@ -99,12 +99,12 @@ git symbolic-ref --short -q HEAD
 git rev-parse --abbrev-ref HEAD
 ```
 
-```sh
+```sh [shell]
 # 合并指定分支到当前分支
 git merge [分支名]
 ```
 
-```sh
+```sh [shell]
 # 显示所有远程仓库
 git remote -v
 # 添加远程仓库
@@ -115,7 +115,7 @@ git remote remove [name]
 git remote get-url [name]
 ```
 
-```sh
+```sh [shell]
 # 取回远程仓库的变化，并与本地分支合并
 git pull [remote][branch]
 # 上传本地指定分支到远程仓库
@@ -126,7 +126,7 @@ git push [remote] --force
 
 ### git 日志
 
-```sh
+```sh [shell]
 # 查看提交过的完整日志
 git log
         --oneline # 查看精简日志（精简版本号和提交信息）
@@ -137,7 +137,7 @@ git reflog
 
 ### git 统计
 
-```sh
+```sh [shell]
 # 统计作者提交的次数
 git shortlog -s -n
 
@@ -149,7 +149,7 @@ git rev-list --count [分支名]
 
 ### git reset
 
-```sh
+```sh [shell]
 # 撤销 commit 操作
 git reset --soft HEAD~1 # git reset --soft commit_id
 # 撤销 commit 和 add 操作
@@ -170,7 +170,7 @@ git reset --hard HEAD~1 # git reset --hard commit_id
 以 `master` 分支为例
 :::
 
-```sh
+```sh [shell]
 # 创建 orphan 分支（以 main 为例）
 git checkout --orphan main
 
@@ -192,7 +192,7 @@ git push -f origin master
 
 ## 同步 github fork 项目上游更新
 
-```sh
+```sh [shell]
 # 1. 添加上游仓库
 git remote add upstream https://github.com/项目地址
 
@@ -212,7 +212,7 @@ git push origin master
 
 1. 安装 `gh-pages`
 
-```sh
+```sh [shell]
 pnpm add -D gh-pages
 # OR
 npm install -D gh-pages
@@ -227,7 +227,7 @@ npm install -D gh-pages
 
 3. 运行 `deploy` 脚本
 
-```sh
+```sh [shell]
 pnpm deploy
 # OR
 npm run deploy
@@ -333,7 +333,7 @@ jobs:
 
 ### 修改默认时间格式
 
-```sh
+```sh [shell]
 git config --global log.date iso8601
 ```
 
@@ -347,7 +347,7 @@ git config --global log.date iso8601
 
 ### 自定义输出格式
 
-```sh
+```sh [shell]
 # 格式为: [commit hash] [提交时间] [提交信息] [branch tag 信息] [作者名称]
 git log --pretty='%C(yellow)%h%C(reset) %ad %C(green)%s%C(reset) %C(red)%d%C(reset) %C(bold blue)[%an]%C(reset)'
 
@@ -367,7 +367,7 @@ alias glogp="git log --pretty='%C(yellow)%h%C(reset) %ad %C(green)%s%C(reset) %C
 
 ### 获取文件的提交时间
 
-```sh
+```sh [shell]
 # 获取文件最后一次修改的时间
 git log -1 --pretty="%ci" "./docs/index.md"
 
@@ -399,19 +399,19 @@ git log -1 --diff-filter=A --follow --pretty="%ci" "./docs/index.md"
 
 1. `clone` 仓库 `mm-notes`（默认的 `remote` 为 `origin`）
 
-```sh
+```sh [shell]
 git clone https://github.com/maomao1996/mm-notes
 ```
 
 2. 添加远程仓库 `daily-notes`（`remote` 取名为 `daily-notes`）
 
-```sh
+```sh [shell]
 git remote add daily-notes http://github.com/maomao1996/daily-notes
 ```
 
 3. 拉取 `daily-notes` 的 `master` 分支到本地（本地分支名为 `notes`）
 
-```sh
+```sh [shell]
 git fetch daily-notes master:notes
 
 # 推送本地分支 notes 到远程仓库 daily-notes 的 master 分支
@@ -422,13 +422,13 @@ git push daily-notes notes:master
 
 > 本地分支关联远程分支后，可直接使用 `git push` 和 `git pull` 命令
 
-```sh
+```sh [shell]
 git branch --set-upstream-to=daily-notes/master notes
 ```
 
 5. 提取 `master` 分支的指定提交到 `notes` 分支
 
-```sh
+```sh [shell]
 # 切换到 notes 分支
 git checkout notes
 
@@ -448,7 +448,7 @@ git push
 
 安装
 
-```sh
+```sh [shell]
 # macOS
 brew install git-filter-repo
 ```
@@ -463,13 +463,13 @@ brew install git-filter-repo
 
 > 确保在运行 `git filter-branch` 之后重新关联远程仓库。运行以下命令检查：
 
-```sh
+```sh [shell]
 git remote -v
 ```
 
 2. 执行修改
 
-```sh
+```sh [shell]
 git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"'
 ```
 
@@ -479,7 +479,7 @@ git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"'
 
 3. 重新关联远程仓库
 
-```sh
+```sh [shell]
 git remote add origin <之前的远程仓库地址>
 ```
 
@@ -487,6 +487,6 @@ git remote add origin <之前的远程仓库地址>
 
 > 以 `master` 分支为例，使用以下命令推送修改：
 
-```sh
+```sh [shell]
 git push -u origin master --force
 ```

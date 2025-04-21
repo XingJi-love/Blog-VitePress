@@ -6,7 +6,7 @@
 
 > 排序操作很常用，比如`查询学员成绩，按照成绩降序排列`。**`排序的SQL语法`**：
 
-```sql
+```sql [SQL]
 select .. from .. order by 字段 asc/desc
 ```
 - `select .. from ..`：查询语句
@@ -19,11 +19,11 @@ select .. from .. order by 字段 asc/desc
 
 > 查询员工的`编号、姓名、薪资`，按照`薪资升序排列`。
 
-```sql
+```sql [SQL]
 select empno,ename,sal from emp order by sal asc;
 ```
 
-```sql
+```sql [SQL]
 mysql> select empno,ename,sal from emp order by sal asc;
 
 +-------+--------+---------+
@@ -51,11 +51,11 @@ mysql> select empno,ename,sal from emp order by sal asc;
 
 > 查询员工的`编号、姓名、薪资`，按照`薪资降序排列`。
 
-```sql
+```sql [SQL]
 select empno,ename,sal from emp order by sal desc;
 ```
 
-```sql
+```sql [SQL]
 mysql> select empno,ename,sal from emp order by sal desc;
 
 +-------+--------+---------+
@@ -83,11 +83,11 @@ mysql> select empno,ename,sal from emp order by sal desc;
 
 > 查询员工的`编号、姓名、薪资`，按照`薪资升序排列`。
 
-```sql
+```sql [SQL]
 select empno,ename,sal from emp order by sal;
 ```
 
-```sql
+```sql [SQL]
 mysql> select empno,ename,sal from emp order by sal;
 
 +-------+--------+---------+
@@ -113,11 +113,11 @@ mysql> select empno,ename,sal from emp order by sal;
 
 > 查询员工的`编号、姓名`，按照`姓名升序排列`。
 
-```sql
+```sql [SQL]
 select empno,ename from emp order by ename;
 ```
 
-```sql
+```sql [SQL]
 mysql> select empno,ename from emp order by ename;
 
 +-------+--------+
@@ -145,11 +145,11 @@ mysql> select empno,ename from emp order by ename;
 
 > 查询员工的`编号、姓名、薪资`，按照`薪资升序排列`，如果`薪资相同的`，再按照`姓名升序排列`。
 
-```sql
+```sql [SQL]
 select empno,ename,sal from emp order by sal asc, ename asc;
 ```
 
-```sql
+```sql [SQL]
 mysql> select empno,ename,sal from emp order by sal asc, ename asc;
 
 +-------+--------+---------+
@@ -177,11 +177,11 @@ mysql> select empno,ename,sal from emp order by sal asc, ename asc;
 
 > 找出`岗位是MANAGER`的员工`姓名和薪资`，按照`薪资升序排列`。
 
-```sql
+```sql [SQL]
 select ename,sal from emp where job = 'MANAGER' order by sal asc;
 ```
 
-```sql
+```sql [SQL]
 mysql> select ename,sal from emp where job = 'MANAGER' order by sal asc;
 +-------+---------+
 | ename | sal     |

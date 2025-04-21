@@ -20,13 +20,13 @@
 @import './marker.css'; /* 记号笔 */
 
 /* .vitepress/theme/style/index.css */
-@import './vp-code.css'; /* MAC风格代码块 */
+/*@import './vp-code.css'; /* MAC风格代码块 */
 
 /* .vitepress/theme/style/index.css */
-@import './vp-code-group.css'; /* 代码块组 */
+/*@import './vp-code-group.css'; /* 代码块组 */
 
 /* .vitepress/theme/style/index.css */
-@import './vp-code-title.css'; /* 代码块标题 */
+/*@import './vp-code-title.css'; /* 代码块标题 */
 
 /* .vitepress/theme/style/index.css */
 @import './custom-block.css'; /* 表格 */

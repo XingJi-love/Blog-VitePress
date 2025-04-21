@@ -80,8 +80,28 @@ export default defineConfig({
   vite: {
     // ↓↓↓↓↓
     plugins: [
-      RssPlugin(RSS),
-      groupIconVitePlugin(), //代码组图标
+      // 代码组图标
+      groupIconVitePlugin({
+        customIcon: {
+          java: 'logos:java',
+          sql: 'logos:mysql',
+          js: 'logos:javascript',
+          md: 'logos:markdown',
+          css: 'logos:css-3',
+          bash: 'logos:bash-icon',
+          debian: 'logos:debian',
+          ubuntu: 'logos:ubuntu',
+          centos: 'logos:centos-icon',
+          rhel: 'logos:redhat-icon',
+          docker: 'vscode-icons:file-type-docker',
+          text: 'vscode-icons:file-type-text',
+          shell: 'vscode-icons:file-type-shell',
+          sh: 'vscode-icons:file-type-shell',
+          log: 'vscode-icons:file-type-log',
+          输出: 'vscode-icons:file-type-log',
+        },
+      }),
+      RssPlugin(RSS), // RSS 插件
       MermaidPlugin(), //mermaid流程图插件
       AnnouncementPlugin({
         title: "公告",

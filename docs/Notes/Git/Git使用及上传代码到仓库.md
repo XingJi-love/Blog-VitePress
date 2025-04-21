@@ -53,7 +53,7 @@
 
 设置名字，修改一下，再粘贴
 
-```sh
+```sh [shell]
 #"DzPian"更改成你github/gitee用户名
 git config --global user.name "DzPian"
 ```
@@ -69,7 +69,7 @@ git config --global user.name "DzPian"
 
 然后设置邮箱
 
-```sh
+```sh [shell]
 #"49****@qq.com"这里填你的邮箱
 git config --global user.email "49****@qq.com"
 ```
@@ -81,7 +81,7 @@ git config --global user.email "49****@qq.com"
 
 也可以通过命令查看
 
-```sh
+```sh [shell]
 #查看身份
 git config user.name
 git config user.email
@@ -110,7 +110,7 @@ git config user.email
 斜杠不能掉，大小写无所谓
 :::
 
-```sh
+```sh [shell]
 #f是F盘，自己根据自己的盘符和文件夹改
 cd /f/github/copydog
 ```
@@ -125,7 +125,7 @@ cd /f/github/copydog
 
 初始化项目 `git init` 就可以远程上传了
 
-```sh
+```sh [shell]
 git init
 ```
 ![](./Git使用及上传代码到仓库/git-11.png)
@@ -163,7 +163,7 @@ git默认使用 `master` 分支（蓝色），也可以切换成 `main`
 以前的github默认也是 master 分支，后来为了避免这个词产生歧义，改成了main
 :::
 
-```sh
+```sh [shell]
 #切换main分支
 git checkout main
 ```
@@ -179,7 +179,7 @@ git checkout main
 
 只需要配置一次即可
 
-```sh
+```sh [shell]
 #显示ssh: Is a directory，表示有
 #显示ssh: No such file or directory，表示没有
 ~/.ssh
@@ -190,7 +190,7 @@ git checkout main
 
 没有就输入命令创建SSH Key
 
-```sh
+```sh [shell]
 #"49****@qq.com"填你自己的邮箱
 ssh-keygen -t rsa -C "49****@qq.com"
 ```
@@ -248,7 +248,7 @@ SSH key就创建好了，邮箱也会收到通知
 在 git Bash 中输入以下代码，测试一下
 
 
-```sh
+```sh [shell]
 #默认git@github.com不要改
 ssh -T git@github.com
 ```
@@ -282,7 +282,7 @@ You’ve successfully authenticated, but GitHub does not provide shell access.
 
 然后，更改下方代码
 
-```sh
+```sh [shell]
 #如：git remote add origin git@github.com:DzPian/copydog.git
 git remote add origin 这里是你的SSH连接地址
 ```
@@ -293,7 +293,7 @@ git remote add origin 这里是你的SSH连接地址
 
 输入 `git remote -v` 查看是否成功
 
-```sh
+```sh [shell]
 git remote -v
 
 #push是推送，fetch是获取，有就是正常
@@ -322,7 +322,7 @@ git remote -v
 add后面的 `.` 不能漏掉
 :::
 
-```sh
+```sh [shell]
 git add .
 
 #git add 只将修改的文件添加缓存区
@@ -359,7 +359,7 @@ git commit -m “这里描述上传了什么”
 这里默认分支是main，除非你想创建其他分支
 :::
 
-```sh
+```sh [shell]
 #第1次推送使用-u，之后就不用了
 git push -u origin main
 
@@ -382,13 +382,13 @@ git push origin main
 
 原来的master变成了 `master rebase 1/2` 之类的，用abort回退即可
 
-```sh
+```sh [shell]
 git rebase --abort
 ```
 
 出现 `main|MERGING` ，回退
 
-```sh
+```sh [shell]
 git reset --hard head
 ```
 :::
@@ -407,7 +407,7 @@ git reset --hard head
 
 修改后，别忘了push
 
-```sh
+```sh [shell]
 #修改内容
 git commit --amend -m "你要修改的内容"
 
@@ -420,7 +420,7 @@ git push origin main
 
 ::: details 修改文件名
 
-```sh
+```sh [shell]
 #修改内容
 git commit -m "你要修改的文件名"
 
@@ -434,7 +434,7 @@ git push origin main
 
 ::: details 查看历史提交
 
-```sh
+```sh [shell]
 git log
 ```
 :::
@@ -443,7 +443,7 @@ git log
 
 ::: details 远程删除文件
 
-```sh
+```sh [shell]
 #删除文件
 git rm -r 你要删除的文件名
 
@@ -460,7 +460,7 @@ git push origin main
 
 ::: details 创建分支
 
-```sh
+```sh [shell]
 #用英文
 git branch 这里写分支的名字
 
@@ -473,7 +473,7 @@ git branch 这里写分支的名字
 
 ::: details 仓库克隆
 
-```sh
+```sh [shell]
 git clone 你的SSH仓库地址
 ```
 :::

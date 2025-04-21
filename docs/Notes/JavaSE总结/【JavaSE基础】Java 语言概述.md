@@ -25,7 +25,7 @@ date: 2024-07-31 11:54:06
 
 >编写一个简单的Java程序：
 
-```Java
+```java [Java]
 public class test {
         
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class test {
 ```
 运行该程序，输出结果为：
 
-```Java
+```java [Java]
 结果=2
 ```
 

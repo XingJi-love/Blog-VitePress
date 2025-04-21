@@ -4,7 +4,7 @@
 
 ---
 
-```sql
+```sql [SQL]
 mysql> select ename from emp; -- 查询所有员工名字
 
 +--------+
@@ -29,7 +29,7 @@ mysql> select ename from emp; -- 查询所有员工名字
 ```
 > 关于select语句，我们之前都是这样写：`select 字段名 from 表名;` 其实，这里的`字段名可以看做“变量”`，select后面`既然可以跟变量`，那么`可以跟常量`吗，尝试一下：
 
-```sql
+```sql [SQL]
 mysql> select 100;
 
 +-----+
@@ -68,12 +68,12 @@ ERROR 1054 (42S22): Unknown column 'abc' in 'field list'
 
 ### 转大写upper和ucase
 
-```sql
+```sql [SQL]
 # 查询所有员工名字，以大写形式展现
 select upper(ename) as ename from emp;
 ```
 
-```sql
+```sql [SQL]
 mysql> select upper(ename) as ename from emp;
                                     
 +--------+
@@ -99,12 +99,12 @@ mysql> select upper(ename) as ename from emp;
 
 > 还有一个和`upper函数`功能相同的函数`ucase`，也可以`转大写`，了解一下即可：
 
-```sql
+```sql [SQL]
 # 查询所有员工姓名，以大写形式展现
 select ucase(ename) as ename from emp;
 ```
 
-```sql
+```sql [SQL]
 mysql> select ucase(ename) as ename from emp;
 
 +--------+
@@ -128,12 +128,12 @@ mysql> select ucase(ename) as ename from emp;
 14 rows in set (0.00 sec)
 ```
 
-```sql
+```sql [SQL]
 # 查询员工smith的岗位、薪资（假如你不知道数据库表中的人名是大写、小写还是大小写混合）
 select ename, job, sal from emp where upper(ename) = 'SMITH';
 ```
 
-```sql
+```sql [SQL]
 mysql> select ename,job,sal from emp where upper(ename)='SMITH';
 
 +-------+-------+--------+
@@ -146,13 +146,13 @@ mysql> select ename,job,sal from emp where upper(ename)='SMITH';
 
 ### 转小写lower和lcase
 **很简单，不再赘述，直接上代码：**
-```sql
+```sql [SQL]
 # 查询员工姓名，以小写形式展现
 select lower(ename) as ename from emp;
 select lcase(ename) as ename from emp;
 ```
 
-```sql
+```sql [SQL]
 mysql> select lower(ename) as ename from emp;
 
 +--------+
@@ -176,7 +176,7 @@ mysql> select lower(ename) as ename from emp;
 14 rows in set (0.00 sec)
 ```
 
-```sql
+```sql [SQL]
 mysql> select lcase(ename) as ename from emp;
 
 +--------+
@@ -212,7 +212,7 @@ mysql> select lcase(ename) as ename from emp;
 
 > **注意：`起始下标从1开始，不是从0开始`。（`1`表示`从左侧开始的第一个位置`，`-1`表示`从右侧开始的第一个位置`。）**
 
-```sql
+```sql [SQL]
 mysql> select substr('abcdef',1,3);
 
 +----------------------+
@@ -243,11 +243,11 @@ mysql> select substr('abcdef',2);
 
 > **`练习`：找出`员工名字`中`第二个字母是A`的**
 
-```sql
+```sql [SQL]
 select ename from emp where substr(ename, 2, 1) = 'A';
 ```
 
-```sql
+```sql [SQL]
 mysql> select ename from emp where substr(ename,2,1) = 'A';
 
 +--------+
@@ -264,11 +264,11 @@ mysql> select ename from emp where substr(ename,2,1) = 'A';
 
 > **`统计字节数`，而不是字符数。**
 
-```sql
+```sql [SQL]
 select length('你好123');
 ```
 
-```sql
+```sql [SQL]
 mysql> select length('你好123');
 
 +-------------------+
@@ -284,11 +284,11 @@ mysql> select length('你好123');
 
 > **`统计字符数`，而不是字节数。**
 
-```sql
+```sql [SQL]
 select char_length('你好123');
 ```
 
-```sql 
+```sql [SQL] 
 mysql> select char_length('你好123');
 
 +------------------------+
@@ -305,11 +305,11 @@ mysql> select char_length('你好123');
 
 > 拼接的`字符串数量没有限制`。
 
-```sql
+```sql [SQL]
 select concat('abc', 'def', 'xyz');
 ```
 
-```sql
+```sql [SQL]
 mysql> select concat('abc','def','xyz');
 
 +---------------------------+
@@ -321,16 +321,16 @@ mysql> select concat('abc','def','xyz');
 ```
 > 注意：在mysql8之前，双竖线||也是可以完成字符串拼接的。但在mysql8之后，`||只作为逻辑运算符`，**不能再进行字符串拼接了**。
 
-```sql
+```sql [SQL]
 select 'abc' || 'def' || 'xyz';
 ```
 > mysql8之后，`|| 只作为“或者”运算符`，例如：找出`工资高于3000或者低于900`的`员工姓名和薪资`：
 
-```sql
+```sql [SQL]
 select ename, sal from emp where sal > 3000 || sal < 900;
 ```
 
-```sql
+```sql [SQL]
 mysql> select ename,sal from emp where sal > 3000 || sal < 900;
 
 +-------+---------+
@@ -346,11 +346,11 @@ mysql> select ename,sal from emp where sal > 3000 || sal < 900;
 
 ### 去除字符串前后空白trim
 
-```sql
+```sql [SQL]
 select concat(trim('    abc    '), 'def');
 ```
 
-```sql
+```sql [SQL]
 mysql> select concat(trim('    abc    '), 'def');
 
 +------------------------------------+
@@ -364,11 +364,11 @@ mysql> select concat(trim('    abc    '), 'def');
 
 >> **去除前置0**
 
-```sql
+```sql [SQL]
 select trim(leading '0' from '000111000');
 ```
 
-```sql
+```sql [SQL]
 mysql> select trim(leading '0' from '000111000');
 
 +------------------------------------+
@@ -381,11 +381,11 @@ mysql> select trim(leading '0' from '000111000');
 
 >> **去除后置0**
 
-```sql
+```sql [SQL]
 select trim(trailing '0' from '000111000');
 ```
 
-```sql
+```sql [SQL]
 mysql> select trim(trailing '0' from '000111000');
 
 +-------------------------------------+
@@ -398,11 +398,11 @@ mysql> select trim(trailing '0' from '000111000');
 
 >> **前置0和后置0全部去除**
 
-```sql
+```sql [SQL]
 select trim(both '0' from '000111000');
 ```
 
-```sql
+```sql [SQL]
 mysql> select trim(trailing '0' from '000111000');
 
 +-------------------------------------+
@@ -419,7 +419,7 @@ mysql> select trim(trailing '0' from '000111000');
 
 > rand()生成`0到1的随机浮点数`。
 
-```sql
+```sql [SQL]
 mysql> select rand();
 
 +--------------------+
@@ -441,7 +441,7 @@ mysql> select rand();
 
 > rand(x)生成`0到1的随机浮点数`，通过`指定整数x`来确定每次获取到`相同的浮点值`。
 
-```sql
+```sql [SQL]
 mysql> select rand(2);
 +--------------------+
 | rand(2)            |
@@ -480,7 +480,7 @@ mysql> select rand(5);
 
 > round(x) `四舍五入`，`保留整数位，舍去所有小数`
 
-```sql
+```sql [SQL]
 mysql> select round(9.754);
 +--------------+
 | round(9.754) |
@@ -500,7 +500,7 @@ mysql> select round(9.454);
 
 > round(x,y) `四舍五入`，`保留y位小数`
 
-```sql
+```sql [SQL]
 mysql> select round(9.454,1);
 +----------------+
 | round(9.454,1) |
@@ -521,7 +521,7 @@ mysql> select round(9.454,0);
 
 ### truncate(x, y)舍去
 
-```sql
+```sql [SQL]
 mysql> select truncate(9.999,2);
 +-------------------+
 | truncate(9.999,2) |
@@ -540,7 +540,7 @@ mysql> select truncate(9.999,2);
 
 >> floor(x) `向下取整`，`返回小于或等于x的最大整数`。
 
-```sql
+```sql [SQL]
 mysql> select ceil(5.3);
 +-----------+
 | ceil(5.3) |
@@ -567,7 +567,7 @@ mysql> select floor(5.3);
 
 >> **在SQL语句中，`凡是有NULL参与`的数学运算，最终的`计算结果都是NULL`**：
 
-```sql
+```sql [SQL]
 mysql> select null + 1;
 +----------+
 | null + 1 |
@@ -595,7 +595,7 @@ mysql> select null * 0;
 
 >> **看这样一个需求：`查询每个员工的年薪`。`（年薪 = (月薪 + 津贴) * 12个月`。注意：`有的员工津贴comm是NULL`。）**
 
-```sql
+```sql [SQL]
 mysql> select ename,(sal + comm) * 12 as yearsal from emp;
 
 +--------+----------+
@@ -621,7 +621,7 @@ mysql> select ename,(sal + comm) * 12 as yearsal from emp;
 
 >> 以上查询结果中显示`SMITH等人的年薪是NULL`，这是为什么，这是因为`SMITH等人的津贴comm是NULL`，有`NULL参与的数学运算`，最终`结果都是NULL`，显然这个`需要空处理`，此时就用到了`ifnull函数`：
 
-```sql
+```sql [SQL]
 mysql> select ename,(sal + ifnull(comm, 0)) * 12 as yearsal from emp;
 
 +--------+----------+
@@ -649,7 +649,7 @@ mysql> select ename,(sal + ifnull(comm, 0)) * 12 as yearsal from emp;
 
 ### 获取当前日期和时间
 
-```sql
+```sql [SQL]
 mysql> select now();
 +---------------------+
 | now()               |
@@ -682,7 +682,7 @@ mysql> select now(), sleep(2), sysdate();
 
 ### 获取当前日期
 
-```sql
+```sql [SQL]
 mysql> select curdate();
 +------------+
 | curdate()  |
@@ -715,7 +715,7 @@ mysql> select current_date;
 
 ### 获取当前时间
 
-```sql
+```sql [SQL]
 mysql> select curtime();
 +-----------+
 | curtime() |
@@ -749,7 +749,7 @@ mysql> select current_time;
 
 ### 获取单独的年、月、日、时、分、秒
 
-```sql
+```sql [SQL]
 mysql> select year(now());
 +-------------+
 | year(now()) |
@@ -802,7 +802,7 @@ mysql> select second(now());
 
 >> 一次性提取一个`给定日期的“年月日”部分`，可以使用`date()函数`，例如：
 
-```sql
+```sql [SQL]
 mysql> select date(now());
 +-------------+
 | date(now()) |
@@ -814,7 +814,7 @@ mysql> select date(now());
 
 >> 一次性提取一个`给定日期的“时分秒”部分`，可以使用`time()函数`，例如：
 
-```sql
+```sql [SQL]
 mysql> select time(now());
 +-------------+
 | time(now()) |
@@ -833,7 +833,7 @@ mysql> select time(now());
 
 >> 以'2025-3-22'为基准，间隔3天之后的日期：'2025-3-25'
 
-```sql
+```sql [SQL]
 mysql> select date_add('2025-3-22', interval 3 day);
 +---------------------------------------+
 | date_add('2025-3-22', interval 3 day) |
@@ -846,7 +846,7 @@ mysql> select date_add('2025-3-22', interval 3 day);
 >> 以'2025-03-22'为基准，间隔3个月之后的日期：'2025-06-22'
 详细解释一下这个函数的相关参数：
 
-```sql
+```sql [SQL]
 mysql> select date_add('2025-3-22', interval 3 month);
 +-----------------------------------------+
 | date_add('2025-3-22', interval 3 month) |
@@ -871,7 +871,7 @@ mysql> select date_add('2025-3-22', interval 3 month);
 
 > 请分析下面这条SQL语句所表达的含义：
 
-```sql
+```sql [SQL]
 mysql> select date_add('2025-3-22 19:16:16', interval -1 microsecond);
 
 +---------------------------------------------------------+
@@ -885,7 +885,7 @@ mysql> select date_add('2025-3-22 19:16:16', interval -1 microsecond);
 
 > 以上SQL也可以`采用date_sub函数`完成，例如：
 
-```sql
+```sql [SQL]
 mysql> select date_sub('2025-3-22 19:16:16', interval 1 microsecond);
 
 +--------------------------------------------------------+
@@ -912,7 +912,7 @@ mysql> select date_sub('2025-3-22 19:16:16', interval 1 microsecond);
 
 >> 如果`单位采用复合型`的话，expr该怎么写呢？例如单位采用：`day_hour`，假设我要`表示3天2小时之后`，怎么写？
 
-```sql
+```sql [SQL]
 mysql> select date_add('2025-3-22 19:16:16', interval '3,2' day_hour);
 
 +---------------------------------------------------------+
@@ -945,7 +945,7 @@ mysql> select date_add('2025-3-22 19:16:16', interval '3,2' day_hour);
 
 > 例如：获取当前系统时间，让其以这个格式展示：2025-03-22 19:36:58
 
-```sql
+```sql [SQL]
 mysql> select date_format(now(), '%Y-%m-%d %H:%i:%s');
 
 +-----------------------------------------+
@@ -957,7 +957,7 @@ mysql> select date_format(now(), '%Y-%m-%d %H:%i:%s');
 
 > 注意：在mysql当中，默认的日期格式就是：`%Y-%m-%d %H:%i:%s`，所以当你`直接输出日期数据`的时候，会`自动转换成该格式的字符串`：
 
-```sql
+```sql [SQL]
 mysql> select now();
 
 +---------------------+
@@ -974,7 +974,7 @@ mysql> select now();
 
 > 假设有一个`学生表t_student`，学生有一个`生日的字段`，类型是`date类型`：
 
-```sql
+```sql [SQL]
 drop table if exists t_student;
 create table t_student(
   name varchar(255),
@@ -983,7 +983,7 @@ create table t_student(
 desc t_student;
 ```
 >> 我们要给这个表插入一条数据：`姓名zhangsan`，生日`85年10月1日`，执行以下`insert语句`：
-```sql
+```sql [SQL]
 mysql> insert into t_student (name, birth) values ('zhangsan','10/1/1985');
 
 ERROR 1292 (22007): Incorrect date value: '10/1/1985' for column 'birth' at row 1
@@ -991,12 +991,12 @@ ERROR 1292 (22007): Incorrect date value: '10/1/1985' for column 'birth' at row 
 
 >> 错误原因：`日期值不正确`。意思是：birth字段需要一个日期，你给的这个字符串`'10/01/1985'`我识别不了。这种情况下，我们就可以使用`str_to_date函数`进行类型转换：
 
-```sql
+```sql [SQL]
 mysql> insert into t_student(name, birth) values('zhangsan', str_to_data('10/1/1985','%m%d%Y'));
 Query OK, 1 row affected, 1 warning (0.02 sec)
 ```
 
-```sql
+```sql [SQL]
 mysql> select * from t_student;
 +----------+------------+
 | name     | birth      |
@@ -1008,7 +1008,7 @@ mysql> select * from t_student;
 
 >> 当然，如果你`提供的日期字符串格式`能够被mysql解析，`str_to_date函数`是可以`省略`的，底层会自动调用该函数进行类型转换：
 
-```sql
+```sql [SQL]
 mysql> insert into t_student (name, birth) values('zhangsan','1985-10-1');
 Query OK, 1 row affected (0.02 sec)
 
@@ -1038,7 +1038,7 @@ mysql> select * from t_student;
 
 ### dayofweek、dayofmonth、dayofyear函数
 
-```sql
+```sql [SQL]
 mysql> select dayofweek(now());
 +------------------+
 | dayofweek(now()) |
@@ -1072,7 +1072,7 @@ mysql> select dayofyear(now());
 
 > 获取`给定日期所在月的最后一天`的日期：
 
-```sql
+```sql [SQL]
 mysql> select last_day(now());
 
 +-----------------+
@@ -1087,7 +1087,7 @@ mysql> select last_day(now());
 
 > 计算`两个日期之间所差天数`：
 
-```sql
+```sql [SQL]
 mysql> select datediff('1970-02-01 20:10:30', '1970-01-01');
 
 +-----------------------------------------------+
@@ -1103,7 +1103,7 @@ mysql> select datediff('1970-02-01 20:10:30', '1970-01-01');
 
 > **计算`两个日期所差时间`，例如日期1和日期2所差`10:20:30`，表示`差10小时20分钟30秒`。**
 
-```sql
+```sql [SQL]
 mysql> select timediff('1970-01-02 20:10:30','1970-01-01 20:09:30');
 
 +-------------------------------------------------------+
@@ -1118,13 +1118,13 @@ mysql> select timediff('1970-01-02 20:10:30','1970-01-01 20:09:30');
 
 > 如果`条件为TRUE则返回“YES”`，如果`条件为FALSE则返回“NO”`：
 
-```sql
+```sql [SQL]
 SELECT IF(500<1000, "YES", "NO");
 ```
 
 > 例如：如果`工资高于3000`，`则输出1，反之则输出0`
 
-```sql
+```sql [SQL]
 mysql> select ename,if(sal > 3000, 1, 0) from emp;
 
 +--------+----------------------+
@@ -1150,7 +1150,7 @@ mysql> select ename,if(sal > 3000, 1, 0) from emp;
 
 > 再例如：如果`名字是SMITH`的，`工资上调10%`，`其他员工工资正常显示`。
 
-```sql 
+```sql [SQL] 
 mysql> select ename,if(ename='SMITH', sal*1.1 ,sal) as sal from emp;
 
 +--------+---------+
@@ -1176,7 +1176,7 @@ mysql> select ename,if(ename='SMITH', sal*1.1 ,sal) as sal from emp;
 
 > 再例如：`工作岗位是MANAGER`的`工资上调10%`，是`SALESMAN`的`工资上调20%`，`其他岗位工资正常`。
 
-```sql 
+```sql [SQL] 
 mysql> select ename,job,if(job='MANAGER', sal*1.1, if(job='SALESMAN',sal*1.2, sal)) as sal from emp;
 
 +--------+-----------+---------+
@@ -1202,7 +1202,7 @@ mysql> select ename,job,if(job='MANAGER', sal*1.1, if(job='SALESMAN',sal*1.2, sa
 
 > **上面这个需求也可以使用：`case.. when.. then.. when.. then.. else.. end`来完成：**
 
-```sql
+```sql [SQL]
 mysql> select ename,job,sal,(case job when 'MANAGER' then sal*1.1 when 'SALESMAN' then sal*1.2 else sal end) as newsal from emp;
 
 +--------+-----------+---------+---------+
@@ -1243,7 +1243,7 @@ mysql> select ename,job,sal,(case job when 'MANAGER' then sal*1.1 when 'SALESMAN
 - char：定长字符串类型
 - decimal：浮点型
 
-```sql
+```sql [SQL]
 mysql> select cast('2020-10-11 20:15:30' as date);
 +-------------------------------------+
 | cast('2020-10-11 20:15:30' as date) |
@@ -1306,7 +1306,7 @@ mysql> select cast('123.456' as decimal(5,1));
 
 > `md5函数`，可以将给定的字符串经过md5算法进行加密处理，字符串经过加密之后会生成`一个固定长度32位的字符串`，md5加密之后的密文通常是`不能解密`的：
 
-```sql
+```sql [SQL]
 mysql> select md5('powernode');
 
 +----------------------------------+

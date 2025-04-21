@@ -112,7 +112,7 @@ date: 2024-07-27 16:03:07
 
 由于JAVA_HOME配置的是JDK的安装目录，所以Path有另一种配置方式，`配置jdk和jre的bin目录`即可，如下所示：
 
-```java
+```java [Java]
 %JAVA_HOME%\bin
 %JAVA_HOME%\jre\bin
 
@@ -135,7 +135,7 @@ CLASSPATH顾名思义为包路径，告诉Java在执行的时候，去哪里找�
 
 我们在系统变量里新建一个CLASSPATH，赋值如下：
 
-```java
+```java [Java]
 .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
 ```
 注意前面的 . 这个点号不能省略掉

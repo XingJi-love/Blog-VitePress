@@ -30,7 +30,7 @@
 
 **例子**：
 
-```sql
+```sql [SQL]
 mysql> select * from emp;
 +-------+--------+-----------+------+------------+---------+---------+--------+
 | EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
@@ -145,7 +145,7 @@ mysql> select e.ename,d.dname from emp e,dept d;
 
 > **案例：查询`每个员工所在的部门名称`，要求显示`员工名、部门名`**。
 
-```sql
+```sql [SQL]
 select
 	e.ename,d.dname
 from
@@ -159,7 +159,7 @@ SELECT e.ename, d.dname FROM emp e (inner) JOIN dept d ON e.deptno = d.deptno;
 ```
 
 > **`员工表(emp)`**：
-```sql 
+```sql [SQL] 
 mysql> select * from emp;
 +-------+--------+-----------+------+------------+---------+---------+--------+
 | EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
@@ -183,7 +183,7 @@ mysql> select * from emp;
 ```
 
 > **`部门表(dept)`**：
-```sql
+```sql [SQL]
 mysql> select * from dept;
 +--------+------------+----------+
 | DEPTNO | DNAME      | LOC      |
@@ -201,7 +201,7 @@ mysql> select * from dept;
 :::
 
 > **`内连接之等值连接查询结果:`**
-```sql
+```sql [SQL]
 mysql> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno;
 +--------+------------+
 | ename  | dname      |
@@ -237,7 +237,7 @@ mysql> SELECT e.ename, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno;
 
 > 案例：查询`每个员工的工资等级`，要求显示`员工名、工资、工资等级`。
 
-```sql
+```sql [SQL]
 select
 	e.ename,e.sal,s.grade
 from
@@ -251,7 +251,7 @@ SELECT e.ename, e.sal, s.grade FROM emp e INNER JOIN salgrade s ON e.sal BETWEEN
 ```
 
 > **`员工表(emp)`**：
-```sql
+```sql [SQL]
 mysql> select * from emp;
 +-------+--------+-----------+------+------------+---------+---------+--------+
 | EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
@@ -275,7 +275,7 @@ mysql> select * from emp;
 ```
 
 > **`工资等级表(salgrade)`**：
-```sql
+```sql [SQL]
 mysql> select * from salgrade;
 +-------+-------+-------+
 | GRADE | LOSAL | HISAL |
@@ -297,7 +297,7 @@ mysql> select * from salgrade;
 
 
 > **`内连接之非等值连接查询结果：`**
-```sql 
+```sql [SQL] 
 mysql> SELECT e.ename, e.sal, s.grade FROM emp e INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
 +--------+---------+-------+
 | ename  | sal     | grade |
@@ -326,7 +326,7 @@ mysql> SELECT e.ename, e.sal, s.grade FROM emp e INNER JOIN salgrade s ON e.sal 
 > 连接时，一张表看做两张表，`自己和自己进行连接`。
 
 > 案例：找出`每个员工的直属领导`，要求显示`员工名、领导名`。
-```sql
+```sql [SQL]
 select
 	e.ename 员工名, l.ename 领导名
 from
@@ -338,7 +338,7 @@ on
 ```
 
 > **`内连接之自连接查询结果:`**
-```sql
+```sql [SQL]
 mysql> select e.ename 员工, l.ename 领导 from emp e join emp l on e.mgr = l.empno;
 +--------+-------+
 | 员工   | 领导  |
@@ -389,7 +389,7 @@ mysql> select e.ename 员工, l.ename 领导 from emp e join emp l on e.mgr = l.
 ### 外连接之左外连接（左连接）
 
 案例：查询所有部门信息，并且找出每个部门下的员工。
-```sql
+```sql [SQL]
 select
   d.*,e.ename
 from
@@ -405,7 +405,7 @@ on
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=PUaJ7&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ### 外连接之右外连接（右连接）
 还是上面的案例，可以写作右连接。
-```sql
+```sql [SQL]
 select
   d.*,e.ename
 from
@@ -417,7 +417,7 @@ on
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677403445932-325502d5-b568-46a5-8f7a-d91030f3cac3.png#averageHue=%23191411&clientId=u1be67ea7-0240-4&from=paste&height=412&id=ue32d3266&originHeight=412&originWidth=454&originalType=binary&ratio=1&rotation=0&showTitle=false&size=36142&status=done&style=shadow&taskId=u28ef1b62-f835-472a-b916-1ee2eb5299b&title=&width=454)
 案例：找出所有员工的上级领导，要求显示员工名和领导名。
-```sql
+```sql [SQL]
 select 
   e.ename 员工名,l.ename 领导名 
 from 
@@ -427,7 +427,7 @@ left join
 on
   e.mgr = l.empno;
 ```
-```sql
+```sql [SQL]
 select 
   e.ename 员工名,l.ename 领导名 
 from 
@@ -450,7 +450,7 @@ MySQL不支持full join。oracle数据库支持。
 订单表：t_order
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677405287024-4df811ac-9216-47c3-98b2-20f5d7ce2886.png#averageHue=%23151311&clientId=u1be67ea7-0240-4&from=paste&height=136&id=u8ef1b39a&originHeight=136&originWidth=261&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4032&status=done&style=shadow&taskId=u69ae2de5-204a-4a0b-8d2f-67ccbc73ad2&title=&width=261)
 案例：查询所有的客户和订单。
-```sql
+```sql [SQL]
 select 
  c.*,o.* 
 from 
@@ -464,7 +464,7 @@ on
 ## 多张表连接
 三张表甚至更多张表如何进行表连接
 案例：找出每个员工的部门，并且要求显示每个员工的薪资等级。
-```sql
+```sql [SQL]
 select 
  e.ename,d.dname,s.grade 
 from 
@@ -497,7 +497,7 @@ on
 2. select语句可以嵌套在哪里？
    1. where后面、from后面、select后面都是可以的。
 
-```sql
+```sql [SQL]
 select ..(select)..
 from ..(select)..
 where ..(select)..
@@ -507,12 +507,12 @@ where ..(select)..
 ## where后面使用子查询
 案例：找出高于平均薪资的员工姓名和薪资。
 错误的示范：
-```sql
+```sql [SQL]
 select ename,sal from emp where sal > avg(sal);
 ```
 错误原因：where后面不能直接使用分组函数。
 可以使用子查询：
-```sql
+```sql [SQL]
 select ename,sal from emp where sal > (select avg(sal) from emp);
 ```
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg#averageHue=%23f9f8f8&from=url&id=L4mS0&originHeight=78&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
@@ -520,18 +520,18 @@ select ename,sal from emp where sal > (select avg(sal) from emp);
 小窍门：from后面的子查询可以看做一张临时表。
 案例：找出每个部门的平均工资的等级。
 第一步：先找出每个部门平均工资。
-```sql
+```sql [SQL]
 select deptno, avg(sal) avgsal from emp group by deptno;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677477788393-e2525a0a-2092-4a5e-80e7-7f8df04f6a6c.png#averageHue=%23151311&clientId=ud7d035d7-9c64-4&from=paste&height=163&id=u397cf064&originHeight=163&originWidth=303&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5620&status=done&style=shadow&taskId=uc8a5cf34-abe3-446f-9948-e3cedf385f9&title=&width=303)
 第二步：将以上查询结果当做临时表t，t表和salgrade表进行连接查询。条件：t.avgsal between s.losal and s.hisal
-```sql
+```sql [SQL]
 select t.*,s.grade from (select deptno, avg(sal) avgsal from emp group by deptno) t join salgrade s on t.avgsal between s.losal and s.hisal;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1677477892811-ef9b366b-82be-4407-86f1-8dfa81492d8c.png#averageHue=%23151311&clientId=ud7d035d7-9c64-4&from=paste&height=162&id=u5d9f4ab4&originHeight=162&originWidth=397&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7422&status=done&style=shadow&taskId=uc90565b7-edc2-43bf-ba54-1e7db925c63&title=&width=397)
 ![](https://cdn.nlark.com/yuque/0/2023/jpeg/21376908/1692002570088-3338946f-42b3-4174-8910-7e749c31e950.jpeg?x-oss-process=image%2Fresize%2Cw_1177%2Climit_0%2Finterlace%2C1#averageHue=%23f9f8f8&from=url&id=Nae5T&originHeight=66&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=shadow&title=)
 ## select后面使用子查询
-```sql
+```sql [SQL]
 select e.ename,(select d.dname from dept d where e.deptno = d.deptno) as dname from emp e;
 ```
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678063689524-a204a93a-6454-4ff7-a1c6-ac5229edae91.png#averageHue=%231a1714&clientId=ud9fded62-54bb-4&from=paste&height=428&id=u2b69cf05&originHeight=428&originWidth=276&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16342&status=done&style=shadow&taskId=ua4f4e977-d3e6-4e90-8781-42050638d4a&title=&width=276)
@@ -544,7 +544,7 @@ select e.ename,(select d.dname from dept d where e.deptno = d.deptno) as dname f
 - EXISTS 可以用于验证条件子句中的表达式是否存在；
 - EXISTS 常用于子查询条件过滤，例如查询有订单的用户等。
 
-```sql
+```sql [SQL]
 drop table if exists t_customer;
 drop table if exists t_order;
 
@@ -574,7 +574,7 @@ select * from t_order;
 ```
 现在我们来看一个简单的案例，假设我们要查询先前有过订单的顾客，而订单信息保存在 t_order 表中，顾客信息保存在 t_customer 表中。我们可以使用以下 sql 语句：
 
-```sql
+```sql [SQL]
 select * from t_customer c where exists(select * from t_order o where o.customer_id=c.customer_id);
 ```
 
@@ -590,7 +590,7 @@ select * from t_customer c where exists(select * from t_order o where o.customer
 
 例如，我们想要查找所有没有下过订单的顾客，可以使用以下 sql 语句：
 
-```sql
+```sql [SQL]
 select * from t_customer c where not exists(select * from t_order o where o.customer_id=c.customer_id);
 ```
 
@@ -609,7 +609,7 @@ IN 和 EXISTS 都是用于关系型数据库查询的操作符。不同之处在
 
 使用 IN 操作符：
 
-```sql
+```sql [SQL]
 SELECT *
 FROM products
 WHERE product_name IN ('手机', '平板电脑')
@@ -622,7 +622,7 @@ AND product_id IN (
 
 使用 EXISTS 操作符：
 
-```sql
+```sql [SQL]
 SELECT *
 FROM products
 WHERE product_name IN ('手机', '平板电脑')
@@ -642,7 +642,7 @@ union all是直接将查询结果集合并，不进行去重操作。（union al
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078225300-461e069f-0c80-4745-88a7-2969acccd076.png#averageHue=%23141210&clientId=ue32f086e-fc2b-4&from=paste&height=488&id=u46d82364&originHeight=488&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31584&status=done&style=shadow&taskId=u459bc800-2e1c-4247-866e-b06b0313a0c&title=&width=404)
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078278429-e97f96a1-7429-4b68-8df9-3bda3a890797.png#averageHue=%23151210&clientId=ue32f086e-fc2b-4&from=paste&height=884&id=u2ef6109a&originHeight=884&originWidth=408&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60134&status=done&style=shadow&taskId=u8c39e0b0-c274-46f0-8866-347160e1418&title=&width=408)
 案例：查询工作岗位是MANAGER和SALESMAN的员工。
-```sql
+```sql [SQL]
 select ename,sal from emp where job='MANAGER'
 union all
 select ename,sal from emp where job='SALESMAN';
@@ -657,16 +657,16 @@ select ename,sal from emp where job='SALESMAN';
 2. limit语法格式：
    1. limit 开始下标, 长度
 3. 案例：查询员工表前5条记录
-```sql
+```sql [SQL]
 select ename,sal from emp limit 0, 5;
 ```
 如果下标是从0开始，可以简写为：
-```sql
+```sql [SQL]
 select ename,sal from emp limit 5;
 ```
 
 4. 查询工资排名在前5名的员工（limit是在order by执行之后才会执行的）
-```sql
+```sql [SQL]
 select ename,sal from emp order by sal desc limit 5;
 ```
 

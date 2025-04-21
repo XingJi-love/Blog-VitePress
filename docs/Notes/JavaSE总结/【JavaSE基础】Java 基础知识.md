@@ -26,7 +26,7 @@ date: 2024-08-19 00:07:00
 
 ## Java 转义字符的使用
 
-```java
+```java [Java]
 //演示转义字符的使用
 public class 转义字符的使用 {
     //编写一个main方法
@@ -67,7 +67,7 @@ public class 转义字符的使用 {
 
 ### 代码呈现
 
-```java
+```java [Java]
 public class 转义字符课堂练习 {
 
     //编写一个main方法
@@ -152,7 +152,7 @@ public class 转义字符课堂练习 {
 
 ### 演示注释使用
 
-```Java
+```java [Java]
 //演示注释使用
 
 public class Comment01 {

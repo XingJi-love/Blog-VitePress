@@ -4,12 +4,12 @@
 
 ## 列出当前数据库管理系统中有哪些数据库
 
-```sql
+```sql [SQL]
 show databases;
 ```
 > MySQL自带四个数据库：`information_schema`、`mysql`、`performance_schema`、`sys`。
 
-```sql
+```sql [SQL]
 mysql> show databases;
 +--------------------+
 | Database           |
@@ -24,10 +24,10 @@ mysql> show databases;
 
 ## 查看当前用的是哪个数据库。
 
-```sql
+```sql [SQL]
 select database();
 ```
-```sql
+```sql [SQL]
 mysql> select database();
 +------------+
 | database() |
@@ -41,16 +41,16 @@ mysql> select database();
 
 ## 切换到某个数据库
 
-```sql
+```sql [SQL]
 use 数据库名称;
 ```
 + 切换到`mysql`数据库。
 
-```sql
+```sql [SQL]
 use mysql;
 ```
 
-```sql
+```sql [SQL]
 mysql> use mysql;
 Database changed
 ```
@@ -59,11 +59,11 @@ Database changed
 
 ### 列出当前数据库中有哪些表
 
-```sql
+```sql [SQL]
 show tables;
 ```
 
-```sql
+```sql [SQL]
 mysql> show tables;
 +------------------------------------------------------+
 | Tables_in_mysql                                      |
@@ -113,7 +113,7 @@ mysql> show tables;
 
 ## 创建数据库，起名powernode
 
-```sql
+```sql [SQL]
 create database 数据库名称;
 ```
 
@@ -122,12 +122,12 @@ create database 数据库名称;
 + powernode 数据库名称。
 :::
 
-```sql
+```sql [SQL]
 create database powernode;
 ```
 > `原始`数据库
 
-```sql
+```sql [SQL]
 mysql> show databases;
 +--------------------+
 | Database           |
@@ -141,7 +141,7 @@ mysql> show databases;
 ```
 > `创建`数据库
 
-```sql
+```sql [SQL]
 mysql> create database powernode;
 Query OK, 1 row affected (0.04 sec)
 
@@ -161,27 +161,27 @@ mysql> show databases;
 
 ### 使用powernode数据库
 
-```sql
+```sql [SQL]
 use powernode;
 ```
 
 > `使用powernode数据库`
 
-```sql
+```sql [SQL]
 mysql> use powernode;
 Database changed
 ```
 
 ### 查看powernode数据库中有哪些表
 
-```sql
+```sql [SQL]
 mysql> show tables;
 Empty set (0.01 sec)
 ```
 
 ### 删除数据库powernode
 
-```sql
+```sql [SQL]
 drop database 数据库名称;
 ```
 
@@ -191,13 +191,13 @@ drop database 数据库名称;
 :::
 
 
-```sql
+```sql [SQL]
 drop database powernode;
 ```
 
 > `删除数据库powernode`
 
-```sql
+```sql [SQL]
 mysql> drop database powernode;
 Query OK, 0 rows affected (0.05 sec)
 
@@ -223,12 +223,12 @@ mysql> show databases;
 
 ## 查看当前mysql版本
 
-```sql
+```sql [SQL]
 select version();
 ```
 + select——>`选择`
 
-```sql
+```sql [SQL]
 mysql> select version();
 +-----------+
 | version() |
@@ -241,11 +241,11 @@ mysql> select version();
 
 > 还可以使用`mysql.exe`命令来查看版本信息（在`没有登录mysql`之前使用）：`mysql --version`
 
-```sql
+```sql [SQL]
 mysql --version
 ```
 
-```sql
+```sql [SQL]
 mysql  Ver 8.0.41 for Win64 on x86_64 (MySQL Community Server - GPL)
 ```
 
@@ -282,7 +282,7 @@ mysql  Ver 8.0.41 for Win64 on x86_64 (MySQL Community Server - GPL)
 
 为了方便后面内容的学习，老师提前准备了表以及表中的测试数据，以下是建表并且初始化数据的sql脚本
 
-```sql
+```sql [SQL]
 DROP TABLE IF EXISTS EMP;
 DROP TABLE IF EXISTS DEPT;
 DROP TABLE IF EXISTS SALGRADE;
@@ -351,7 +351,7 @@ commit;
 
   - 第四步：`source`命令执行`sql脚本`，注意：source命令后面是`sql脚本文件的绝对路径`。
 
-```sql
+```sql [SQL]
 mysql> use powernode;
 Database changed
 
@@ -421,7 +421,7 @@ Query OK, 0 rows affected (0.00 sec)
 
    - 第五步：`查看`是否`初始化成功`，执行：`show tables;`
 
-```sql
+```sql [SQL]
 mysql> show tables;
 +---------------------+
 | Tables_in_powernode |
@@ -451,7 +451,7 @@ mysql> show tables;
 
 > 查看表结构：desc或describe，语法格式：`desc或describe +表名`
 
-```sql
+```sql [SQL]
 desc dapt;
 desc emp;
 desc salgrade;
@@ -460,7 +460,7 @@ desc salgrade;
 + emp：`员工表`
 + salgrade：`工资等级表`
 
-```sql
+```sql [SQL]
 mysql> desc dept;
 +--------+-------------+------+-----+---------+-------+
 | Field  | Type        | Null | Key | Default | Extra |
@@ -529,7 +529,7 @@ mysql> desc salgrade;
 
 > 查看一下表中的数据，来加深一下印象（以下SQL语句会在后面课程中学习）：
 
-```sql
+```sql [SQL]
 select * from emp;
 select * from dept;
 select * from salgrade;
@@ -538,7 +538,7 @@ select * from salgrade;
 2. `select * from dept;`：查询dept表中的所有数据。
 3. `select * from salgrade;`：查询salgrade表中的所有数据。
 
-```sql
+```sql [SQL]
 mysql> select * from dept;
 +--------+------------+----------+
 | DEPTNO | DNAME      | LOC      |

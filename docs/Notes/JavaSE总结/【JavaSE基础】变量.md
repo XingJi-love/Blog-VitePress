@@ -15,7 +15,7 @@ date: 2024-10-13 16:24:18
 
 ![【JavaSE基础】变量](./【JavaSE基础】变量/image.png)
 
-```java
+```java [Java]
 class Test{
     public static void main(String[] args){
     int a = 1; //定义一个变量，类型为int，变量名为a，并赋值为1
@@ -53,7 +53,7 @@ a = 60; //应该这么说: 把 60 赋给 a 使用 System.out.println(a);
 
 > 看演示并对代码进行说明， 演示记录 人的信息的代码
 
-```java
+```java [Java]
 public class Var02 { 
 
 	//编写一个main方法
@@ -79,7 +79,7 @@ public class Var02 {
 
 >举例:
 
-```java
+```java [Java]
 public class VarDetail { 
 
 	//编写一个main方法
@@ -111,7 +111,7 @@ class Dog {
 
 2. 当 `+` 号两边有一个是`字符串类型`，则做`字符串拼接`
 
-```java
+```java [Java]
 System.out.println(100 + 98); ——> 198
 System.out.println("100" + 98); ——> 10098
 

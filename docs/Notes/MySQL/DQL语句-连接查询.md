@@ -369,6 +369,7 @@ mysql> select e.ename 员工, l.ename 领导 from emp e join emp l on e.mgr = l.
 可以发现连接条件是：**`e.mgr = l.empno（员工的领导编号=领导的员工编号）`**
 
 **注意：`KING这个员工没有查询出来`。如果想将`KING也查询出来，需要使用外连接`。**
+
 :::
 
 

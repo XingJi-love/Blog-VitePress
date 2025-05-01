@@ -1,4 +1,8 @@
-# # MySQL | DQL语句-子查询
+# MySQL | DQL语句-子查询
+
+![MySQL安装教程](./MySQL安装教程/MySQL.png)
+
+---
 
 ## 什么是子查询
 

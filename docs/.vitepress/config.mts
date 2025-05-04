@@ -37,7 +37,19 @@ export default defineConfig({
   lastUpdated: true, //首次配置不会立即生效，需git提交后爬取时间戳
   head: [
     ["link", { rel: "icon", href: "/my-logo.png" }], //fav图标
+
+    // Umami统计
+    [
+      "script",
+      {
+        async: "",
+        defer: "",
+        "data-website-id": "79cc82e3-57a4-4318-ae6c-d936b826daaf",
+        src: "https://umami.xingji.fun/script.js",
+      },
+    ],
   ],
+  
   // 站点地图
   sitemap: {
     hostname: "https://vite.xingji.fun",

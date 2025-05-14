@@ -18,6 +18,18 @@
     "icon": "https://i.p-i.vip/47/20240920-66ed7b168c38c.jpg"
   },
   {
+    "title": "小林coding",
+    "desc": "小林 x 图解计算机基础",
+    "link": "https://xiaolincoding.com",
+    "icon": "https://i.p-i.vip/47/20250514-682467b670c3f.png"
+  },
+  {
+    "title": "伊奥's 教程集",
+    "desc": "青，取之于蓝，而青于蓝；冰，水为之，而寒于水。 --荀子〔劝学〕",
+    "link": "https://yiov.top",
+    "icon": "https://yiov.top/logo.png"
+  },
+  {
     "title": "LI SIR",
     "desc": "你的时间花在哪里，你的收获就在哪里",
     "link": "https://lisir.me",
@@ -114,22 +126,10 @@
     "icon": "https://www.chujiaweicode.top/static/favicons/site-logo.png"
   },
   {
-    "title": "小陈博客",
-    "desc": "理想成为大牛的小陈同学",
-    "link": "https://reinness.com",
-    "icon": "https://qiniu.reinness.com/blog/imgs/avatar.png"
-  },
-  {
     "title": "小霜南风",
     "desc": "散落一些碎花，凝结一些轻痕",
     "link": "https://blog.viper3.top",
     "icon": "/小霜南风头像.png"
-  },
-  {
-    "title": "时光の流言",
-    "desc": "是你把那座小城告诉了我。怪我一时糊涂，我再也联系不到了你。希望在这里能与你相遇，我的朋友，我的爱人。",
-    "link": "https://blog.hansjack.top",
-    "icon": "/时光の流言头像.png"
   },
   {
   "title": "4rozeN",
@@ -190,5 +190,11 @@
     "desc": "斐启智境 · 流韵新生",
     "link": "https://iflux.art",
     "icon": "https://iflux.art/favicon.ico"
+  },
+  {
+    "title": "Leet",
+    "desc": "喂我花生啊",
+    "link": "https://leetme.netlify.app",
+    "icon": "https://leetme.netlify.app/logo.svg"
   }
 ]

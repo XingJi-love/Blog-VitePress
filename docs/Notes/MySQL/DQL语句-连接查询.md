@@ -368,7 +368,7 @@ mysql> select e.ename 员工, l.ename 领导 from emp e join emp l on e.mgr = l.
 
 ![自连接](./DQL语句-连接查询/自连接.png)
 
-::: 提示
+::: tip 提示
 
 可以发现连接条件是：**`e.mgr = l.empno（员工的领导编号=领导的员工编号）`**
 
@@ -434,7 +434,7 @@ mysql> select e.*, d.* from dept d left outer join emp e on e.deptno = d.deptno;
 15 rows in set (0.00 sec)
 ```
 
-::: 提示
+::: tip 提示
 注意：`outer可以省略`。
 
 **`任何`一个`左连接`都可以写作`右连接`。**
@@ -568,7 +568,6 @@ MySQL`不支持full join`。`oracle数据库支持`。
 > 两张表数据全部查询出来，没有匹配的记录，各自为对方模拟出NULL进行匹配。
 
 >> 客户表：`t_customer`
-
 ![全连接客户表.png](./DQL语句-连接查询/全连接客户表.png)
 
 >> 订单表：`t_order`

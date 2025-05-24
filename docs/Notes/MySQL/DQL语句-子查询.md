@@ -277,22 +277,22 @@ mysql> select * from t_customer c where not exists(select * from t_order o where
 
 **在这个查询语句中，如果没有任何与顾客相关联的订单，则 NOT EXISTS 子查询将返回一个空结果集，这时候 WHERE 条件为 true，并将返回所有顾客信息。如果顾客有订单，则 NOT EXISTS 子查询的结果集将不为空，WHERE 条件为 false，则不会返回该顾客的信息。**
 
-> **总之，无论是 EXISTS 还是 NOT EXISTS，都是非常有用的 SQL 工具。可以通过它们来结合子查询来动态过滤查询结果，使 SQL 查询变得更加灵活和高效。**
+> **总之，无论是EXISTS还是NOT EXISTS，都是非常有用的 SQL 工具。可以通过它们来结合子查询来动态过滤查询结果，使 SQL 查询变得更加灵活和高效。**
 
 
 ## in和exists区别
 
 ::: tip 提示
-IN 和 EXISTS 都是用于关系型数据库查询的操作符。不同之处在于：
+> **IN 和 EXISTS 都是用于`关系型数据库查询`的操作符。不同之处在于：**
 
-1.  IN 操作符是根据指定列表中的值来判断是否满足条件，而 EXISTS 操作符则是根据子查询的结果是否有返回记录集来判断。 
-2.  EXISTS 操作符通常比 IN 操作符更快，尤其是在子查询返回记录数很大的情况下。因为 EXISTS 只需要判断是否存在符合条件的记录，而 IN 操作符需要比对整个列表，因此执行效率相对较低。 
-3.  IN 操作符可同时匹配多个值，而 EXISTS 只能匹配一组条件。 
+1.  **IN 操作符是根据指定列表中的`值来判断是否满足条件`，而 EXISTS 操作符则是根据子查询的结果`是否有返回记录集来判断`。**
+2.  **EXISTS 操作符通常比 IN 操作符`更快`，尤其是在子查询返回记录数很大的情况下。因为 EXISTS 只需要`判断是否存在符合条件的记录`，而 IN 操作符需要`比对整个列表，因此执行效率相对较低`。** 
+3.  **IN 操作符`可同时匹配多个值`，而 EXISTS `只能匹配一组条件`。** 
 :::
 
-> **下面是一个简单的示例，用于演示 IN 和 EXISTS 之间的区别。假设我们有两个表 orders 和 products，orders 表中记录了订单信息，products 表中记录了商品信息。现在我们想查询所有“手机”和“平板电脑”这两种商品中，至少有一笔订单销售了 $1000 以上的商品：**
+> **下面是一个简单的示例，用于演示 IN 和 EXISTS 之间的区别。假设我们有两个表 `orders 和 products`，`orders 表`中记录了`订单信息`，`products 表`中记录了`商品信息`。现在我们想查询`所有“手机”和“平板电脑”`这两种商品中，`至少有一笔订单`销售了 `$1000 以上`的商品：**
 
-使用 IN 操作符：
+>> **使用 `IN 操作符`：**
 
 ```sql [SQL]
 SELECT *
@@ -305,7 +305,7 @@ AND product_id IN (
 );
 ```
 
-使用 EXISTS 操作符：
+>> **使用 `EXISTS 操作符`：**
 
 ```sql [SQL]
 SELECT *
@@ -318,50 +318,165 @@ AND EXISTS (
   AND order_amount > 1000
 );
 ```
+> **总之，`IN 和 EXISTS `都是`用于条件过滤的操作符`，但其实现方式和性能特点都不同，需要根据具体情况进行选择和使用。**
 
-总之，IN 和 EXISTS 都是用于条件过滤的操作符，但其实现方式和性能特点都不同，需要根据具体情况进行选择和使用。
 
+## union & union all
 
-## union&union all
-不管是union还是union all都可以将两个查询结果集进行合并。
-union会对合并之后的查询结果集进行去重操作。
-union all是直接将查询结果集合并，不进行去重操作。（union all和union都可以完成的话，优先选择union all，union all因为不需要去重，所以效率高一些。）
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078225300-461e069f-0c80-4745-88a7-2969acccd076.png#averageHue=%23141210&clientId=ue32f086e-fc2b-4&from=paste&height=488&id=u46d82364&originHeight=488&originWidth=404&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31584&status=done&style=shadow&taskId=u459bc800-2e1c-4247-866e-b06b0313a0c&title=&width=404)
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078278429-e97f96a1-7429-4b68-8df9-3bda3a890797.png#averageHue=%23151210&clientId=ue32f086e-fc2b-4&from=paste&height=884&id=u2ef6109a&originHeight=884&originWidth=408&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60134&status=done&style=shadow&taskId=u8c39e0b0-c274-46f0-8866-347160e1418&title=&width=408)
-案例：查询工作岗位是MANAGER和SALESMAN的员工。
+::: tip 提示
+**不管是`union还是union all`都可以`将两个查询结果集进行合并`。**
+
+`union`会对`合并之后`的`查询结果集进行去重`操作。
+
+`union all`是直接将`查询结果集合并`，**`不进行去重操作`**。(union all和union都可以完成的话，`优先选择union all`，**union all因为`不需要去重`，所以`效率高一些`**。)
+:::
+
+![合并前查询结果](./DQL语句-子查询/合并前查询结果.png)
+
+![union-all对查询结果集进行合并](./DQL语句-子查询/union-all对查询结果集进行合并.png)
+
+![union对查询结果集进行合并-并且进行去重操作](./DQL语句-子查询/union对查询结果集进行合并-并且进行去重操作.png)
+
+> **案例：查询`工作岗位`是`MANAGER`和`SALESMAN`的`员工`。**
+
+>> **`原始查询结果`：**
+
 ```sql [SQL]
-select ename,sal from emp where job='MANAGER'
-union all
-select ename,sal from emp where job='SALESMAN';
+mysql> select ename,sal from emp where job='SALESMAN';
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| MARTIN | 1250.00 |
+| TURNER | 1500.00 |
++--------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select ename,sal from emp where job='MANAGER';
++-------+---------+
+| ename | sal     |
++-------+---------+
+| JONES | 2975.00 |
+| BLAKE | 2850.00 |
+| CLARK | 2450.00 |
++-------+---------+
+3 rows in set (0.00 sec)
 ```
-以上案例采用or也可以完成，那or和union all有什么区别？考虑走索引优化之类的选择union all，其它选择or。
-两个结果集合并时，列数量要相同：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/21376908/1678078078467-89b7ba88-52ae-4e70-b5cc-b4fe4a3daf76.png#averageHue=%2312110f&clientId=ue32f086e-fc2b-4&from=paste&height=101&id=u85e05b84&originHeight=101&originWidth=999&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11813&status=done&style=shadow&taskId=u29bd097d-8994-4842-be9e-3bcb8865687&title=&width=999)
+
+>> **使用`or`：**
+
+```sql [SQL]
+mysql> select ename,sal from emp where job='MANAGER' or job='SALESMAN';
+
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| TURNER | 1500.00 |
++--------+---------+
+7 rows in set (0.00 sec)
+```
+
+>> **使用`union all`：**
+
+```sql [SQL]
+mysql> select ename,sal from emp where job='MANAGER'
+    -> union all
+    -> select ename,sal from emp where job='SALESMAN';
+
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| JONES  | 2975.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| MARTIN | 1250.00 |
+| TURNER | 1500.00 |
++--------+---------+
+7 rows in set (0.00 sec)
+```
+> **以上案例采用or也可以完成，那or和union all有什么区别？`考虑走索引优化`之类的`选择union all`，其它`选择or`。**
+
+> **两个`结果集合并`时，`列数量要相同`：**
+
+![两个结果集合并时-列数量要相同](./DQL语句-子查询/两个结果集合并时-列数量要相同.png)
 
 
 ## limit
 
-1. limit作用：查询第几条到第几条的记录。通常是因为表中数据量太大，需要分页显示。
+::: tip 提示
+1. limit作用：查询`第几条到第几条`的记录。通常是因为`表中数据量太大，需要分页显示`。
 2. limit语法格式：
-   1. limit 开始下标, 长度
-3. 案例：查询员工表前5条记录
+   1. limit `开始下标`, `长度`
+:::
+
+3. **案例：查询员工表`前5条记录`**
+
 ```sql [SQL]
-select ename,sal from emp limit 0, 5;
+mysql> select * from emp limit 0,5;
+
++-------+--------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
++-------+--------+----------+------+------------+---------+---------+--------+
+5 rows in set (0.00 sec)
 ```
-如果下标是从0开始，可以简写为：
+> **如果`下标是从0开始`，可以`简写`为：**
 ```sql [SQL]
-select ename,sal from emp limit 5;
+mysql> select * from emp limit 5;
+
++-------+--------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
++-------+--------+----------+------+------------+---------+---------+--------+
+5 rows in set (0.00 sec)
 ```
 
-4. 查询工资排名在前5名的员工（limit是在order by执行之后才会执行的）
+4. **查询`工资排名在前5名`的员工(limit是在`order by执行之后`才会`执行`的)**
 ```sql [SQL]
-select ename,sal from emp order by sal desc limit 5;
+mysql> select ename,sal from emp order by sal desc limit 5;
+
++-------+---------+
+| ename | sal     |
++-------+---------+
+| KING  | 5000.00 |
+| SCOTT | 3000.00 |
+| FORD  | 3000.00 |
+| JONES | 2975.00 |
+| BLAKE | 2850.00 |
++-------+---------+
+5 rows in set (0.00 sec)
 ```
 
-5. 通用的分页sql
+5. **通用的`分页sql`**
 
-假设每页显示3条记录：pageSize = 3
+::: tip 提示
+> **假设`每页显示3条记录`：`pageSize = 3`**
+
+```sql [SQL]
 第1页：limit 0, 3
+
 第2页：limit 3, 3
+
 第3页：limit 6, 3
-第pageNo页：limit (pageNo - 1)*pageSize, pageSize
+```
+结论: 第pageNo页：limit (pageNo - 1)*pageSize, pageSize
+:::

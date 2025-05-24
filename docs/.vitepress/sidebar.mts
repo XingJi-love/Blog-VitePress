@@ -93,6 +93,10 @@ export default {
           text: "MySQL | DQL语句-子查询",
           link: "/Notes/MySQL/DQL语句-子查询",    
         },
+        {
+          text: "MySQL | 表相关操作",
+          link: "/Notes/MySQL/表相关操作",    
+        },
       ],
     },
     {

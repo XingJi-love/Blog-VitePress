@@ -97,6 +97,10 @@ export default {
           text: "MySQL | 表相关操作",
           link: "/Notes/MySQL/表相关操作",    
         },
+        {
+          text: "MySQL | 数据库设计三范式",
+          link: "/Notes/MySQL/数据库设计三范式",
+        },
       ],
     },
     {

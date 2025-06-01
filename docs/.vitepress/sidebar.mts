@@ -101,6 +101,14 @@ export default {
           text: "MySQL | 数据库设计三范式",
           link: "/Notes/MySQL/数据库设计三范式",
         },
+        {
+          text: "MySQL | 视图",
+          link: "/Notes/MySQL/视图",    
+        },
+        {
+          text: "MySQL | 事务",
+          link: "/Notes/MySQL/事务",    
+        },
       ],
     },
     {

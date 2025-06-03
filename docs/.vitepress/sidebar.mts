@@ -92,6 +92,10 @@ export default {
           text: "MySQL | 事务",
           link: "/JSZ/MySQL/事务",  
         },
+        {
+          text: "MySQL | DBA命令",
+          link: "/JSZ/MySQL/DBA命令",
+        },
       ],
     },
   ],

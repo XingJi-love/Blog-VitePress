@@ -98,6 +98,15 @@ export default {
         },
       ],
     },
+    {
+      text: "JDBC",
+      items: [
+        {
+          text: "JDBC | JDBC概述",
+          link: "/JSZ/JDBC/JDBC概述",
+        },
+      ],
+    },
   ],
   "/Notes/": [
     {
